@@ -16,7 +16,14 @@ import javafx.stage.Stage;
 
 
 public class ResultsViewer extends Application {
-  String UserName = "Jake";
+    private User user;
+
+    //Constructor
+    public ResultsViewer(User user){
+        this.user = user;
+    }
+
+
 
   public static void main(String[] args) {
     launch(args);
@@ -46,7 +53,7 @@ public class ResultsViewer extends Application {
     // Create Exit button
     Button ExitBtn = new Button();
     ExitBtn.setText("Exit");
-    ExitBtn.setOnAction(e -> Platform.exit());
+    ExitBtn.setOnAction(e -> primaryStage.close()); // Platform.exit()
 
     // Header
     Text header = new Text("TIPI Results");
