@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.print.PrinterJob;
@@ -41,10 +42,15 @@ public class ResultsViewer {
     ExportBtn.setText("Export Results");
     ExportBtn.setOnAction(e -> print(primaryStage, pane));
 
-    // Create Exit button
+    // Create Exit Application button
     Button ExitBtn = new Button();
-    ExitBtn.setText("Exit");
-    ExitBtn.setOnAction(e -> primaryStage.close()); // Platform.exit()
+    ExitBtn.setText("Exit Application");
+    ExitBtn.setOnAction(e -> Platform.exit());
+
+    // Create Return Questionnaire button
+    Button ReturnBtn = new Button();
+    ReturnBtn.setText("Return to Questionnaire");
+    ReturnBtn.setOnAction(e -> primaryStage.close());
 
     // TOPBORDER: Header
     Text header = new Text("TIPI Results");
@@ -68,20 +74,25 @@ public class ResultsViewer {
     //Add Padding
     gpUser.setPadding(new Insets(10));
 
+    //Add Padding between Rows and Columns
+    gpUser.setHgap(10);
+    gpUser.setVgap(10);
+
+
     // Create Labels for Pane
-    Label lblName = new Label("Name");
-    Label lblAge = new Label("Age");
-    Label lblSex = new Label("Gender");
+    Label lblName = new Label("Name:");
+    Label lblAge = new Label("Age:");
+    Label lblSex = new Label("Gender:");
 
     // Create Text for Labels
-    TextField txtName = new TextField(user.getName());
-    TextField txtAge = new TextField(String.valueOf(user.getAge()));
-    TextField txtSex = new TextField(user.getSex());
+    Text txtName = new Text(user.getName());
+    Text txtAge = new Text(String.valueOf(user.getAge()));
+    Text txtSex = new Text(user.getSex());
 
-    //Make Text fields not editable
-    txtName.setEditable(false);
-    txtAge.setEditable(false);
-    txtSex.setEditable(false);
+    //Make Text fields not editable in case TextField is used
+    //txtName.setEditable(false);
+//    txtAge.setEditable(false);
+//    txtSex.setEditable(false);
 
     // Add Labels to first column
     gpUser.addColumn(0, lblName, lblSex, lblAge);
@@ -102,7 +113,7 @@ public class ResultsViewer {
     // Add Spacing between Buttons
     bottomHBox.setSpacing(10);
     // Add Buttons to hbox node
-    bottomHBox.getChildren().addAll(ExportBtn, ExitBtn);
+    bottomHBox.getChildren().addAll(ExportBtn, ReturnBtn, ExitBtn);
 
     // Add hbox to bottom section of root
     pane.setBottom(bottomHBox);
