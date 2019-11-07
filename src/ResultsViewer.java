@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -70,6 +71,15 @@ public class ResultsViewer {
     // LEFTBORDER: User Profile
     // Construct GridPane Node
     GridPane gpUser = new GridPane();
+
+    //Header UserProfile
+    Text userHeader = new Text("User Profile");
+    //    //Title centrally aligned
+    //    pane.setAlignment(header,Pos.CENTER);
+    // Change Font of title
+    userHeader.setFont(Font.font(null,FontWeight.BOLD,15));
+    gpUser.setColumnSpan(userHeader, 2);
+    gpUser.addRow(0, userHeader);
 
     //Add Padding
     gpUser.setPadding(new Insets(10));
