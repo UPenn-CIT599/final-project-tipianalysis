@@ -20,7 +20,7 @@ public class Main extends Application {
 
         //create user and resutlsviewer object
         User user = new User("Tester", 30, "male");
-        ResultsViewer resultsViewer = new ResultsViewer(user);
+        ResultsViewer resultsViewer = new ResultsViewer();
         click.setOnAction(e -> resultsViewer.start(primaryStage));
         hbox.getChildren().addAll(click);
         primaryStage.setScene(scene);

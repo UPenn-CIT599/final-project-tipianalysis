@@ -1,28 +1,20 @@
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 public class ResultsViewer extends Application {
-    private User user;
-
-    //Constructor
-    public ResultsViewer(User user){
-        this.user = user;
-    }
-
+  private User user;
 
 
   public static void main(String[] args) {
@@ -34,7 +26,6 @@ public class ResultsViewer extends Application {
 
     // Great Root Pane
     BorderPane pane = new BorderPane();
-
 
     // Add Title to PrimaryStage
     primaryStage.setTitle("TIPI Analysis Results");
@@ -48,30 +39,46 @@ public class ResultsViewer extends Application {
     // Create Export button
     Button ExportBtn = new Button();
     ExportBtn.setText("Export Results");
-    ExportBtn.setOnAction(e -> print(primaryStage,pane));
+    ExportBtn.setOnAction(e -> print(primaryStage, pane));
 
     // Create Exit button
     Button ExitBtn = new Button();
     ExitBtn.setText("Exit");
     ExitBtn.setOnAction(e -> primaryStage.close()); // Platform.exit()
 
-    // Header
+    // TOPBORDER: Header
     Text header = new Text("TIPI Results");
-//    //Title centrally aligned
-//    pane.setAlignment(header,Pos.CENTER);
-    //Change Font of title
+    //    //Title centrally aligned
+    //    pane.setAlignment(header,Pos.CENTER);
+    // Change Font of title
     header.setFont(new Font(20));
-    //Add title to HBox to change padding
+    // Add title to HBox to change padding
     HBox topHBox = new HBox(header);
-    //Add padding to header
-   topHBox.setPadding(new Insets(10));
+    // Add padding to header
+    topHBox.setPadding(new Insets(10));
     // Centrally align header
     topHBox.setAlignment(Pos.CENTER);
-    //Add hBox with header
+    // Add hBox with header
     pane.setTop(topHBox);
 
+      // LEFTBORDER: User Profile
+    //Construct GridPane Node
+      GridPane gpUser = new GridPane();
+
+      //Create Labels for Pane
+      Label lblName = new Label("Name");
+      Label lblAge = new Label("Age");
+      Label lblSex= new Label("Gender");
+
+      //Add Labels to first column
+      gpUser.addColumn(0, lblName, lblSex, lblAge);
+
+      //Add UserProfile GridPane to Borderpane on left side
+      pane.setLeft(gpUser);
 
 
+
+    // BOTTOMBORDER: Buttons to exit application and print screen
     // hbox to hold buttons in bottomPart of Pane in horizontal order
     HBox bottomHBox = new HBox();
     // Centrally align buttons
@@ -93,9 +100,9 @@ public class ResultsViewer extends Application {
 
   private void print(Stage primarystage, Node node) {
 
-//    System.out.println("I am exporting");
+    //    System.out.println("I am exporting");
     PrinterJob printNode = PrinterJob.createPrinterJob();
-    if(printNode!=null){
+    if (printNode != null) {
       printNode.showPrintDialog(primarystage);
       printNode.printPage(node);
       printNode.endJob();
