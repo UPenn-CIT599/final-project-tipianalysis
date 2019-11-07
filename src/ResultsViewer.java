@@ -13,16 +13,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ResultsViewer extends Application {
-  private User user;
+public class ResultsViewer {
 
 
-  public static void main(String[] args) {
-    launch(args);
-  }
+  public void resultsStage() {
 
-  @Override
-  public void start(Stage primaryStage) {
+    //Create Stage
+    Stage primaryStage = new Stage();
 
     // Great Root Pane
     BorderPane pane = new BorderPane();
@@ -96,6 +93,7 @@ public class ResultsViewer extends Application {
     // Make Scene visible
     primaryStage.setScene(scene);
     primaryStage.show();
+
   }
 
   private void print(Stage primarystage, Node node) {
