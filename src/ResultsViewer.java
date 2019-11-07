@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -36,7 +36,7 @@ public class ResultsViewer {
     // scene can have only one root node
     // If you omit the width and height, the scene will be sized automatically based on the size of
     // the elements contained
-    Scene scene = new Scene(pane, 550, 250);
+    Scene scene = new Scene(pane);
 
     // Create Export button
     Button ExportBtn = new Button();
@@ -69,17 +69,16 @@ public class ResultsViewer {
     pane.setTop(topHBox);
 
     // LEFTBORDER: User Profile
+
     // Construct GridPane Node
     GridPane gpUser = new GridPane();
 
     //Header UserProfile
     Text userHeader = new Text("User Profile");
-    //    //Title centrally aligned
-    //    pane.setAlignment(header,Pos.CENTER);
     // Change Font of title
     userHeader.setFont(Font.font(null,FontWeight.BOLD,15));
     gpUser.setColumnSpan(userHeader, 2);
-    gpUser.addRow(0, userHeader);
+
 
     //Add Padding
     gpUser.setPadding(new Insets(10));
@@ -104,6 +103,9 @@ public class ResultsViewer {
 //    txtAge.setEditable(false);
 //    txtSex.setEditable(false);
 
+    //Add User Profile Header to row 0
+    gpUser.addRow(0, userHeader);
+
     // Add Labels to first column
     gpUser.addColumn(0, lblName, lblSex, lblAge);
 
@@ -112,6 +114,38 @@ public class ResultsViewer {
 
     // Add UserProfile GridPane to Borderpane on left side
     pane.setLeft(gpUser);
+
+
+    // RightBORDER: Create Personality traits Tiles
+    VBox traitsBox = new VBox();
+
+    //Add Spacing
+    traitsBox.setSpacing(10);
+
+    //preferd width of vBox
+    traitsBox.setPrefWidth(100);
+
+    //Personality Buttons
+    Label l = new Label("test balblasdjf sfjs f");
+    l.setWrapText(true);
+    Rectangle r = new Rectangle(100, 50);
+    r.setFill(Color.LIGHTGRAY);
+    Tooltip.install(r, new Tooltip("This is a test"));
+    StackPane s = new StackPane(r, l);
+
+    Button extraVersion = new Button("Extraversion");
+    Button agree = new Button("Agreeableness");
+    Button conscience = new Button("Conscientiousness");
+    Button stability = new Button("Emotional Stability");
+    Button experience = new Button("Openness to Experiences");
+
+    traitsBox.getChildren().addAll(s,extraVersion,agree,conscience,stability,experience);
+
+    pane.setRight(traitsBox);
+
+
+
+
 
     // BOTTOMBORDER: Buttons to exit application and print screen
     // hbox to hold buttons in bottomPart of Pane in horizontal order
