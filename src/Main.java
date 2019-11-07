@@ -18,10 +18,10 @@ public class Main extends Application {
         //button to open results
         Button click = new Button("Open Results");
 
-        //create user and resutlsviewer object
+        //create user and resultsViewer object
         User user = new User("Tester", 30, "male");
         ResultsViewer resultsViewer = new ResultsViewer();
-        click.setOnAction(e -> resultsViewer.resultsStage());
+        click.setOnAction(e -> resultsViewer.createStage(user));
         hbox.getChildren().addAll(click);
         primaryStage.setScene(scene);
         primaryStage.show();
