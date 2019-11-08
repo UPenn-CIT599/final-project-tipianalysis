@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //Mock-up: How to transition to results page
+        //Mock-up: How to transition to results page hello
         HBox hbox = new HBox();
         Scene scene = new Scene(hbox);
         //button to open results
