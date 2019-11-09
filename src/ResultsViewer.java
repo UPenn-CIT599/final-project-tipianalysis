@@ -16,9 +16,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 /** Class responsible to visualize results of TIPI questionnaire */
 public class ResultsViewer {
-
 
   /** Method, creates window/stage with showing user outcome of TIPI Questionnaire */
   public void createStage(User user) {
@@ -70,23 +71,21 @@ public class ResultsViewer {
 
     // LEFTBORDER: User Profile
 
-    // Construct GridPane Node
+    // Part On of User Profile - Static Info
     GridPane gpUser = new GridPane();
 
-    //Header UserProfile
+    // Header UserProfile
     Text userHeader = new Text("User Profile");
     // Change Font of title
-    userHeader.setFont(Font.font(null,FontWeight.BOLD,15));
+    userHeader.setFont(Font.font(null, FontWeight.BOLD, 15));
     gpUser.setColumnSpan(userHeader, 2);
 
-
-    //Add Padding
+    // Add Padding
     gpUser.setPadding(new Insets(10));
 
-    //Add Padding between Rows and Columns
+    // Add Padding between Rows and Columns
     gpUser.setHgap(10);
     gpUser.setVgap(10);
-
 
     // Create Labels for Pane
     Label lblName = new Label("Name:");
@@ -98,34 +97,80 @@ public class ResultsViewer {
     Text txtAge = new Text(String.valueOf(user.getAge()));
     Text txtSex = new Text(user.getSex());
 
-    //Make Text fields not editable in case TextField is used
-    //txtName.setEditable(false);
-//    txtAge.setEditable(false);
-//    txtSex.setEditable(false);
-
-    //Add User Profile Header to row 0
+    // Add User Profile Header to row 0
     gpUser.addRow(0, userHeader);
 
     // Add Labels to first column
     gpUser.addColumn(0, lblName, lblSex, lblAge);
 
     // Add Text to second column
-    gpUser.addColumn(1, txtName, txtAge,txtSex);
+    gpUser.addColumn(1, txtName, txtAge, txtSex);
 
     // Add UserProfile GridPane to Borderpane on left side
     pane.setLeft(gpUser);
+
+    // Part On of User Profile - Static Info
+    GridPane gpUserTipi = new GridPane();
+
+    // Header UserProfile
+    Text tipiHeader = new Text("User TIPI Profile");
+    // Change Font of title
+    tipiHeader.setFont(Font.font(null, FontWeight.BOLD, 15));
+    gpUserTipi.setColumnSpan(tipiHeader, 2);
+
+    // Add Padding
+    gpUserTipi.setPadding(new Insets(10));
+
+    // Add Padding between Rows and Columns
+    gpUserTipi.setHgap(10);
+    gpUserTipi.setVgap(10);
+
+    // TO BE REPLACED WITH ACTUAL HASHMAP - PLACEHOLDER
+
+    HashMap<String, String> userTraitsRelative =
+        new HashMap<String, String>() {
+          {
+            put("Extraversion", "Average");
+            put("Agreeableness", "Below Average");
+            put("Conscientiousness", "Above Average");
+            put("Emotional Stability", "Above Average");
+            put("Openness", "Average");
+          }
+        };
+
+    //counter to position lables, start at one as first row header
+    int i=1;
+
+    // Create Labels and Text for Pane and add them the gridpane
+    for (String trait : userTraitsRelative.keySet()) {
+
+      Label lblTrait = new Label(trait+":");
+      Text txtTrait = new Text(userTraitsRelative.get(trait));
+      gpUserTipi.addRow(i,lblTrait,txtTrait);
+      i++;
+    }
+
+    // Add User Profile Header to row 0
+    gpUserTipi.addRow(0, tipiHeader);
+
+
+    // Add Part I and II/GridPanes to VBox
+    VBox userDataWrapper = new VBox(gpUser, gpUserTipi);
+
+    // Add UserProfile vBox to Borderpane on left side
+    pane.setLeft(userDataWrapper);
 
 
     // RightBORDER: Create Personality traits Tiles
     VBox traitsBox = new VBox();
 
-    //Add Spacing
+    // Add Spacing
     traitsBox.setSpacing(10);
 
-    //preferd width of vBox
+    // preferd width of vBox
     traitsBox.setPrefWidth(100);
 
-    //Personality Buttons
+    // Personality Buttons
     Label l = new Label("test balblasdjf sfjs f");
     l.setWrapText(true);
     Rectangle r = new Rectangle(100, 50);
@@ -139,13 +184,9 @@ public class ResultsViewer {
     Button stability = new Button("Emotional Stability");
     Button experience = new Button("Openness to Experiences");
 
-    traitsBox.getChildren().addAll(s,extraVersion,agree,conscience,stability,experience);
+    traitsBox.getChildren().addAll(s, extraVersion, agree, conscience, stability, experience);
 
     pane.setRight(traitsBox);
-
-
-
-
 
     // BOTTOMBORDER: Buttons to exit application and print screen
     // hbox to hold buttons in bottomPart of Pane in horizontal order
@@ -182,10 +223,10 @@ public class ResultsViewer {
       boolean success = printNode.printPage(node);
       if (success) {
 
-        //Create Info Box: confirming printing
+        // Create Info Box: confirming printing
         Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
         printAlert.setTitle("Print Status");
-        //now header inside infobox
+        // now header inside infobox
         printAlert.setHeaderText(null);
         printAlert.setContentText("Your Results have been exported successfully.");
         printAlert.showAndWait();
