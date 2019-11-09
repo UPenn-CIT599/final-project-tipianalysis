@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -187,6 +188,38 @@ public class ResultsViewer {
     traitsBox.getChildren().addAll(s, extraVersion, agree, conscience, stability, experience);
 
     pane.setRight(traitsBox);
+
+
+    // CentralBorder: To Hold BarChart
+    TipiChart chart = new TipiChart();
+
+    //HashMaps for testing:
+    HashMap<String, Integer> userScore =
+            new HashMap<String, Integer>() {
+              {
+                put("Extraversion", 1);
+                put("Agreeableness", 2);
+                put("Conscientiousness", 3);
+                put("Emotional Stability", 4);
+                put("Openness", 5);
+              }
+            };
+
+    HashMap<String, Integer> bmScore =
+            new HashMap<String, Integer>() {
+              {
+                put("Extraversion", 1);
+                put("Agreeableness", 2);
+                put("Conscientiousness", 3);
+                put("Emotional Stability", 4);
+                put("Openness", 5);
+              }
+            };
+
+    BarChart barChart = chart.createBarChart(userScore, bmScore);
+
+    //Add Chart to center pane
+    pane.setCenter(barChart);
 
     // BOTTOMBORDER: Buttons to exit application and print screen
     // hbox to hold buttons in bottomPart of Pane in horizontal order

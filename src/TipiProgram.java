@@ -4,6 +4,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+/**
+ * Main Program putting all the components together for Tipi Questionnair to run
+ */
 public class TipiProgram extends Application {
 
   // public static void main(String[] args) {
