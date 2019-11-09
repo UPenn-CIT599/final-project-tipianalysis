@@ -4,15 +4,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class TipiProgram extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  // public static void main(String[] args) {
+  //    launch(args);
+  //  }
 
-    @Override
-    public void start(Stage primaryStage) {
-        //Mock-up: How to transition to results page hello
+  @Override
+  public void start(Stage primaryStage) {
+        //Mock-up: How to transition to results page
         HBox hbox = new HBox();
         Scene scene = new Scene(hbox);
         //button to open results
