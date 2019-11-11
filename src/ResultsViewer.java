@@ -9,12 +9,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -127,7 +130,22 @@ public class ResultsViewer {
     Text tipiHeader = new Text("User TIPI Profile");
     // Change Font of title
     tipiHeader.setFont(Font.font(null, FontWeight.BOLD, 15));
-    gpUserTipi.setColumnSpan(tipiHeader, 2);
+
+    //Info Icon
+    Image infoImg = new Image(getClass().getResourceAsStream("info.png"),20,20,true,true);
+    //Make infoIcon a Button
+    Button info = new Button("",new ImageView(infoImg));
+    info.setOnAction(e -> tipiDefinitions());
+    //mack background of button transparent
+    info.setStyle("-fx-background-color: transparent; -fx-padding: 5, 5, 5, 5;");
+
+    //Hbox to hold Header and Info Icon
+    HBox headerBox = new HBox(tipiHeader, info);
+    //Align Header
+    headerBox.setAlignment(Pos.CENTER_LEFT);
+
+    //headerBox to span over two columns
+    gpUserTipi.setColumnSpan(headerBox, 2);
 
     // Add Padding
     gpUserTipi.setPadding(new Insets(10));
@@ -162,8 +180,8 @@ public class ResultsViewer {
       i++;
     }
 
-    // Add User Profile Header to row 0
-    gpUserTipi.addRow(0, tipiHeader);
+    // Add User Profile HeaderBox to row 0
+    gpUserTipi.addRow(0, headerBox);
 
 
     // Add Part I and II/GridPanes to VBox
@@ -173,32 +191,32 @@ public class ResultsViewer {
     pane.setLeft(userDataWrapper);
 
 
-    // RightBORDER: Create Personality traits Tiles
-    VBox traitsBox = new VBox();
-
-    // Add Spacing
-    traitsBox.setSpacing(10);
-
-    // preferd width of vBox
-    traitsBox.setPrefWidth(100);
-
-    // Personality Buttons
-    Label l = new Label("test balblasdjf sfjs f");
-    l.setWrapText(true);
-    Rectangle r = new Rectangle(100, 50);
-    r.setFill(Color.LIGHTGRAY);
-    Tooltip.install(r, new Tooltip("This is a test"));
-    StackPane s = new StackPane(r, l);
-
-    Button extraVersion = new Button("Extraversion");
-    Button agree = new Button("Agreeableness");
-    Button conscience = new Button("Conscientiousness");
-    Button stability = new Button("Emotional Stability");
-    Button experience = new Button("Openness to Experiences");
-
-    traitsBox.getChildren().addAll(s, extraVersion, agree, conscience, stability, experience);
-
-    pane.setRight(traitsBox);
+//    // RightBORDER: Create Personality traits Tiles
+//    VBox traitsBox = new VBox();
+//
+//    // Add Spacing
+//    traitsBox.setSpacing(10);
+//
+//    // preferd width of vBox
+//    traitsBox.setPrefWidth(100);
+//
+//    // Personality Buttons
+//    Label l = new Label("test balblasdjf sfjs f");
+//    l.setWrapText(true);
+//    Rectangle r = new Rectangle(100, 50);
+//    r.setFill(Color.LIGHTGRAY);
+//    Tooltip.install(r, new Tooltip("This is a test"));
+//    StackPane s = new StackPane(r, l);
+//
+//    Button extraVersion = new Button("Extraversion");
+//    Button agree = new Button("Agreeableness");
+//    Button conscience = new Button("Conscientiousness");
+//    Button stability = new Button("Emotional Stability");
+//    Button experience = new Button("Openness to Experiences");
+//
+//    traitsBox.getChildren().addAll(s, extraVersion, agree, conscience, stability, experience);
+//
+//    pane.setRight(traitsBox);
 
 
     // CentralBorder: To Hold BarChart
@@ -278,4 +296,45 @@ public class ResultsViewer {
       }
     }
   }
+
+  private void tipiDefinitions(){
+    //Stage
+    Stage stage = new Stage();
+
+
+
+
+
+    //Trait One
+    Label lblOpenness = new Label("Openness");
+    Text txtOpenness = new Text("This is a Definition");
+    txtOpenness.setWrappingWidth(200);
+
+    GridPane opennessGp = new GridPane();
+    opennessGp.addRow(0, lblOpenness,txtOpenness);
+
+    //Add space between gp nodes
+   opennessGp.setHgap(10);
+
+    //Scene
+    VBox box = new VBox(opennessGp);
+
+    //Add Padding to box - distance to Window Edge
+    box.setPadding(new Insets(15, 20, 10, 20));
+
+    //Set Background of scene
+    BackgroundFill myBF = new BackgroundFill(Color.WHITE, new CornerRadii(1),
+            new Insets(0.0,0.0,0.0,0.0));
+
+    box.setBackground(new Background(myBF));
+
+    Scene scene = new Scene(box);
+    stage.setTitle("TIPI Traits Definition and Implications");
+    stage.setScene(scene);
+
+    stage.show();
+
+  }
+
+
 }
