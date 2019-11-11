@@ -297,6 +297,9 @@ public class ResultsViewer {
     }
   }
 
+  /**
+   * Creates additional stage for pop up window to contain definitions of TipiTraits
+   */
   private void tipiDefinitions(){
     //Stage
     Stage stage = new Stage();
