@@ -28,8 +28,11 @@ public class ResultsViewer {
     // Create Stage
     Stage primaryStage = new Stage();
 
-    // Great Root Pane
+    // Create Root Pane / BorderPane
     BorderPane pane = new BorderPane();
+
+    //Add Padding to BorderPane - distance to Window Edge
+      pane.setPadding(new Insets(15, 20, 10, 20));
 
     // Add Title to PrimaryStage
     primaryStage.setTitle("TIPI Analysis Results");
@@ -39,6 +42,13 @@ public class ResultsViewer {
     // If you omit the width and height, the scene will be sized automatically based on the size of
     // the elements contained
     Scene scene = new Scene(pane);
+
+      //Set Background of scene
+      BackgroundFill myBF = new BackgroundFill(Color.WHITE, new CornerRadii(1),
+              new Insets(0.0,0.0,0.0,0.0));
+
+
+      pane.setBackground(new Background(myBF));
 
     // Create Export button
     Button ExportBtn = new Button();
@@ -139,13 +149,14 @@ public class ResultsViewer {
           }
         };
 
-    //counter to position lables, start at one as first row header
+    //counter to position labels, start at one as first row header
     int i=1;
 
     // Create Labels and Text for Pane and add them the gridpane
     for (String trait : userTraitsRelative.keySet()) {
 
       Label lblTrait = new Label(trait+":");
+      lblTrait.setTooltip(new Tooltip("Hello World"));
       Text txtTrait = new Text(userTraitsRelative.get(trait));
       gpUserTipi.addRow(i,lblTrait,txtTrait);
       i++;
