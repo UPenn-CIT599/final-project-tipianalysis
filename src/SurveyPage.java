@@ -82,8 +82,8 @@ public class SurveyPage{
 	}
 	
 	public static void continueToResults() {
-		ResultsViewer resultsPage = new ResultsViewer();
-		resultsPage.createStage(user);
+		//ResultsViewer resultsPage = new ResultsViewer();
+		//resultsPage.createStage(User);
 	}
 	
 	
