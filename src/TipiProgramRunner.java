@@ -1,7 +1,9 @@
 import javafx.application.Application;
 
 /**
- * Pure Runner Class to Run TipiProgram
+ * This program runs the entire TIPI Analysis application.
+ * @author andrew.mcmanus
+ *
  */
 public class TipiProgramRunner {
 
