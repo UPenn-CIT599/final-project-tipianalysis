@@ -7,7 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 /**
- * The JUnit Test which will test a method to be used during the final project.
+ * The JUnit Test which will test a selected method to be used during the final project.
  * @author michaelnarcisi
  */
 class LogicCheckTest {
