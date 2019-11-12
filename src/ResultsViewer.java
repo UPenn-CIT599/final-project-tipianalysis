@@ -1,7 +1,7 @@
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.print.PrinterJob;
+import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -21,6 +21,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /** Class responsible to visualize results of TIPI questionnaire */
 public class ResultsViewer {
@@ -223,8 +224,8 @@ public class ResultsViewer {
     TipiChart chart = new TipiChart();
 
     //HashMaps for testing:
-    HashMap<String, Integer> userScore =
-            new HashMap<String, Integer>() {
+    LinkedHashMap<String, Integer> userScore =
+            new LinkedHashMap<String, Integer>() {
               {
                 put("Extraversion", 1);
                 put("Agreeableness", 2);
@@ -234,18 +235,18 @@ public class ResultsViewer {
               }
             };
 
-    HashMap<String, Integer> bmScore =
-            new HashMap<String, Integer>() {
+    LinkedHashMap<String, Integer> peerScore =
+            new LinkedHashMap<String, Integer>() {
               {
-                put("Extraversion", 1);
+                put("Extraversion", 2);
                 put("Agreeableness", 2);
-                put("Conscientiousness", 3);
-                put("Emotional Stability", 4);
-                put("Openness", 5);
+                put("Conscientiousness", 1);
+                put("Emotional Stability", 7);
+                put("Openness", 3);
               }
             };
 
-    BarChart barChart = chart.createBarChart(userScore, bmScore);
+    BarChart barChart = chart.createBarChart(userScore, peerScore);
 
     //Add Chart to center pane
     pane.setCenter(barChart);
@@ -282,7 +283,17 @@ public class ResultsViewer {
     PrinterJob printNode = PrinterJob.createPrinterJob();
     if (printNode != null) {
       printNode.showPrintDialog(primarystage);
+
+      //get picked printer
+      Printer printer = printNode.getPrinter();
+
+      //Customize print settings
+      JobSettings jobSettings = printNode.getJobSettings();
+      PageLayout pageLayout = printer.createPageLayout(Paper.A4,PageOrientation.REVERSE_LANDSCAPE,Printer.MarginType.EQUAL);
+      jobSettings.setPageLayout(pageLayout);
+
       boolean success = printNode.printPage(node);
+
       if (success) {
 
         // Create Info Box: confirming printing
@@ -303,10 +314,6 @@ public class ResultsViewer {
   private void tipiDefinitions(){
     //Stage
     Stage stage = new Stage();
-
-
-
-
 
     //Trait One
     Label lblOpenness = new Label("Openness");

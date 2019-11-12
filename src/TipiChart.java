@@ -4,6 +4,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Class to produce a Chart visualizing the Results from the Tipi Questionaire
@@ -16,7 +17,8 @@ public class TipiChart {
      * @param PeerTipiMap Tipi BM values for respective user
      * @return BarChart
      */
-    public BarChart createBarChart(HashMap<String, Integer> UserTipiMap,HashMap<String, Integer> PeerTipiMap){
+    public BarChart createBarChart(LinkedHashMap<String, Integer> UserTipiMap,
+                                   LinkedHashMap<String, Integer> PeerTipiMap){
 
         //Define axis types of chart
         CategoryAxis traitsAxis = new CategoryAxis();
@@ -33,6 +35,9 @@ public class TipiChart {
         XYChart.Series userData = mapToDataSeries(UserTipiMap, "User");
         XYChart.Series peerData = mapToDataSeries(PeerTipiMap, "Peer Group");
 
+        //add series to chart
+        barChart.getData().addAll(userData,peerData);
+
         return barChart;
 
     }
@@ -44,7 +49,7 @@ public class TipiChart {
      * @param seriesName Label for Series
      * @return Series for XY Chart
      */
-    private XYChart.Series mapToDataSeries(HashMap<String, Integer> tipiMap, String seriesName){
+    private XYChart.Series mapToDataSeries(LinkedHashMap<String, Integer> tipiMap, String seriesName){
 
         //Create Series object
         XYChart.Series series = new XYChart.Series();
