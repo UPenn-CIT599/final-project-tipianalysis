@@ -13,10 +13,10 @@ public class TipiChart {
     /**
      * Creates a BarChart based for HashMaps provided
      * @param UserTipiMap TipiResults from User
-     * @param BMTipiMap Tipi BM values for respective user
+     * @param PeerTipiMap Tipi BM values for respective user
      * @return BarChart
      */
-    public BarChart createBarChart(HashMap<String, Integer> UserTipiMap,HashMap<String, Integer> BMTipiMap){
+    public BarChart createBarChart(HashMap<String, Integer> UserTipiMap,HashMap<String, Integer> PeerTipiMap){
 
         //Define axis types of chart
         CategoryAxis traitsAxis = new CategoryAxis();
@@ -28,6 +28,10 @@ public class TipiChart {
 
         //Construct Chart Object
         BarChart<String, Number> barChart = new BarChart<>(traitsAxis, traitsValues);
+
+        //Generate Data Series
+        XYChart.Series userData = mapToDataSeries(UserTipiMap, "User");
+        XYChart.Series peerData = mapToDataSeries(PeerTipiMap, "Peer Group");
 
         return barChart;
 
