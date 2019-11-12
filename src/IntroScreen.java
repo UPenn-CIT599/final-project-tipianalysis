@@ -27,6 +27,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.*;
 
@@ -94,32 +95,38 @@ public class IntroScreen{
 	    		+ "to define our personalities on a few different scales. "
 	    		+ "How we score on these scales can tell us more about our own "
 	    		+ "personality traits, and how these traits might be affecting our "
-	    		+ "behavior without us even knowing it! By learning more about "
-	    		+ "how you score on these traits, you can determine how this may "
-	    		+ "be affecting your behavior, and in turn, behave more consciously "
-	    		+ "when it comes to certain decision-making points in your life."
-	    		+ "\n \n"
+	    		+ "behavior without us even knowing it! "
+	    		+ "\n"
+	    		+ "\n"
+	    		+ "\n"
+	    		+ "By learning how your personality might be affecting your behavior, you can "
+	    		+ "start to behave more consciously when it comes to certain decision-making "
+	    		+ "points in your life. You then may not fall victim to subconscious "
+	    		+ "tendencies that you didn't now you had. For example, maybe you'll "
+	    		+ "think twice about a particular financial decision if you find out that "
+	    		+ "people like you tend to take risky decisions when it comes to investing."
+	    		+ "\n"
+	    		+ "\n"
+	    		+ "\n"
+	    		+ "On the next page, we'll ask you to answer ten questions where "
+		        + "you will need to describe different aspects of your personality "
+		        + "on a 7-point scales. Please answer honestly. Click \"Continue to Survey\""
+		        + "when you are ready."
 	    		);
 	    
-	    Text bodyText2 = new Text(
-	    		"On the next page, we'll ask you to answer ten questions where "
-	    	  + "you will need to describe your personality on 7-point scales."
-
-	    		);
+	    
 	    bodyText1.setWrappingWidth(400);
-	    bodyText2.setWrappingWidth(450);
+	    bodyText1.setFont(Font.font("Veranda",15));
+	    bodyText1.setTextAlignment(TextAlignment.CENTER);
 	    
 	    HBox bodyBox1 = new HBox();
 	    bodyBox1.getChildren().add(bodyText1);
 	    bodyBox1.setAlignment(Pos.CENTER);
 	    
-	    HBox bodyBox2 = new HBox();
-	    bodyBox2.getChildren().add(bodyText2);
-	    bodyBox2.setAlignment(Pos.CENTER);
+	   
 	    
-	    bodyBox2.setPadding(new Insets(10));
 	    introBorderPane.setCenter(bodyBox1);
-	    introBorderPane.setCenter(bodyBox2);
+
 
 		/**
 		 * Button functionality and placement
