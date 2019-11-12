@@ -9,7 +9,7 @@ public class Trait {
 	private double mean;
 	private double standardDeviation;
 	private int sampleSize;
-	private String categoryComparedToPeers;
+	private String comparisonToPeers;
 	
 	/**
 	 * The constructor for the Trait class.  Stores all pertinent information
@@ -29,7 +29,7 @@ public class Trait {
 		this.mean = mean;
 		this.standardDeviation = standardDeviation;
 		this.sampleSize = sampleSize;
-		categoryComparedToPeers = "";
+		comparisonToPeers = "";
 	}
 
 	/**
@@ -67,9 +67,9 @@ public class Trait {
 	/**
 	 * A getter method for the string used to describe if the user's score
 	 * is above, below, or right at average for their peer group.
-	 * @return
+	 * @return - The descriptive String.
 	 */
-	public String getCategoryComparedToPeers() {
-		return categoryComparedToPeers;
+	public String getcomparisonToPeers() {
+		return comparisonToPeers;
 	}
 }
