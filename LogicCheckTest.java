@@ -6,6 +6,10 @@ import java.util.HashMap;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The JUnit Test which will test a method to be used during the final project.
+ * @author michaelnarcisi
+ */
 class LogicCheckTest {
 
 	LogicCheck tester = new LogicCheck();
@@ -17,7 +21,7 @@ class LogicCheckTest {
 		HashMap<String, Integer> inputResponses;
 		HashMap<String, Integer> outputsToMatch;
 		
-		///// Change the integer values in both HashMaps to test different scenarios.
+                // Change the integer values in both HashMaps to test different scenarios.  Possible values: 1-7
 		
 		inputResponses = new HashMap<String, Integer>();
 		// Assign input values to each of the 10 items in TIPI
