@@ -8,7 +8,6 @@ import java.util.HashMap;
  */
 public class TipiLogic {
 	private NormDataReader resultsComparison;
-	HashMap<String, Integer> userResponses;
 	HashMap<String, Double> bigFivePersonalityScores;
 	HashMap<HashMap<String, Double>, Trait[]> dataToOuput;
 	
@@ -23,7 +22,7 @@ public class TipiLogic {
 		
 		// Finish Constructor
 		
-		this.userResponses = ;
+		
 		
 		/* Integrate User class into constructor call for 
 		NormDataReader */
@@ -98,20 +97,19 @@ public class TipiLogic {
 	}
 
 	/**
-	 * A getter method for the HashMap with user responses to the questions
-	 * of the Tipi questionnaire.
-	 * @return - The HashMap of user responses.
-	 */
-	public HashMap<String, Integer> getUserResponses() {
-		return userResponses;
-	}
-
-	/**
 	 * A getter method for the HashMap storing the final personality scores
 	 * of each of the "Big Five Personality Traits".
 	 * @return - The HashMap storing trait scores.
 	 */
 	public HashMap<String, Double> getBigFivePersonalityScores() {
 		return bigFivePersonalityScores;
+	}
+
+	/**
+	 * A getter method for the final output HashMap.
+	 * @return - The final HashMap.
+	 */
+	public HashMap<HashMap<String, Double>, Trait[]> getDataToOuput() {
+		return dataToOuput;
 	}
 }
