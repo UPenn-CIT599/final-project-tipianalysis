@@ -43,7 +43,7 @@ public class TipiChart {
         //Gap between bars of different data series
         barChart.setBarGap(3);
         // Gap between different Categories
-        barChart.setCategoryGap(20);
+        barChart.setCategoryGap(30);
         //remove x-Axis ticks
         traitsAxis.setTickMarkVisible(false);
         traitsAxis.setAutoRanging(true);

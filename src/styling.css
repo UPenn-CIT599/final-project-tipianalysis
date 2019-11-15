@@ -9,12 +9,20 @@
 
 .chart{
     /*-fx-background-color: #dafdff;*/
+    -fx-legend-side: top;
+
 }
+
 
 .chart-legend {
     -fx-background-color:  transparent;
 }
-.gp{
-    -fx-alignment: top-right;
 
+.axis{
+    -fx-tick-label-font-size: 12px;
+}
+
+.axis-label{
+
+    -fx-label-padding: 10 0 10 0;
 }

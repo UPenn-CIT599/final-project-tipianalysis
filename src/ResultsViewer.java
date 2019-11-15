@@ -71,7 +71,7 @@ public class ResultsViewer {
     // Add padding to header
     topHBox.setPadding(new Insets(10));
     // Centrally align header
-    topHBox.setAlignment(Pos.CENTER);
+    topHBox.setAlignment(Pos.CENTER_LEFT);
     // Add hBox with header
     pane.setTop(topHBox);
 
@@ -339,37 +339,36 @@ public class ResultsViewer {
     // Stage
     Stage stage = new Stage();
 
-    stage.setMinWidth(800);
+    stage.setMinWidth(600);
     stage.setMinHeight(200);
 
 
     // Trait One
     Label lblExtraVersion = new Label("Extraversion");
     Text txtExtraVersion  = new Text("The tendency to be outgoing and high in social energy.");
-//    txtExtraVersion .setWrappingWidth(200);
+    txtExtraVersion .setWrappingWidth(400);
 
     // Trait One
     Label lblEmotion = new Label("Emotional stability");
     Text txtEmotion = new Text("The tendency to be even in terms of emotions and to not experience much " +
             "dispositional anxiety or sadness.");
-//    txtEmotion.setWrappingWidth(200);
+    txtEmotion.setWrappingWidth(400);
 
     // Trait One
     Label lblOpenness = new Label("Open-mindedness");
     Text txtOpenness = new Text("The tendency to be interested in new ideas, people, art, and pretty much anything.");
-//    txtOpenness.setWrappingWidth(200);
+    txtOpenness.setWrappingWidth(400);
 
     // Trait One
     Label lblAgree = new Label("Agreeableness");
     Text txtAgree = new Text("The tendency to agree with people and to be generally kind in dealing with others.");
-//    txtAgree.setWrappingWidth(200);
+    txtAgree.setWrappingWidth(400);
 
     // Trait One
     Label lblConscious = new Label("Conscientiousness");
     Text txtConscious = new Text("The tendency to be meticulous and organized in all aspects of one’s life.");
-   //txtConscious.setWrappingWidth(200);
+    txtConscious.setWrappingWidth(400);
 
-    txtConscious.getStyleClass().add("text");
 
     GridPane gp = new GridPane();
     gp.addRow(0, lblExtraVersion, txtExtraVersion);
@@ -383,6 +382,15 @@ public class ResultsViewer {
     gp.setVgap(10);
 
 
+    //Align Text on Top in Grid Panes
+    for (int i = 0; i < 5; i++) {
+
+      RowConstraints rConstraint = new RowConstraints();
+      rConstraint.setValignment(VPos.TOP);
+
+      gp.getRowConstraints().add(rConstraint);
+
+    }
 
     //Add StyleSheet. Get current styles and overwrite/ with ones specified
     //toExternalForm() call. Scene expects stylesheet contents as a string, not the file, so we need to provide the contents of our stylesheet instead.
@@ -390,9 +398,9 @@ public class ResultsViewer {
 
     ColumnConstraints col1 = new ColumnConstraints();
     col1.setMinWidth(100);
-    ColumnConstraints col2 = new ColumnConstraints();
-    col2.setMinWidth(400);
-    gp.getColumnConstraints().addAll(col1,col2);
+//    ColumnConstraints col2 = new ColumnConstraints();
+//    col2.setMinWidth(400);
+    gp.getColumnConstraints().addAll(col1);
 
 
     // Add Padding to box - distance to Window Edge
