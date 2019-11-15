@@ -2,6 +2,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,8 +20,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -36,6 +39,9 @@ public class ResultsViewer {
 
     // Create Stage
     Stage primaryStage = new Stage();
+    //Set min Stage Size
+    primaryStage.setMinWidth(900);
+    primaryStage.setMinHeight(500);
 
     // Create Root Pane / BorderPane
     BorderPane pane = new BorderPane();
@@ -46,16 +52,13 @@ public class ResultsViewer {
     // Add Title to PrimaryStage
     primaryStage.setTitle("TIPI Analysis Results");
 
-    // Create Scene and link it with Root scene can have only one root node
-    // If you omit the width and height, the scene will be sized automatically based on the size of
-    // the elements contained
-    Scene scene = new Scene(pane);
 
-    // Set Background of scene
-    BackgroundFill myBF =
-        new BackgroundFill(Color.WHITE, new CornerRadii(1), new Insets(0.0, 0.0, 0.0, 0.0));
 
-    pane.setBackground(new Background(myBF));
+//    // Set Background of scene
+//    BackgroundFill myBF =
+//        new BackgroundFill(Color.WHITE, new CornerRadii(1), new Insets(0.0, 0.0, 0.0, 0.0));
+//
+//    pane.setBackground(new Background(myBF));
 
     // TOPBORDER: Header
     Text header = new Text("TIPI Results");
@@ -271,6 +274,14 @@ public class ResultsViewer {
     // Add hbox to bottom section of root
     pane.setBottom(bottomHBox);
 
+    // Create Scene and link it with Root scene can have only one root node
+    // If you omit the width and height, the scene will be sized automatically based on the size of
+    // the elements contained
+    Scene scene = new Scene(pane);
+
+    //Add StyleSheet. Get current styles and overwrite/ with ones specified
+    scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
+
     // Make Scene visible
     primaryStage.setScene(scene);
     primaryStage.show();
@@ -328,33 +339,76 @@ public class ResultsViewer {
     // Stage
     Stage stage = new Stage();
 
-    // Trait One
-    Label lblOpenness = new Label("Openness");
-    Text txtOpenness = new Text("This is a Definition");
-    txtOpenness.setWrappingWidth(200);
+    stage.setMinWidth(800);
+    stage.setMinHeight(200);
 
-    GridPane opennessGp = new GridPane();
-    opennessGp.addRow(0, lblOpenness, txtOpenness);
+
+    // Trait One
+    Label lblExtraVersion = new Label("Extraversion");
+    Text txtExtraVersion  = new Text("The tendency to be outgoing and high in social energy.");
+//    txtExtraVersion .setWrappingWidth(200);
+
+    // Trait One
+    Label lblEmotion = new Label("Emotional stability");
+    Text txtEmotion = new Text("The tendency to be even in terms of emotions and to not experience much " +
+            "dispositional anxiety or sadness.");
+//    txtEmotion.setWrappingWidth(200);
+
+    // Trait One
+    Label lblOpenness = new Label("Open-mindedness");
+    Text txtOpenness = new Text("The tendency to be interested in new ideas, people, art, and pretty much anything.");
+//    txtOpenness.setWrappingWidth(200);
+
+    // Trait One
+    Label lblAgree = new Label("Agreeableness");
+    Text txtAgree = new Text("The tendency to agree with people and to be generally kind in dealing with others.");
+//    txtAgree.setWrappingWidth(200);
+
+    // Trait One
+    Label lblConscious = new Label("Conscientiousness");
+    Text txtConscious = new Text("The tendency to be meticulous and organized in all aspects of one’s life.");
+   //txtConscious.setWrappingWidth(200);
+
+    txtConscious.getStyleClass().add("text");
+
+    GridPane gp = new GridPane();
+    gp.addRow(0, lblExtraVersion, txtExtraVersion);
+    gp.addRow(1, lblEmotion, txtEmotion);
+    gp.addRow(2, lblOpenness, txtOpenness);
+    gp.addRow(3, lblAgree, txtAgree);
+    gp.addRow(4, lblConscious, txtConscious);
 
     // Add space between gp nodes
-    opennessGp.setHgap(10);
+    gp.setHgap(20);
+    gp.setVgap(10);
 
-    // Scene
-    VBox box = new VBox(opennessGp);
+
+
+    //Add StyleSheet. Get current styles and overwrite/ with ones specified
+    //toExternalForm() call. Scene expects stylesheet contents as a string, not the file, so we need to provide the contents of our stylesheet instead.
+    gp.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
+
+    ColumnConstraints col1 = new ColumnConstraints();
+    col1.setMinWidth(100);
+    ColumnConstraints col2 = new ColumnConstraints();
+    col2.setMinWidth(400);
+    gp.getColumnConstraints().addAll(col1,col2);
+
 
     // Add Padding to box - distance to Window Edge
-    box.setPadding(new Insets(15, 20, 10, 20));
+    gp.setPadding(new Insets(20, 20, 20, 20));
 
-    // Set Background of scene
-    BackgroundFill myBF =
-        new BackgroundFill(Color.WHITE, new CornerRadii(1), new Insets(0.0));
+//    // Set Background of scene
+//    BackgroundFill myBF =
+//        new BackgroundFill(Color.WHITE, new CornerRadii(1), new Insets(0.0));
+//
+//    box.setBackground(new Background(myBF));
 
-    box.setBackground(new Background(myBF));
-
-    Scene scene = new Scene(box);
+    Scene scene = new Scene(gp);
     stage.setTitle("TIPI Traits Definition and Implications");
     stage.setScene(scene);
 
     stage.show();
   }
+
 }

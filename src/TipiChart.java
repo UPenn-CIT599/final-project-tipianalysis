@@ -2,6 +2,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.text.Font;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -37,6 +38,18 @@ public class TipiChart {
 
         //add series to chart
         barChart.getData().addAll(userData,peerData);
+
+        //Chart Layouting
+        //Gap between bars of different data series
+        barChart.setBarGap(3);
+        // Gap between different Categories
+        barChart.setCategoryGap(20);
+        //remove x-Axis ticks
+        traitsAxis.setTickMarkVisible(false);
+        traitsAxis.setAutoRanging(true);
+        traitsAxis.setScaleShape(true);
+
+
 
         return barChart;
 

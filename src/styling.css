@@ -1,0 +1,20 @@
+/*layouting for all*/
+.root{
+    -fx-background-color: white;
+}
+
+.label{
+    -fx-font-weight: bold;
+}
+
+.chart{
+    /*-fx-background-color: #dafdff;*/
+}
+
+.chart-legend {
+    -fx-background-color:  transparent;
+}
+.gp{
+    -fx-alignment: top-right;
+
+}
