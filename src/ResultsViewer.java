@@ -1,5 +1,4 @@
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -7,23 +6,19 @@ import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.xml.transform.Result;
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -48,8 +43,8 @@ public class ResultsViewer {
     Stage primaryStage = new Stage();
 
     primaryStage.setMinHeight(550);
+    primaryStage.setMaxHeight(550);
     primaryStage.setMinWidth(900);
-
 
     // Create Root Pane / BorderPane
     VBox rootNode = new VBox();
@@ -79,7 +74,7 @@ public class ResultsViewer {
     GridPane gpUserStatic = getUserInfo();
     GridPane gpUserTipi = getUserTipiProfile();
 
-    //Module Holding User Info
+    // Module Holding User Info
     VBox userDataWrapper = new VBox(gpUserStatic, gpUserTipi);
 
     userDataWrapper.setSpacing(10);
@@ -95,7 +90,7 @@ public class ResultsViewer {
 
     HBox.setHgrow(chartHBox, Priority.ALWAYS);
 
-    // BOTTOMBORDER: Buttons to exit application and print screen
+    // BOTTOMMODULE
 
     // hbox to hold buttons in bottomPart of Pane in horizontal order
     HBox bottomHBox = new HBox();
@@ -116,18 +111,23 @@ public class ResultsViewer {
 
     // Centrally align buttons
     bottomHBox.setAlignment(Pos.CENTER);
-    // Add Spacing around Buttons vs. paneBorder
-    bottomHBox.setPadding(new Insets(10));
     // Add Spacing between Buttons
     bottomHBox.setSpacing(10);
+
+    // Set Preferred Width for Buttons and Min. Width
+    ExportBtn.setPrefWidth(150);
+    ReturnBtn.setPrefWidth(150);
+    ExitBtn.setPrefWidth(150);
+
     // Add Buttons to hbox node
     bottomHBox.getChildren().addAll(ExportBtn, ReturnBtn, ExitBtn);
 
     // Visual Separator
-    Separator line = new Separator();
+    Separator linetop = new Separator();
+    Separator linebottom = new Separator();
 
     // Add all children to root note
-    rootNode.getChildren().addAll(topHBox, line, pane, bottomHBox);
+    rootNode.getChildren().addAll(topHBox, linetop, pane, linebottom, bottomHBox);
 
     // Create Scene and link it with Root scene can have only one root node
     // If you omit the width and height, the scene will be sized automatically based on the size of
@@ -325,9 +325,9 @@ public class ResultsViewer {
     // Add Text to second column
     gpUser.addColumn(1, txtName, txtAge, txtSex);
 
-//    // Add additional margin
-//
-//    gpUser.setPadding(new Insets(10, 0, 0, 0));
+    //    // Add additional margin
+    //
+    //    gpUser.setPadding(new Insets(10, 0, 0, 0));
 
     return gpUser;
   }
@@ -415,42 +415,41 @@ public class ResultsViewer {
 
   private HBox createChartModule() {
 
-    //Create TipiChart object
+    // Create TipiChart object
     TipiChart chart = new TipiChart();
 
     // HashMaps for testing:
     LinkedHashMap<String, Integer> userScore =
-            new LinkedHashMap<String, Integer>() {
-              {
-                put("Extraversion", 1);
-                put("Agreeableness", 2);
-                put("Conscientiousness", 3);
-                put("Emotional Stability", 4);
-                put("Openness", 5);
-              }
-            };
+        new LinkedHashMap<String, Integer>() {
+          {
+            put("Extraversion", 1);
+            put("Agreeableness", 2);
+            put("Conscientiousness", 3);
+            put("Emotional Stability", 4);
+            put("Openness", 5);
+          }
+        };
 
     LinkedHashMap<String, Integer> peerScore =
-            new LinkedHashMap<String, Integer>() {
-              {
-                put("Extraversion", 2);
-                put("Agreeableness", 2);
-                put("Conscientiousness", 1);
-                put("Emotional Stability", 7);
-                put("Openness", 3);
-              }
-            };
+        new LinkedHashMap<String, Integer>() {
+          {
+            put("Extraversion", 2);
+            put("Agreeableness", 2);
+            put("Conscientiousness", 1);
+            put("Emotional Stability", 7);
+            put("Openness", 3);
+          }
+        };
 
-    //Create BarChart
+    // Create BarChart
     BarChart barChart = chart.createBarChart(userScore, peerScore);
 
-    //Instruct to Chart to grow with window
+    // Instruct to Chart to grow with window
     HBox.setHgrow(barChart, Priority.ALWAYS);
 
-    //Create and add chart to HBox
+    // Create and add chart to HBox
     HBox box = new HBox(barChart);
 
     return box;
-
   }
 }

@@ -16,7 +16,7 @@
 
 
 .button {
-    -fx-padding: 5;
+    -fx-padding: 10;
 }
 
 .sectionHeader {
@@ -72,6 +72,7 @@
 
 .chart-vertical-grid-lines {
     -fx-vertical-grid-lines-visible: false;
+    -fx-stroke: transparent;
 }
 .chart-horizontal-grid-lines {
     -fx-stroke: grey;
@@ -88,7 +89,7 @@
 
 }
 
-/*Change Colors of series*/
+/*Change Colors of data series*/
 
 .default-color0.chart-bar { -fx-bar-fill: #75bae9; }
 .default-color1.chart-bar { -fx-bar-fill: #b2f0ff; }
