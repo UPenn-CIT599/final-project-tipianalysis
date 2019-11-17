@@ -25,8 +25,8 @@ public class ResultsViewerRunner extends Application {
 
 
         User user = new User("Tester", 30, "male");
-        ResultsViewer resultsViewer = new ResultsViewer();
-        click.setOnAction(e -> resultsViewer.createStage(user));
+        ResultsViewer resultsViewer = new ResultsViewer(user);
+        click.setOnAction(e -> resultsViewer.createStage());
         hbox.getChildren().addAll(click);
         primaryStage.setScene(scene);
         primaryStage.show();
