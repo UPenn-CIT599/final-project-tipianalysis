@@ -196,41 +196,87 @@ public class ResultsViewer {
     // Stage
     Stage stage = new Stage();
 
-    stage.setMinWidth(600);
+    stage.setMinWidth(700);
     stage.setMinHeight(200);
 
     // Trait One
     Label lblExtraVersion = new Label("Extraversion");
-    Text txtExtraVersion = new Text("The tendency to be outgoing and high in social energy.");
-    txtExtraVersion.setWrappingWidth(400);
+    Text txtExtraVersion =
+        new Text(
+            "The tendency to be outgoing and high in social energy. haracterized by breadth of activities (as opposed to depth), " +
+                    "surgency from external activity/situations, and energy creation from external means. " +
+                    "The trait is marked by pronounced engagement with the external world. " +
+                    "Extraverts enjoy interacting with people, and are often perceived as full of energy. " +
+                    "They tend to be enthusiastic, action-oriented individuals. They possess high group visibility, " +
+                    "like to talk, and assert themselves.[40] Extraverted people may appear more dominant in social settings, " +
+                    "as opposed to introverted people in this setting.\n"
+                + "\n"
+                + "Introverts have lower social engagement and energy levels than extraverts. " +
+                    "They tend to seem quiet, low-key, deliberate, and less involved in the social world. " +
+                    "Their lack of social involvement should not be interpreted as shyness or depression; " +
+                    "instead they are more independent of their social world than extraverts. " +
+                    "Introverts need less stimulation, and more time alone than extraverts. " +
+                    "This does not mean that they are unfriendly or antisocial; rather, they are reserved in social " +
+                    "situations.");
+    txtExtraVersion.setWrappingWidth(600);
 
     // Trait One
     Label lblEmotion = new Label("Emotional stability");
     Text txtEmotion =
         new Text(
-            "The tendency to be even in terms of emotions and to not experience much "
+            "The tendency to be even in terms of emotions and to not experience much. Those low in emotional " +
+                    "stability are generally prone to anxiety, sadness, worry, and low self-esteem. " +
+                    "They may be temperamental or easily angered, and they tend to be self-conscious and unsure of themselves.\n"
+                + "\n"
+                + "Individuals who score on the high end are more likely to feel confident, sure of " +
+                    "themselves, and adventurous. They may also be brave and unencumbered by worry or self-doubt. "
                 + "dispositional anxiety or sadness.");
-    txtEmotion.setWrappingWidth(400);
+    txtEmotion.setWrappingWidth(600);
 
     // Trait One
-    Label lblOpenness = new Label("Open-mindedness");
+    Label lblOpenness = new Label("Openness");
     Text txtOpenness =
         new Text(
-            "The tendency to be interested in new ideas, people, art, and pretty much anything.");
-    txtOpenness.setWrappingWidth(400);
+            "The tendency to be interested in new ideas, people, art, and pretty much anything. " +
+                    "People who are open to experience are intellectually curious, open to emotion, " +
+                    "sensitive to beauty and willing to try new things. They tend to be, when compared to closed people, " +
+                    "more creative and more aware of their feelings. They are also more likely to hold unconventional beliefs. " +
+                    "High openness can be perceived as unpredictability or lack of focus, " +
+                    "and more likely to engage in risky behaviour or drug taking. Moreover, " +
+                    "individuals with high openness are said to pursue self-actualization specifically by seeking out intense, " +
+                    "euphoric experiences. Conversely, those with low openness seek to gain fulfillment through perseverance and " +
+                    "are characterized as pragmatic and data-driven—sometimes even perceived to be dogmatic and closed-minded");
+
+    txtOpenness.setWrappingWidth(600);
 
     // Trait One
     Label lblAgree = new Label("Agreeableness");
     Text txtAgree =
         new Text(
-            "The tendency to agree with people and to be generally kind in dealing with others.");
-    txtAgree.setWrappingWidth(400);
+            "The tendency to agree with people and to be generally kind in dealing with others. " +
+                    "Agreeable individuals value getting along with others. " +
+                    "They are generally considerate, kind, generous, trusting and trustworthy, helpful, " +
+                    "and willing to compromise their interests with others." +
+                    " Agreeable people also have an optimistic view of human nature.\n"
+                + "\n"
+                + "Disagreeable individuals place self-interest above getting along with others. " +
+                    "They are generally unconcerned with others' well-being, " +
+                    "and are less likely to extend themselves for other people. " +
+                    "Sometimes their skepticism about others' motives causes them to be suspicious, " +
+                    "unfriendly, and uncooperative. " +
+                    "Low agreeableness personalities are often competitive or challenging people, " +
+                    "which can be seen as argumentative or untrustworthy");
+    txtAgree.setWrappingWidth(600);
 
     // Trait One
     Label lblConscious = new Label("Conscientiousness");
     Text txtConscious =
-        new Text("The tendency to be meticulous and organized in all aspects of one’s life.");
-    txtConscious.setWrappingWidth(400);
+        new Text("The tendency to be meticulous and organized in all aspects of one’s life, display self-discipline, " +
+                "act dutifully, and strive for achievement against measures or outside expectations. It is related to the way in which people control, " +
+                "regulate, and direct their impulses. High conscientiousness is often perceived as being stubborn and focused. " +
+                "Low conscientiousness is associated with flexibility and spontaneity, but can also appear as sloppiness and lack of reliability." +
+                " High scores on conscientiousness indicate a preference for planned rather than spontaneous behavior.");
+    txtConscious.setWrappingWidth(600);
 
     GridPane gp = new GridPane();
     gp.addRow(0, lblExtraVersion, txtExtraVersion);
