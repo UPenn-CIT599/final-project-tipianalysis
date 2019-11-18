@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 /**
  * The class which reads the norm data collected from a sample of Tipi
  * participants and saves only the information that aligns with the current 
@@ -19,25 +22,33 @@ public class NormDataReader {
 	 * file to pull.
 	 */
 	public NormDataReader(User currentUser) {
-		
-		// Finish Constructor - might switch to TreeMaps for different sorting options
-		
-		this.currentUser = ;
+		this.currentUser = currentUser;
 		NUMBER_OF_TRAITS = 5;  // Models the 5 big traits of Tipi
 		personalityTraitMetrics = new Trait[NUMBER_OF_TRAITS];
-		// fileName =
-		// If user's sex = male, fileName = the male Tipi data file
-		// Else, fileName = the female Tipi date file
+		if(currentUser.getSex().equals("Male")) {
+			fileName = "TIPINormsMale.csv";
+		}
+		else {
+			fileName = "TIPINormsFemale.csv";
+		}
 	}
 
 	/**
 	 * A method which reads the appropriate researched norm data file and 
 	 * collects all of the information which aligns with the user's age.
-	 * @return - An array containing each trait along with their important
-	 * metrics.
 	 */
-	public Trait[] readFileAndRecordTraitMetrics() {
-		
+	public void readFileAndRecordTraitMetrics() {
+		try {
+			Scanner in = new Scanner(new File(fileName));
+			
+			
+			
+			
+		} 
+		catch (FileNotFoundException e) {
+			System.out.println("Problem found.  Please restart the program.");
+			e.printStackTrace();
+		}
 		
 		
 		

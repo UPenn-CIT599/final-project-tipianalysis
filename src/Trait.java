@@ -6,6 +6,7 @@
  */
 public class Trait {
 	private String name;
+	private double userScore;
 	private double mean;
 	private double standardDeviation;
 	private int sampleSize;

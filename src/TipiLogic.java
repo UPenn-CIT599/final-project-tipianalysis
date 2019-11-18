@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * The class which performs all of the logic behind the Tipi analysis.
@@ -7,44 +7,41 @@ import java.util.HashMap;
  * @author michaelnarcisi
  */
 public class TipiLogic {
+	private User currentUser;
 	private NormDataReader resultsComparison;
-	HashMap<String, Double> bigFivePersonalityScores;
-	HashMap<HashMap<String, Double>, Trait[]> dataToOuput;
+	private LinkedHashMap<String, Integer> userResponses;
+	private Trait[] bigFivePersonalityScoresAndMetrics;
+	
+	
+	
+	
+	// Make getters and java doc comments for all instance variables
+	// Eliminate logic check function and unit test??????
+
 	
 	/**
 	 * The constructor for the TipiLogic class which takes the user's answers
 	 * to the Tipi questionnaire and calculates their scores for the "Big
 	 * Five Personality Traits".
+	 * @param currentUser - The class outlining the user currently using 
+	 * the program.
 	 * @param userResponses - The HashMap containing the questions and user
 	 * answers modeling each part of the "Ten Item Personality Inventory"
 	 */
-	public TipiLogic(HashMap<String, Integer> userResponses) {
-		
-		// Finish Constructor
-		
-		
-		
-		/* Integrate User class into constructor call for 
-		NormDataReader */
-		resultsComparison = new NormDataReader();
-		
-		bigFivePersonalityScores = new HashMap<String, Double>();
-		dataToOuput = new HashMap<HashMap<String, Double>, Trait[]>();
+	public TipiLogic(User currentUser, LinkedHashMap<String, Integer> responses) {
+		this.currentUser = currentUser;
+		this.userResponses = new LinkedHashMap<String, Integer>(responses);
+		resultsComparison = new NormDataReader(currentUser);
+		bigFivePersonalityScoresAndMetrics = new 
 	}
 
 	/**
 	 * The method which runs the entire Tipi Logic and returns all data
 	 * that will be output to the user.
-	 * @return - A HashMap with a key as another HashMap containing the "Big
-	 * Five Personality Traits" and their respective scores, and the value
-	 * as being an object array of Traits and their respective metrics.
 	 */
-	public HashMap<HashMap<String, Double>, Trait[]> runLogic() {
+	public void runLogic() {
 		
 		
-		
-		
-		// Finish
 		
 		
 		
@@ -52,19 +49,21 @@ public class TipiLogic {
 	}
 	
 	/**
-	 * A method which takes the answers from the reverse-scored items in the
-	 * Tipi questionnaire and recodes their scores to produce the correct
-	 * outcome.  For example, using the 1-7 scale, a reverse-scored item
-	 * scored as a 6 would become a 2, etc.
+	 * A helper method which takes the answers from the reverse-scored items 
+	 * in the Tipi questionnaire and recodes their scores to produce the 
+	 * correct outcome.  For example, using the 1-7 scale, a reverse-scored 
+	 * item scored as a 6 would become a 2, etc.
 	 */
-	public void recodeReverseScoredItems() {
-		
-		
-		
-		// Example now in LogicCheck - will flesh out so method is more DRY
-		
-		
-		
+	private void recodeReverseScoredItems() {
+		// Reverse-scored items: (Should be: 2, 4, 6, 8, 10.)  
+		int reverseItemMarker = 1;
+		for (String scaleTrait : userResponses.keySet()) {
+			// Ensure logic only processes the even portions of the map
+			if (reverseItemMarker % 2 == 0) {
+				userResponses.put(scaleTrait, 8 - userResponses.get(scaleTrait));
+			}
+			reverseItemMarker++;
+		}
 	}
 	
 	/**
@@ -87,6 +86,25 @@ public class TipiLogic {
 		
 	}
 
+	
+	/**
+	 * A getter method for the object representing the current user of
+	 * the program.
+	 * @return - the User object.
+	 */
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	/**
+	 * A getter method for the map representing the current user's input
+	 * responses to the questionnaire questions.
+	 * @return - The map representing the user's answers.
+	 */
+	public LinkedHashMap<String, Integer> getUserResponses() {
+		return userResponses;
+	}
+
 	/**
 	 * A getter method for the object which will read and process the
 	 * researched sample of Tipi participants.
@@ -105,11 +123,26 @@ public class TipiLogic {
 		return bigFivePersonalityScores;
 	}
 
-	/**
-	 * A getter method for the final output HashMap.
-	 * @return - The final HashMap.
-	 */
-	public HashMap<HashMap<String, Double>, Trait[]> getDataToOuput() {
-		return dataToOuput;
+	
+	public static void main(String[] args) {
+		LinkedHashMap<String, Integer> inputResponses = new LinkedHashMap<>();
+		inputResponses.put("Extraverted", 5);
+		inputResponses.put("Critical", 4);
+		inputResponses.put("Dependable", 6);
+		inputResponses.put("Anxious", 2);
+		inputResponses.put("Open", 5);
+		inputResponses.put("Reserved", 3);
+		inputResponses.put("Sympothetic", 7);
+		inputResponses.put("Disorganized", 5);
+		inputResponses.put("Calm", 2);
+		inputResponses.put("Conventional", 7);
+		
+		TipiLogic logic = new TipiLogic(new User("Sam", 30, "Male"), inputResponses);
+		
+		System.out.println(logic.getUserResponses());
+		logic.recodeReverseScoredItems();
+		System.out.println(logic.getUserResponses());
 	}
+	
+	
 }
