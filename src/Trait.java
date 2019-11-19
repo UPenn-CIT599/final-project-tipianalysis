@@ -42,6 +42,14 @@ public class Trait {
 	}
 
 	/**
+	 * A getter method for the current User's score.
+	 * @return - The value of the current User's score.
+	 */
+	public double getUserScore() {
+		return userScore;
+	}
+	
+	/**
 	 * A getter method for the mean score of the Trait.
 	 * @return - The mean score of the Trait.
 	 */
@@ -70,7 +78,56 @@ public class Trait {
 	 * is above, below, or right at average for their peer group.
 	 * @return - The descriptive String.
 	 */
-	public String getcomparisonToPeers() {
+	public String getComparisonToPeers() {
 		return comparisonToPeers;
+	}
+
+	/**
+	 * A setter method for the name of the Trait.
+	 * @param name - The name of the trait
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * A setter method for the current User's score.
+	 * @param name - The value of the current user's score
+	 */
+	public void setUserScore(double userScore) {
+		this.userScore = userScore;
+	}
+
+	/**
+	 * A setter method for the mean score of the Trait.
+	 * @param name - The mean score of the trait
+	 */
+	public void setMean(double mean) {
+		this.mean = mean;
+	}
+
+	/**
+	 * A setter method for the standard deviation of the Trait's score.
+	 * @param name - The standard deviation of the Trait's score
+	 */
+	public void setStandardDeviation(double standardDeviation) {
+		this.standardDeviation = standardDeviation;
+	}
+
+	/**
+	 * A setter method for the sample size used to form the Trait's score.
+	 * @param name - The sample size used to form the Trait's score
+	 */
+	public void setSampleSize(int sampleSize) {
+		this.sampleSize = sampleSize;
+	}
+
+	/**
+	 * A setter method for the string used to describe if the user's score
+	 * is above, below, or right at average for their peer group.
+	 * @return - The descriptive String.
+	 */
+	public void setComparisonToPeers(String comparisonToPeers) {
+		this.comparisonToPeers = comparisonToPeers;
 	}
 }

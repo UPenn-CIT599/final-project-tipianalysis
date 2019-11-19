@@ -10,6 +10,7 @@ public class TipiLogic {
 	private User currentUser;
 	private NormDataReader resultsComparison;
 	private LinkedHashMap<String, Integer> userResponses;
+	private final int NUMBER_OF_TRAITS;  // Models the 5 big traits of Tipi
 	private Trait[] bigFivePersonalityScoresAndMetrics;
 	
 	
@@ -31,8 +32,9 @@ public class TipiLogic {
 	public TipiLogic(User currentUser, LinkedHashMap<String, Integer> responses) {
 		this.currentUser = currentUser;
 		this.userResponses = new LinkedHashMap<String, Integer>(responses);
-		resultsComparison = new NormDataReader(currentUser);
-		bigFivePersonalityScoresAndMetrics = new 
+		resultsComparison = new NormDataReader(currentUser.getSex());
+		NUMBER_OF_TRAITS = 5;
+		bigFivePersonalityScoresAndMetrics = new Trait[NUMBER_OF_TRAITS];
 	}
 
 	/**
@@ -114,14 +116,14 @@ public class TipiLogic {
 		return resultsComparison;
 	}
 
-	/**
-	 * A getter method for the HashMap storing the final personality scores
-	 * of each of the "Big Five Personality Traits".
-	 * @return - The HashMap storing trait scores.
-	 */
-	public HashMap<String, Double> getBigFivePersonalityScores() {
-		return bigFivePersonalityScores;
-	}
+//	/**
+//	 * A getter method for the HashMap storing the final personality scores
+//	 * of each of the "Big Five Personality Traits".
+//	 * @return - The HashMap storing trait scores.
+//	 */
+//	public HashMap<String, Double> getBigFivePersonalityScores() {
+//		return bigFivePersonalityScores;
+//	}
 
 	
 	public static void main(String[] args) {
@@ -142,6 +144,8 @@ public class TipiLogic {
 		System.out.println(logic.getUserResponses());
 		logic.recodeReverseScoredItems();
 		System.out.println(logic.getUserResponses());
+		
+		
 	}
 	
 	
