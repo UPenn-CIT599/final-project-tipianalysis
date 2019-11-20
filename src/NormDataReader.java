@@ -17,9 +17,8 @@ public class NormDataReader {
 	 * The constructor for the NormDataReader class.  Reads the appropriate
 	 * researched data file given the fileName (based on the user's sex) and
 	 * saves only the information that corresponds to the user's age.
-	 * @param currentUser - The attributes of the current user which decide
-	 * which researched file to pull data from, and what information from that
-	 * file to pull.
+	 * @param sexOfUser - The sex of the current user
+	 * @param ageOfUser - The age of the current user
 	 */
 	public NormDataReader(String sexOfUser, int ageOfUser) {
 		NUMBER_OF_ROWS = 3; // There are three types of metrics to collect
@@ -46,7 +45,7 @@ public class NormDataReader {
 					String firstCellOfRow = elementsOfRow[0];	
 					// If first cell of row isn't blank, it's listing an age range
 					if(!firstCellOfRow.equals("")) {
-						// Try to grab age range from first cell on row
+						// Try to grab age range from first cell of row
 						try {
 							lowerAgeBound = Integer.parseInt(firstCellOfRow.substring(0, 2));
 							upperAgeBound = Integer.parseInt(firstCellOfRow.substring(6, 8));
@@ -75,86 +74,6 @@ public class NormDataReader {
 	}
 
 	/**
-	 * A method which reads the appropriate researched norm data file and 
-	 * collects all of the information which aligns with the user's age.
-	 */
-	public void readFileAndRecordTraitMetrics(int ageOfUser) {
-		
-		
-		
-		
-		// Finish 
-		
-		
-		
-	}
-	
-	
-	
-	
-	// Make UpdateTrait Method more dry	
-	
-	/**
-	 * A helper method which updates the Trait[] given the current
-	 * line of the file that is being read.
-	 */
-	private void updateTrait(String[] lineOfFile, String storedInformation) {
-		// Reads the .csv file from the third column to the seventh
-		for(int i = 2; i < 7; i++) {
-			if(storedInformation.equals("Mean")) {
-				try {
-					personalityTraits[i - 2].setMean(Double.parseDouble(lineOfFile[i]));
-				}
-				catch (NumberFormatException e) {
-					// Leave value as Null
-				}	
-			}
-			else if(storedInformation.equals("SD")) {
-				try {
-					personalityTraits[i - 2].setStandardDeviation(Double.parseDouble(lineOfFile[i]));
-				}
-				catch (NumberFormatException e) {
-					// Leave value as Null
-				}
-			}
-			else if(storedInformation.equals("n =")) {
-				try {
-					personalityTraits[i - 2].setSampleSize(Integer.parseInt(lineOfFile[i]));
-				}
-				catch (NumberFormatException e) {
-					// Leave value as Null
-				}
-			}
-			else {
-				System.out.println("mean");
-				System.out.println(Arrays.toString(lineOfFile));
-				System.out.println(lineOfFile[i]);
-				personalityTraits[i - 2].setName(lineOfFile[i]);
-			}
-		}
-	}
-	
-	
-	
-	
-	/**
-	 * A helper method which calculates if the user's scores is average,
-	 * above average, or below average relative to the user's peer group.
-	 * @return - The String describing where the user's score falls compared
-	 * to their peers
-	 */
-	public String findPeerComparison() {
-		
-		
-		
-		
-		// Finish
-		
-		
-		
-	}
-	
-	/**
 	 * A getter method for the name of the file used to pull data from.
 	 * @return - The name of the file.
 	 */
@@ -163,31 +82,26 @@ public class NormDataReader {
 	}
 
 	/**
-	 * A getter method for the number of personality traits analyzed.
-	 * @return - The number of personality traits analyzed.
+	 * A getter method for the matrix of relevant data obtained from the external file.
+	 * @return - The matrix of important metrics
 	 */
-	public int getNUMBER_OF_TRAITS() {
-		return NUMBER_OF_TRAITS;
+	public String[][] getRelevantMetrics() {
+		return relevantMetrics;
 	}
 
 	/**
-	 * A getter method for the personality trait array which contains each
-	 * trait's name and pertinent researched score information.
-	 * @return - The personality trait array.
+	 * A getter method for the constant defining the number of rows in the matrix.
+	 * @return - The row constant
 	 */
-	public Trait[] getPersonalityTraitMetrics() {
-		return personalityTraits;
+	public int getNUMBER_OF_ROWS() {
+		return NUMBER_OF_ROWS;
 	}
-	
-	public static void main(String[] args) {
-		NormDataReader data = new NormDataReader("Male", 18);
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 5; j++) {
-				System.out.println(data.relevantMetrics[i][j]);
-			}
-		}
-		
-		
+
+	/**
+	 * A getter method for the constant defining the number of columns in the matrix.
+	 * @return - The column constant
+	 */
+	public int getNUMBER_OF_COLUMNS() {
+		return NUMBER_OF_COLUMNS;
 	}
-	
 }

@@ -1,7 +1,7 @@
 /**
  * The class which models a specific personality trait on the basis of
- * the Tipi personality score and the research parameters used when
- * attaining that score.
+ * the Tipi personality score and the research parameters used as
+ * a score comparison.
  * @author michaelnarcisi
  */
 public class Trait {
@@ -22,15 +22,13 @@ public class Trait {
 	 * the Trait's score.
 	 * @param sampleSize - The sample size of the researched sample.
 	 */
-	public Trait(String name, double mean, double standardDeviation, int sampleSize) {
-		
-		// Finish Constructor
-		
+	public Trait(String name ,double userScore ,double mean, double standardDeviation, int sampleSize, String comparisonToPeers) {
 		this.name = name;
+		this.userScore = userScore;
 		this.mean = mean;
 		this.standardDeviation = standardDeviation;
 		this.sampleSize = sampleSize;
-		comparisonToPeers = "";
+		this.comparisonToPeers = comparisonToPeers;
 	}
 
 	/**
@@ -80,54 +78,5 @@ public class Trait {
 	 */
 	public String getComparisonToPeers() {
 		return comparisonToPeers;
-	}
-
-	/**
-	 * A setter method for the name of the Trait.
-	 * @param name - The name of the trait
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * A setter method for the current User's score.
-	 * @param name - The value of the current user's score
-	 */
-	public void setUserScore(double userScore) {
-		this.userScore = userScore;
-	}
-
-	/**
-	 * A setter method for the mean score of the Trait.
-	 * @param name - The mean score of the trait
-	 */
-	public void setMean(double mean) {
-		this.mean = mean;
-	}
-
-	/**
-	 * A setter method for the standard deviation of the Trait's score.
-	 * @param name - The standard deviation of the Trait's score
-	 */
-	public void setStandardDeviation(double standardDeviation) {
-		this.standardDeviation = standardDeviation;
-	}
-
-	/**
-	 * A setter method for the sample size used to form the Trait's score.
-	 * @param name - The sample size used to form the Trait's score
-	 */
-	public void setSampleSize(int sampleSize) {
-		this.sampleSize = sampleSize;
-	}
-
-	/**
-	 * A setter method for the string used to describe if the user's score
-	 * is above, below, or right at average for their peer group.
-	 * @return - The descriptive String.
-	 */
-	public void setComparisonToPeers(String comparisonToPeers) {
-		this.comparisonToPeers = comparisonToPeers;
 	}
 }
