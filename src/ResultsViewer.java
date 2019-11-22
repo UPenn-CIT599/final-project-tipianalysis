@@ -29,7 +29,7 @@ import java.util.LinkedHashMap;
 public class ResultsViewer {
 
   // Instance Variables
-  User user;
+  private User user;
 
   // Constructor
   public ResultsViewer(User user) {
@@ -44,7 +44,7 @@ public class ResultsViewer {
 
     primaryStage.setMinHeight(550);
     primaryStage.setMaxHeight(550);
-    primaryStage.setMinWidth(900);
+    primaryStage.setMinWidth(1000);
 
     // Create Root Pane / BorderPane
     VBox rootNode = new VBox();
@@ -426,29 +426,17 @@ public class ResultsViewer {
     //    gpUserTipi.setHgap(10);
     //    gpUserTipi.setVgap(10);
 
-    // TO BE REPLACED WITH ACTUAL HASHMAP - PLACEHOLDER
-    // Linked so that order is fixed
-
-    LinkedHashMap<String, String> userTraitsRelative =
-        new LinkedHashMap<String, String>() {
-          {
-            put("Extraversion", "Average");
-            put("Agreeableness", "Below Average");
-            put("Conscientiousness", "Above Average");
-            put("Emotional Stability", "Above Average");
-            put("Openness", "Average");
-          }
-        };
 
     // counter to position labels, start at one as first row (index 0) is the header
     int i = 1;
 
     // Create Labels and Text for Pane and add them the gridpane
-    for (String trait : userTraitsRelative.keySet()) {
-
-      Label lblTrait = new Label(trait + ":");
+    for (Trait trait : user.getUserScoresAndMetrics()) {
+      //Label for Trait
+      Label lblTrait = new Label(trait.getName() + ":");
       // lblTrait.setTooltip(new Tooltip("Hello World"));
-      Text txtTrait = new Text(userTraitsRelative.get(trait));
+      //Text - Performance relative to peers
+      Text txtTrait = new Text(trait.getComparisonToPeers());
       gpUserTipi.addRow(i, lblTrait, txtTrait);
       i++;
     }
@@ -464,31 +452,8 @@ public class ResultsViewer {
     // Create TipiChart object
     TipiChart chart = new TipiChart();
 
-    // HashMaps for testing:
-    LinkedHashMap<String, Integer> userScore =
-        new LinkedHashMap<String, Integer>() {
-          {
-            put("Extraversion", 1);
-            put("Agreeableness", 2);
-            put("Conscientiousness", 3);
-            put("Emotional Stability", 4);
-            put("Openness", 5);
-          }
-        };
-
-    LinkedHashMap<String, Integer> peerScore =
-        new LinkedHashMap<String, Integer>() {
-          {
-            put("Extraversion", 2);
-            put("Agreeableness", 2);
-            put("Conscientiousness", 1);
-            put("Emotional Stability", 7);
-            put("Openness", 3);
-          }
-        };
-
     // Create BarChart
-    BarChart barChart = chart.createBarChart(userScore, peerScore);
+    BarChart barChart = chart.createBarChart(user.getUserScoresAndMetrics());
 
     // Instruct to Chart to grow with window
     HBox.setHgrow(barChart, Priority.ALWAYS);

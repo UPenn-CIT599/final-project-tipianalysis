@@ -63,4 +63,8 @@ public class User {
 	public Trait[] getUserScoresAndMetrics() {
 		return userScoresAndMetrics;
 	}
+
+	public void setUserScoresAndMetrics(Trait[] userScoresAndMetrics) {
+		this.userScoresAndMetrics = userScoresAndMetrics;
+	}
 }

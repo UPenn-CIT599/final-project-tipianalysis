@@ -14,12 +14,10 @@ public class TipiChart {
 
     /**
      * Creates a BarChart based for HashMaps provided
-     * @param UserTipiMap TipiResults from User
-     * @param PeerTipiMap Tipi BM values for respective user
+     * @param traits Array of Traits containing user score and respective peer score
      * @return BarChart
      */
-    public BarChart createBarChart(LinkedHashMap<String, Integer> UserTipiMap,
-                                   LinkedHashMap<String, Integer> PeerTipiMap){
+    public BarChart createBarChart(Trait[] traits){
 
         //Define axis types of chart
         CategoryAxis traitsAxis = new CategoryAxis();
@@ -33,8 +31,13 @@ public class TipiChart {
         BarChart<String, Number> barChart = new BarChart<>(traitsAxis, traitsValues);
 
         //Generate Data Series
-        XYChart.Series userData = mapToDataSeries(UserTipiMap, "User");
-        XYChart.Series peerData = mapToDataSeries(PeerTipiMap, "Peer Group");
+        XYChart.Series[] seriesArray = mapToDataSeries(traits);
+
+        //Get individual data series and name them
+        XYChart.Series<String, Number> userData = seriesArray[0];
+        userData.setName("User");
+        XYChart.Series<String, Number> peerData = seriesArray[1];
+        peerData.setName("Peer");
 
         //add series to chart
         barChart.getData().addAll(userData,peerData);
@@ -58,22 +61,26 @@ public class TipiChart {
 
     /**
      * Helper method converts HashMap into a DataSeries for a Chart and labels series with seriesName provided
-     * @param tipiMap - String Integer HashMap
-     * @param seriesName Label for Series
+     * @param traits Array of Traits containing user score and respective peer score
      * @return Series for XY Chart
      */
-    private XYChart.Series mapToDataSeries(LinkedHashMap<String, Integer> tipiMap, String seriesName){
+    private XYChart.Series[] mapToDataSeries(Trait[] traits){
 
-        //Create Series object
-        XYChart.Series series = new XYChart.Series();
-        series.setName(seriesName);
-    for (String key : tipiMap.keySet()) {
-        series.getData().add(new XYChart.Data(key,tipiMap.get(key)));
+        //Create Series objects
+        XYChart.Series<String, Number> seriesUser = new XYChart.Series();
+        XYChart.Series<String, Number> seriesPeer = new XYChart.Series();
+
+    for (Trait trait : traits) {
+        //trait Name
+        String traitName = trait.getName();
+        //get User Score
+        seriesUser.getData().add(new XYChart.Data(traitName,trait.getUserScore()));
+        //get Peer Score
+        seriesPeer.getData().add(new XYChart.Data(traitName,trait.getMean()));
 
     }
 
-    return series;
-      //
+    return new XYChart.Series[]{seriesUser,seriesPeer};
 
     }
 

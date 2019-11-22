@@ -25,6 +25,19 @@ public class ResultsViewerRunner extends Application {
 
 
         User user = new User("Tester", 30, "male");
+
+        // Traits Data for Testing
+        String[] traitNames = new String[]{"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness to Experiences"};
+        String[] peerComparison = new String[]{"Low", "High", "Average", "Low", "Average"};
+        Trait[] traitArray = new Trait[5];
+
+        for(int i = 0;i<5;i++) {
+            Trait trait = new Trait(traitNames[i], i, Math.random() * (i + 1), 0, 0, peerComparison[i]);
+            traitArray[i]=trait;
+        }
+
+        user.setUserScoresAndMetrics(traitArray);
+
         ResultsViewer resultsViewer = new ResultsViewer(user);
         click.setOnAction(e -> resultsViewer.createStage());
         hbox.getChildren().addAll(click);
