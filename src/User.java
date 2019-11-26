@@ -52,6 +52,18 @@ public class User {
 	public String getSex() {
 		return sex;
 	}
+	
+	public void setName(String uname) {
+		this.name = uname;
+	}
+	
+	public void setAge(int uage) {
+		this.age = uage;
+	}
+	
+	public void setSex(String usex) {
+		this.sex = usex;
+	}
 
 	/**
 	 * Returns the calculated scores from the TIPI survey and the comparison
