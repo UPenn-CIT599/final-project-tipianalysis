@@ -404,16 +404,16 @@ public class SurveyPage{
 				results.setOnAction(e -> {
 					//Loops through each personality trait and captures scores from user
 					HashMap<String,ToggleGroup> inputs = new HashMap<String, ToggleGroup>();
-					inputs.put("Extraversion", toggleGroup1);
-					inputs.put("Agreeableness", toggleGroup2);
-					inputs.put("Conscientiousness", toggleGroup3);
-					inputs.put("Emotional Stability", toggleGroup4);
-					inputs.put("Openness to Experiences", toggleGroup5);
-					inputs.put("reservedScore", toggleGroup6);
-					inputs.put("sympatheticScore", toggleGroup7);
-					inputs.put("disorganizedScore", toggleGroup8);
-					inputs.put("calmScore", toggleGroup9);
-					inputs.put("conventionalScore", toggleGroup10);
+					inputs.put("Extraverted", toggleGroup1);
+					inputs.put("Critical", toggleGroup2);
+					inputs.put("Dependable", toggleGroup3);
+					inputs.put("Anxious", toggleGroup4);
+					inputs.put("Open", toggleGroup5);
+					inputs.put("Reserved", toggleGroup6);
+					inputs.put("Sympathetic", toggleGroup7);
+					inputs.put("Disorganized", toggleGroup8);
+					inputs.put("Calm", toggleGroup9);
+					inputs.put("Conventional", toggleGroup10);
 					LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
 					int counter = 0;
 					for(String key : inputs.keySet()) {
