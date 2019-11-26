@@ -32,6 +32,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.application.*;
 import java.io.File;
@@ -48,12 +49,14 @@ import javafx.event.ActionEvent;
  */
 public class IntroScreen{
 
+	//Stage width
 	private int stageX = 800;
+	//Stage height
 	private int stageY = 900;
-	private FileInputStream input;
+	//Instantiate Intro Stage
 	private Stage introStage = new Stage();
+	//Instantiate User Class
 	private User user = new User(null, 0, null);
-	private TextField nameField;
 
 	/**
 	 * Presents the Introduction page to the user when called by the TipiProgram
@@ -88,7 +91,6 @@ public class IntroScreen{
 		titleBox.setPadding(new Insets(45));
 	    introBorderPane.setTop(titleBox);
 	    
-	    //finish
 	    Rectangle rect = new Rectangle();
 	    rect.setFill(Color.ALICEBLUE);
 	    
@@ -97,11 +99,6 @@ public class IntroScreen{
 	    rectangle.getChildren().add(rect);
 	    rectangle.setLayoutX(200);
 	    rectangle.setLayoutY(300);
-	    /**
-	     * Introduction Paragraph
-	     * NEEDS A GRID PANE TO SEPARATE THE BODY TEXTS. RIGHT NOW
-	     * ONE IS NOT SHOWING.
-	     */
 	    
 	    Text bodyText1 = new Text(
 	    		"Welcome to the TIPI Analyzer! TIPI stands for Ten Item "
@@ -196,17 +193,33 @@ public class IntroScreen{
 		Button btn = new Button("Continue to Survey");
 		//Make button actionable - send user to survey upon clicking and save their data
 		btn.setOnAction(e -> {
-		    String nameInput = nameField.getText();
-		    int ageInput = Integer.parseInt(ageField.getText());
-		    RadioButton genderSelection = (RadioButton) tg1.getSelectedToggle();
-		    String genderInput = genderSelection.getText();
-		    user.setName(nameInput);
-		    user.setAge(ageInput);
-		    user.setSex(genderInput);
-		    System.out.println(user.getName() + ", " + user.getAge() + ", " + user.getSex());
-			SurveyPage surveyPage = new SurveyPage();
-			introStage.setScene(surveyPage.showSurveyPage(user));		
+		
+			try {
+				String nameInput = nameField.getText();
+			    int ageInput = Integer.parseInt(ageField.getText());
+			    RadioButton genderSelection = (RadioButton) tg1.getSelectedToggle();
+			    String genderInput = genderSelection.getText();
+			    user.setName(nameInput);
+			    user.setAge(ageInput);
+			    user.setSex(genderInput);
+				SurveyPage surveyPage = new SurveyPage();
+				introStage.setScene(surveyPage.showSurveyPage(user));
+				
 			}
+			catch(RuntimeException e1) {
+				Text error = new Text("Please fill all fields to continue.");
+				error.setFont(Font.font("Veranda",15));
+				error.setFill(Color.web("#FF1000"));
+				HBox errorBox = new HBox();
+				errorBox.setMinWidth(300);
+				errorBox.setLayoutX(290);
+				errorBox.setLayoutY(650);
+				errorBox.getChildren().add(error);
+				introBorderPane.getChildren().add(errorBox);
+			}
+		    	
+		}
+			
 		); 
 		btn.setMinWidth(160);
 		HBox buttonHolder = new HBox();
@@ -214,15 +227,9 @@ public class IntroScreen{
 		buttonHolder.setLayoutY(680);
 		//Sets padding from bottom
 		buttonHolder.getChildren().add(btn);
+		
 	    introBorderPane.getChildren().addAll(textBox,genderBox,ageBox,labels,buttonHolder,rectangle);
-
-       
-
-		BackgroundFill myBF = new BackgroundFill(Color.WHITE, new CornerRadii(1),
-				new Insets(0.0,0.0,0.0,0.0));
 		
-		
-		introBorderPane.setBackground(new Background(myBF));
 		introStage.setScene(scene);
 		
 		//Show the window

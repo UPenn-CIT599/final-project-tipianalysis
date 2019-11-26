@@ -53,7 +53,8 @@ import javafx.event.ActionEvent;
  *
  */
 public class SurveyPage{
-
+	
+	//Instantiate user to receive user from 
 	User surveyUser;
 	private int stageX = 1000;
 	private int stageY = 900;
@@ -402,56 +403,70 @@ public class SurveyPage{
 				
 				//Set button action
 				results.setOnAction(e -> {
-					//Loops through each personality trait and captures scores from user
-					HashMap<String,ToggleGroup> inputs = new HashMap<String, ToggleGroup>();
-					inputs.put("Extraverted", toggleGroup1);
-					inputs.put("Critical", toggleGroup2);
-					inputs.put("Dependable", toggleGroup3);
-					inputs.put("Anxious", toggleGroup4);
-					inputs.put("Open", toggleGroup5);
-					inputs.put("Reserved", toggleGroup6);
-					inputs.put("Sympathetic", toggleGroup7);
-					inputs.put("Disorganized", toggleGroup8);
-					inputs.put("Calm", toggleGroup9);
-					inputs.put("Conventional", toggleGroup10);
-					LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
-					int counter = 0;
-					for(String key : inputs.keySet()) {
-						RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
-						double index = item.getBoundsInParent().getMinX();
-						int score;
-						if(index < 106) {
-							score = 1;
+					
+					try {
+						//Loops through each personality trait and captures scores from user
+						LinkedHashMap<String,ToggleGroup> inputs = new LinkedHashMap<String, ToggleGroup>();
+						inputs.put("Extraverted", toggleGroup1);
+						inputs.put("Critical", toggleGroup2);
+						inputs.put("Dependable", toggleGroup3);
+						inputs.put("Anxious", toggleGroup4);
+						inputs.put("Open", toggleGroup5);
+						inputs.put("Reserved", toggleGroup6);
+						inputs.put("Sympathetic", toggleGroup7);
+						inputs.put("Disorganized", toggleGroup8);
+						inputs.put("Calm", toggleGroup9);
+						inputs.put("Conventional", toggleGroup10);
+						LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
+						int counter = 0;
+						for(String key : inputs.keySet()) {
+							RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
+							double index = item.getBoundsInParent().getMinX();
+							int score;
+							if(index < 106) {
+								score = 1;
+							}
+							else if(index < 214) {
+								score = 2;
+							}
+							else if(index < 322) {
+								score = 3;
+							}
+							else if(index < 430) {
+								score = 4;
+							}
+							else if(index < 538) {
+								score = 5;
+							}
+							else if(index < 646) {
+								score = 6;
+							}
+							else {
+								score = 7;
+							}
+							finalScores.put(key,score);
+							System.out.println(key + ": " + finalScores.get(key));
+							counter++;
 						}
-						else if(index < 214) {
-							score = 2;
-						}
-						else if(index < 322) {
-							score = 3;
-						}
-						else if(index < 430) {
-							score = 4;
-						}
-						else if(index < 538) {
-							score = 5;
-						}
-						else if(index < 646) {
-							score = 6;
-						}
-						else {
-							score = 7;
-						}
-						finalScores.put(key,score);
-						System.out.println(key + ": " + finalScores.get(key));
-						counter++;
 					}
+					catch(RuntimeException e11) {
+						Text error = new Text("Please fill all fields to continue.");
+						error.setFont(Font.font("Veranda",15));
+						error.setFill(Color.web("#FF1000"));
+						HBox errorBox = new HBox();
+						errorBox.setMinWidth(300);
+						errorBox.setLayoutX(410);
+						errorBox.setLayoutY(710);
+						errorBox.getChildren().add(error);
+						surveyBorderPane.getChildren().add(errorBox);
+					}
+					
 				});
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
 						optionBox,row1,row2,row3,row4,row5, row6,row7,row8,row9, row10,
 						resultsButton);
 
-				RadioButton selectedRadioButton = (RadioButton) toggleGroup1.getSelectedToggle();
 		
 				return(surveyScene);
 	}
