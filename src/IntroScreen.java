@@ -51,12 +51,10 @@ public class IntroScreen{
 	private int stageX = 800;
 	private int stageY = 900;
 	private FileInputStream input;
-	public Stage introStage = new Stage();
+	private Stage introStage = new Stage();
 	private User user = new User(null, 0, null);
 	private TextField nameField;
 
-
-	
 	/**
 	 * Presents the Introduction page to the user when called by the TipiProgram
 	 * class. It provides a brief introduction to the user on what he/she can

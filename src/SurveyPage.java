@@ -33,7 +33,11 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.swing.event.ChangeListener;
 
@@ -62,14 +66,7 @@ public class SurveyPage{
 	 */
 	public Scene showSurveyPage(User user){
 
-		//Create Stage and border
-				//Stage survey = new Stage();
-				//BorderPane surveyBorderPane = new BorderPane();
-			    //Scene surveyScene = new Scene(surveyBorderPane, stageX, stageY);
-			    //survey.setScene(surveyScene);
-				//set title of stage
-				//survey.setTitle("TIPI Survey");
-				
+				//Create Stage and border
 				Text pageTitle = new Text("Personality Survey");
 				pageTitle.setFont(Font.font("Veranda",20));
 				HBox title = new HBox();
@@ -91,23 +88,11 @@ public class SurveyPage{
 
 				HBox instructions = new HBox(5);
 				
-				
 				instructions.getChildren().add(description);
 				instructions.setLayoutX(100);
 				instructions.setLayoutY(70);
-				
-
-				
-				//Create Options label:
-				/*
-				Text options = new Text("Disagree Strongly     "
-									  + "Disagree Moderately       " 
-									  + "Disagree a Little     "
-									  + "Neither Agree nor Disagree    "
-									  + "Agree a Little         "
-									  + "Agree Moderately          "
-									  + " Agree Strongly");
-				*/
+	
+				//Create Options labels:
 				Text option1 = new Text("Disagree Strongly");
 				option1.setWrappingWidth(80);
 				option1.setTextAlignment(TextAlignment.CENTER);
@@ -146,7 +131,6 @@ public class SurveyPage{
 				optionBox.setLayoutX(200);
 				optionBox.setLayoutY(165);
 				optionBox.setStyle("-fx-background-color: #D3F4FF");
-
 				
 				//Create buttons for row a
 				RadioButton a1 = new RadioButton();
@@ -165,7 +149,6 @@ public class SurveyPage{
 				a5.setToggleGroup(toggleGroup1);
 				a6.setToggleGroup(toggleGroup1);
 				a7.setToggleGroup(toggleGroup1);
-
 				
 				HBox row2 = new HBox(90);
 				row2.getChildren().addAll(a1,a2,a3,a4,a5,a6,a7);
@@ -419,9 +402,49 @@ public class SurveyPage{
 				
 				//Set button action
 				results.setOnAction(e -> {
-					RadioButton extrovertedScore = (RadioButton) toggleGroup1.getSelectedToggle();
-					System.out.println(toggleGroup1.getUserData());
-					
+					//Loops through each personality trait and captures scores from user
+					HashMap<String,ToggleGroup> inputs = new HashMap<String, ToggleGroup>();
+					inputs.put("Extraversion", toggleGroup1);
+					inputs.put("Agreeableness", toggleGroup2);
+					inputs.put("Conscientiousness", toggleGroup3);
+					inputs.put("Emotional Stability", toggleGroup4);
+					inputs.put("Openness to Experiences", toggleGroup5);
+					inputs.put("reservedScore", toggleGroup6);
+					inputs.put("sympatheticScore", toggleGroup7);
+					inputs.put("disorganizedScore", toggleGroup8);
+					inputs.put("calmScore", toggleGroup9);
+					inputs.put("conventionalScore", toggleGroup10);
+					LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
+					int counter = 0;
+					for(String key : inputs.keySet()) {
+						RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
+						double index = item.getBoundsInParent().getMinX();
+						int score;
+						if(index < 106) {
+							score = 1;
+						}
+						else if(index < 214) {
+							score = 2;
+						}
+						else if(index < 322) {
+							score = 3;
+						}
+						else if(index < 430) {
+							score = 4;
+						}
+						else if(index < 538) {
+							score = 5;
+						}
+						else if(index < 646) {
+							score = 6;
+						}
+						else {
+							score = 7;
+						}
+						finalScores.put(key,score);
+						System.out.println(key + ": " + finalScores.get(key));
+						counter++;
+					}
 				});
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
@@ -429,33 +452,8 @@ public class SurveyPage{
 						resultsButton);
 
 				RadioButton selectedRadioButton = (RadioButton) toggleGroup1.getSelectedToggle();
-				//System.out.println(selectedRadioButton.getText());
-				//Create a scene where the button is present
-				//survey.setScene(surveyScene);
-				
-				//Show the window
+		
 				return(surveyScene);
 	}
-
-	/**
-	 * This method will capture the results that the user inputs into the 
-	 * questionnaire. This will include: Name, age, sex, TIPI scores.
-	 */
-	public static void surveyAnswerCollection() {
-		
-	}
-	
-	public static void continueToResults() {
-		//ResultsViewer resultsPage = new ResultsViewer();
-		//resultsPage.createStage(User);
-		IntroScreen introStage = new IntroScreen();
-		User user = new User("Andrew",27,"Male");
-		ResultsViewer resultsPage = new ResultsViewer(user);
-
-	}
-	
-	
-	
-	
 	
 }
