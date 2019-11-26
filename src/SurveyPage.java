@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.print.PrinterJob;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -69,11 +70,11 @@ public class SurveyPage{
 
 				//Create Stage and border
 				Text pageTitle = new Text("Personality Survey");
-				pageTitle.setFont(Font.font("Veranda",20));
+				pageTitle.setFont(Font.font("Veranda",30));
 				HBox title = new HBox();
 				title.getChildren().add(pageTitle);
-				title.setLayoutX(420);
-				title.setLayoutY(20);
+				title.setLayoutX(380);
+				title.setLayoutY(10);
 				
 				Text description = new Text("Here is a number of personality traits "
 						+ "that may or may not apply to you. \n"
@@ -462,10 +463,95 @@ public class SurveyPage{
 					}
 					
 				});
+				
+				Rectangle rect = new Rectangle(850,90);
+				rect.setFill(Color.ALICEBLUE);
+				rect.setStroke(Color.BLUE);
+				rect.setStrokeWidth(1);
+				rect.setArcHeight(30.0);
+				rect.setArcWidth(20.0);
+				    
+				Group rectangle = new Group();
+				rectangle.getChildren().add(rect);
+				rectangle.setLayoutX(80);
+				rectangle.setLayoutY(60);
+				rectangle.setViewOrder(5.0);
+				
+				
+				Rectangle rect1 = new Rectangle(915,40);
+				rect1.setFill(Color.ALICEBLUE);
+				rect1.setArcHeight(30.0);
+				rect1.setArcWidth(20.0);
+				    
+				Group rectangle1 = new Group();
+				rectangle1.getChildren().add(rect1);
+				rectangle1.setLayoutX(10);
+				rectangle1.setLayoutY(215);
+				rectangle1.setViewOrder(5.0);
+				
+				Rectangle rect2 = new Rectangle(915,40);
+				rect2.setFill(Color.ALICEBLUE);
+				rect2.setArcHeight(30.0);
+				rect2.setArcWidth(20.0);
+				    
+				Group rectangle2 = new Group();
+				rectangle2.getChildren().add(rect2);
+				rectangle2.setLayoutX(10);
+				rectangle2.setLayoutY(310);
+				rectangle2.setViewOrder(5.0);
+				
+				Rectangle rect3 = new Rectangle(915,40);
+				rect3.setFill(Color.ALICEBLUE);
+				rect3.setArcHeight(30.0);
+				rect3.setArcWidth(20.0);
+				    
+				Group rectangle3 = new Group();
+				rectangle3.getChildren().add(rect3);
+				rectangle3.setLayoutX(10);
+				rectangle3.setLayoutY(410);
+				rectangle3.setViewOrder(5.0);
+				
+				Rectangle rect4 = new Rectangle(915,40);
+				rect4.setFill(Color.ALICEBLUE);
+				rect4.setArcHeight(30.0);
+				rect4.setArcWidth(20.0);
+				    
+				Group rectangle4 = new Group();
+				rectangle4.getChildren().add(rect4);
+				rectangle4.setLayoutX(10);
+				rectangle4.setLayoutY(510);
+				rectangle4.setViewOrder(5.0);
+				
+				Rectangle rect5 = new Rectangle(915,40);
+				rect5.setFill(Color.ALICEBLUE);
+				rect5.setArcHeight(30.0);
+				rect5.setArcWidth(20.0);
+				    
+				Group rectangle5 = new Group();
+				rectangle5.getChildren().add(rect5);
+				rectangle5.setLayoutX(10);
+				rectangle5.setLayoutY(610);
+				rectangle5.setViewOrder(5.0);
+				
+				Rectangle rect6 = new Rectangle(920,490);
+				rect6.setFill(Color.TRANSPARENT);
+				rect6.setStroke(Color.BLUE);
+				rect6.setStrokeWidth(1);
+				rect6.setArcHeight(30.0);
+				rect6.setArcWidth(20.0);
+				    
+				Group rectangle6 = new Group();
+				rectangle6.getChildren().add(rect6);
+				rectangle6.setLayoutX(8);
+				rectangle6.setLayoutY(213);
+				rectangle6.setViewOrder(5.0);
+				
+				
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
 						optionBox,row1,row2,row3,row4,row5, row6,row7,row8,row9, row10,
-						resultsButton);
+						resultsButton,rectangle,rectangle1,rectangle2,rectangle3,
+						rectangle4,rectangle5,rectangle6);
 
 		
 				return(surveyScene);

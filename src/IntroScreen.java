@@ -85,20 +85,12 @@ public class IntroScreen{
 	    Text title = new Text("TIPI Analyzer");
 	    // Change Font of title
 	    title.setFont(Font.font(null, FontWeight.BOLD, 30));
+	    title.setFill(Color.BLUE);
 	    introGrid.add(title,0,0);
 	    HBox titleBox = new HBox(title);
-	    titleBox.setAlignment(Pos.CENTER);
-		titleBox.setPadding(new Insets(45));
-	    introBorderPane.setTop(titleBox);
+	    titleBox.setLayoutX(315);
+	    titleBox.setLayoutY(20);
 	    
-	    Rectangle rect = new Rectangle();
-	    rect.setFill(Color.ALICEBLUE);
-	    
-	    
-	    Group rectangle = new Group();
-	    rectangle.getChildren().add(rect);
-	    rectangle.setLayoutX(200);
-	    rectangle.setLayoutY(300);
 	    
 	    Text bodyText1 = new Text(
 	    		"Welcome to the TIPI Analyzer! TIPI stands for Ten Item "
@@ -228,7 +220,21 @@ public class IntroScreen{
 		//Sets padding from bottom
 		buttonHolder.getChildren().add(btn);
 		
-	    introBorderPane.getChildren().addAll(textBox,genderBox,ageBox,labels,buttonHolder,rectangle);
+		
+		Rectangle rect = new Rectangle(650,380);
+		rect.setFill(Color.ALICEBLUE);
+		rect.setStroke(Color.BLUE);
+		rect.setStrokeWidth(1);
+		rect.setArcHeight(30.0);
+		rect.setArcWidth(20.0);
+		    
+		Group rectangle = new Group();
+		rectangle.getChildren().add(rect);
+		rectangle.setLayoutX(80);
+		rectangle.setLayoutY(90);
+		rectangle.setViewOrder(5.0);
+		
+	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,labels,buttonHolder,rectangle);
 		
 		introStage.setScene(scene);
 		
