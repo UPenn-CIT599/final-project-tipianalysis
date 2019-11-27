@@ -64,8 +64,9 @@ public class IntroScreen{
 	 * class. It provides a brief introduction to the user on what he/she can
 	 * expect, and then it allows them to continue on to the survey page with 
 	 * a quick button click.
+	 * @return 
 	 */
-	public void start() {
+	public Scene start() {
 		
 	    /**
 	     * Create Scene and Border
@@ -300,6 +301,7 @@ public class IntroScreen{
 		
 		//Show the window
 		introStage.show();
+		return(scene);
 	}
 
 	/**

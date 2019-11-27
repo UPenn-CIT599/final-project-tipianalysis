@@ -59,9 +59,9 @@ public class SurveyPage{
 	User surveyUser;
 	private int stageX = 1000;
 	private int stageY = 900;
-	Stage survey = new Stage();
-	BorderPane surveyBorderPane = new BorderPane();
-    Scene surveyScene = new Scene(surveyBorderPane, stageX, stageY);
+	private Stage survey = new Stage();
+	private BorderPane surveyBorderPane = new BorderPane();
+    private Scene surveyScene = new Scene(surveyBorderPane, stageX, stageY);
 	
 	/**
 	 * This method manages the structure of the UI for the survey page.
@@ -134,244 +134,65 @@ public class SurveyPage{
 				optionBox.setLayoutY(165);
 				optionBox.setStyle("-fx-background-color: #D3F4FF");
 				
-				//Create buttons for row a
-				RadioButton a1 = new RadioButton();
-				RadioButton a2 = new RadioButton();
-				RadioButton a3 = new RadioButton();
-				RadioButton a4 = new RadioButton();
-				RadioButton a5 = new RadioButton();
-				RadioButton a6 = new RadioButton();
-				RadioButton a7 = new RadioButton();
+				//HBox and ToggleGroup A
+				LinkedHashMap<HBox, ToggleGroup> indexForRowA = createButtonBox('a',1,225);
+				HBox row1 = getHBox(indexForRowA);
+				ToggleGroup toggleGroupA = getToggleGroup(indexForRowA);
+				ToggleGroup toggleGroup1 = toggleGroupA;
 
-				ToggleGroup toggleGroup1 = new ToggleGroup();
-				a1.setToggleGroup(toggleGroup1);
-				a2.setToggleGroup(toggleGroup1);
-				a3.setToggleGroup(toggleGroup1);
-				a4.setToggleGroup(toggleGroup1);
-				a5.setToggleGroup(toggleGroup1);
-				a6.setToggleGroup(toggleGroup1);
-				a7.setToggleGroup(toggleGroup1);
+				//HBox and ToggleGroup B
+				LinkedHashMap<HBox, ToggleGroup> indexForRowB = createButtonBox('b',2,275);
+				HBox row2 = getHBox(indexForRowB);
+				ToggleGroup toggleGroupB = getToggleGroup(indexForRowB);
+				ToggleGroup toggleGroup2 = toggleGroupB;
 				
-				HBox row2 = new HBox(90);
-				row2.getChildren().addAll(a1,a2,a3,a4,a5,a6,a7);
-				row2.setLayoutX(230);
-				row2.setLayoutY(225);
+				//HBox and ToggleGroup C
+				LinkedHashMap<HBox, ToggleGroup> indexForRowC = createButtonBox('c',3,325);
+				HBox row3 = getHBox(indexForRowC);
+				ToggleGroup toggleGroupC = getToggleGroup(indexForRowC);
+				ToggleGroup toggleGroup3 = toggleGroupC;
 				
-				//Create buttons for row b
-				RadioButton b1 = new RadioButton();
-				RadioButton b2 = new RadioButton();
-				RadioButton b3 = new RadioButton();
-				RadioButton b4 = new RadioButton();
-				RadioButton b5 = new RadioButton();
-				RadioButton b6 = new RadioButton();
-				RadioButton b7 = new RadioButton();
-
-				ToggleGroup toggleGroup2 = new ToggleGroup();
-				b1.setToggleGroup(toggleGroup2);
-				b2.setToggleGroup(toggleGroup2);
-				b3.setToggleGroup(toggleGroup2);
-				b4.setToggleGroup(toggleGroup2);
-				b5.setToggleGroup(toggleGroup2);
-				b6.setToggleGroup(toggleGroup2);
-				b7.setToggleGroup(toggleGroup2);
+				//HBox and ToggleGroup D
+				LinkedHashMap<HBox, ToggleGroup> indexForRowD = createButtonBox('d',4,375);
+				HBox row4 = getHBox(indexForRowD);
+				ToggleGroup toggleGroupD = getToggleGroup(indexForRowD);
+				ToggleGroup toggleGroup4 = toggleGroupD;
+			
+				//HBox and ToggleGroup E
+				LinkedHashMap<HBox, ToggleGroup> indexForRowE = createButtonBox('e',5,425);
+				HBox row5 = getHBox(indexForRowE);
+				ToggleGroup toggleGroupE = getToggleGroup(indexForRowE);
+				ToggleGroup toggleGroup5 = toggleGroupE;
 				
-				//Create button row holder
-				HBox row1 = new HBox(90);
-				row1.getChildren().addAll(b1,b2,b3,b4,b5,b6,b7);
-				row1.setLayoutX(230);
-				row1.setLayoutY(275);
+				//HBox and ToggleGroup F
+				LinkedHashMap<HBox, ToggleGroup> indexForRowF = createButtonBox('f',6,475);
+				HBox row6 = getHBox(indexForRowF);
+				ToggleGroup toggleGroupF = getToggleGroup(indexForRowF);
+				ToggleGroup toggleGroup6 = toggleGroupF;
+			
+				//HBox and ToggleGroup G
+				LinkedHashMap<HBox, ToggleGroup> indexForRowG = createButtonBox('g',7,525);
+				HBox row7 = getHBox(indexForRowG);
+				ToggleGroup toggleGroupG = getToggleGroup(indexForRowG);
+				ToggleGroup toggleGroup7 = toggleGroupG;
+	
+				//HBox and ToggleGroup H
+				LinkedHashMap<HBox, ToggleGroup> indexForRowH = createButtonBox('h',8,575);
+				HBox row8 = getHBox(indexForRowH);
+				ToggleGroup toggleGroupH = getToggleGroup(indexForRowH);
+				ToggleGroup toggleGroup8 = toggleGroupH;
 				
-				//Create buttons for row c
-				RadioButton c1 = new RadioButton();
-				RadioButton c2 = new RadioButton();
-				RadioButton c3 = new RadioButton();
-				RadioButton c4 = new RadioButton();
-				RadioButton c5 = new RadioButton();
-				RadioButton c6 = new RadioButton();
-				RadioButton c7 = new RadioButton();
-
-				ToggleGroup toggleGroup3 = new ToggleGroup();
-				c1.setToggleGroup(toggleGroup3);
-				c2.setToggleGroup(toggleGroup3);
-				c3.setToggleGroup(toggleGroup3);
-				c4.setToggleGroup(toggleGroup3);
-				c5.setToggleGroup(toggleGroup3);
-				c6.setToggleGroup(toggleGroup3);
-				c7.setToggleGroup(toggleGroup3);
-				
-				//Create button row holder
-				HBox row3 = new HBox(90);
-				row3.getChildren().addAll(c1,c2,c3,c4,c5,c6,c7);
-				row3.setLayoutX(230);
-				row3.setLayoutY(325);
-				
-				//Create buttons for row d
-				RadioButton d1 = new RadioButton();
-				RadioButton d2 = new RadioButton();
-				RadioButton d3 = new RadioButton();
-				RadioButton d4 = new RadioButton();
-				RadioButton d5 = new RadioButton();
-				RadioButton d6 = new RadioButton();
-				RadioButton d7 = new RadioButton();
-
-				ToggleGroup toggleGroup4 = new ToggleGroup();
-				d1.setToggleGroup(toggleGroup4);
-				d2.setToggleGroup(toggleGroup4);
-				d3.setToggleGroup(toggleGroup4);
-				d4.setToggleGroup(toggleGroup4);
-				d5.setToggleGroup(toggleGroup4);
-				d6.setToggleGroup(toggleGroup4);
-				d7.setToggleGroup(toggleGroup4);
-
-				//Create button row holder
-				HBox row4 = new HBox(90);
-				row4.getChildren().addAll(d1,d2,d3,d4,d5,d6,d7);
-				row4.setLayoutX(230);
-				row4.setLayoutY(375);
-				
-				//Create buttons for row e
-				RadioButton e1 = new RadioButton();
-				RadioButton e2 = new RadioButton();
-				RadioButton e3 = new RadioButton();
-				RadioButton e4 = new RadioButton();
-				RadioButton e5 = new RadioButton();
-				RadioButton e6 = new RadioButton();
-				RadioButton e7 = new RadioButton();
-
-				ToggleGroup toggleGroup5 = new ToggleGroup();
-				e1.setToggleGroup(toggleGroup5);
-				e2.setToggleGroup(toggleGroup5);
-				e3.setToggleGroup(toggleGroup5);
-				e4.setToggleGroup(toggleGroup5);
-				e5.setToggleGroup(toggleGroup5);
-				e6.setToggleGroup(toggleGroup5);
-				e7.setToggleGroup(toggleGroup5);
-
-				//Create button row holder
-				HBox row5 = new HBox(90);
-				row5.getChildren().addAll(e1,e2,e3,e4,e5,e6,e7);
-				row5.setLayoutX(230);
-				row5.setLayoutY(425);
-				
-				//Create buttons for row f
-				RadioButton f1 = new RadioButton();
-				RadioButton f2 = new RadioButton();
-				RadioButton f3 = new RadioButton();
-				RadioButton f4 = new RadioButton();
-				RadioButton f5 = new RadioButton();
-				RadioButton f6 = new RadioButton();
-				RadioButton f7 = new RadioButton();
-
-				ToggleGroup toggleGroup6 = new ToggleGroup();
-				f1.setToggleGroup(toggleGroup6);
-				f2.setToggleGroup(toggleGroup6);
-				f3.setToggleGroup(toggleGroup6);
-				f4.setToggleGroup(toggleGroup6);
-				f5.setToggleGroup(toggleGroup6);
-				f6.setToggleGroup(toggleGroup6);
-				f7.setToggleGroup(toggleGroup6);
-
-				//Create button row holder
-				HBox row6 = new HBox(90);
-				row6.getChildren().addAll(f1,f2,f3,f4,f5,f6,f7);
-				row6.setLayoutX(230);
-				row6.setLayoutY(475);
-				
-				//Create buttons for row g
-				RadioButton g1 = new RadioButton();
-				RadioButton g2 = new RadioButton();
-				RadioButton g3 = new RadioButton();
-				RadioButton g4 = new RadioButton();
-				RadioButton g5 = new RadioButton();
-				RadioButton g6 = new RadioButton();
-				RadioButton g7 = new RadioButton();
-
-				ToggleGroup toggleGroup7 = new ToggleGroup();
-				g1.setToggleGroup(toggleGroup7);
-				g2.setToggleGroup(toggleGroup7);
-				g3.setToggleGroup(toggleGroup7);
-				g4.setToggleGroup(toggleGroup7);
-				g5.setToggleGroup(toggleGroup7);
-				g6.setToggleGroup(toggleGroup7);
-				g7.setToggleGroup(toggleGroup7);
-
-				//Create button row holder
-				HBox row7 = new HBox(90);
-				row7.getChildren().addAll(g1,g2,g3,g4,g5,g6,g7);
-				row7.setLayoutX(230);
-				row7.setLayoutY(525);
-				
-				//Create buttons for row h
-				RadioButton h1 = new RadioButton();
-				RadioButton h2 = new RadioButton();
-				RadioButton h3 = new RadioButton();
-				RadioButton h4 = new RadioButton();
-				RadioButton h5 = new RadioButton();
-				RadioButton h6 = new RadioButton();
-				RadioButton h7 = new RadioButton();
-
-				ToggleGroup toggleGroup8 = new ToggleGroup();
-				h1.setToggleGroup(toggleGroup8);
-				h2.setToggleGroup(toggleGroup8);
-				h3.setToggleGroup(toggleGroup8);
-				h4.setToggleGroup(toggleGroup8);
-				h5.setToggleGroup(toggleGroup8);
-				h6.setToggleGroup(toggleGroup8);
-				h7.setToggleGroup(toggleGroup8);
-
-				//Create button row holder
-				HBox row8 = new HBox(90);
-				row8.getChildren().addAll(h1,h2,h3,h4,h5,h6,h7);
-				row8.setLayoutX(230);
-				row8.setLayoutY(575);
-				
-				//Create buttons for row i
-				RadioButton i1 = new RadioButton();
-				RadioButton i2 = new RadioButton();
-				RadioButton i3 = new RadioButton();
-				RadioButton i4 = new RadioButton();
-				RadioButton i5 = new RadioButton();
-				RadioButton i6 = new RadioButton();
-				RadioButton i7 = new RadioButton();
-
-				ToggleGroup toggleGroup9 = new ToggleGroup();
-				i1.setToggleGroup(toggleGroup9);
-				i2.setToggleGroup(toggleGroup9);
-				i3.setToggleGroup(toggleGroup9);
-				i4.setToggleGroup(toggleGroup9);
-				i5.setToggleGroup(toggleGroup9);
-				i6.setToggleGroup(toggleGroup9);
-				i7.setToggleGroup(toggleGroup9);
-
-				//Create button row holder
-				HBox row9 = new HBox(90);
-				row9.getChildren().addAll(i1,i2,i3,i4,i5,i6,i7);
-				row9.setLayoutX(230);
-				row9.setLayoutY(625);
-				
-				//Create buttons for row g
-				RadioButton j1 = new RadioButton();
-				RadioButton j2 = new RadioButton();
-				RadioButton j3 = new RadioButton();
-				RadioButton j4 = new RadioButton();
-				RadioButton j5 = new RadioButton();
-				RadioButton j6 = new RadioButton();
-				RadioButton j7 = new RadioButton();
-
-				ToggleGroup toggleGroup10 = new ToggleGroup();
-				j1.setToggleGroup(toggleGroup10);
-				j2.setToggleGroup(toggleGroup10);
-				j3.setToggleGroup(toggleGroup10);
-				j4.setToggleGroup(toggleGroup10);
-				j5.setToggleGroup(toggleGroup10);
-				j6.setToggleGroup(toggleGroup10);
-				j7.setToggleGroup(toggleGroup10);
-
-				//Create button row holder
-				HBox row10 = new HBox(90);
-				row10.getChildren().addAll(j1,j2,j3,j4,j5,j6,j7);
-				row10.setLayoutX(230);
-				row10.setLayoutY(675);
+				//HBox and ToggleGroup I
+				LinkedHashMap<HBox, ToggleGroup> indexForRowI = createButtonBox('i',9,625);
+				HBox row9 = getHBox(indexForRowI);
+				ToggleGroup toggleGroupI = getToggleGroup(indexForRowI);
+				ToggleGroup toggleGroup9 = toggleGroupI;
+			
+				//HBox and ToggleGroup J
+				LinkedHashMap<HBox, ToggleGroup> indexForRowJ = createButtonBox('j',10,675);
+				HBox row10 = getHBox(indexForRowJ);
+				ToggleGroup toggleGroupJ = getToggleGroup(indexForRowJ);
+				ToggleGroup toggleGroup10 = toggleGroupJ;
 				
 				//Create left-hand labels
 				Text extroverted = new Text("Extroverted, enthusiastic"); 
@@ -418,41 +239,16 @@ public class SurveyPage{
 						inputs.put("Disorganized", toggleGroup8);
 						inputs.put("Calm", toggleGroup9);
 						inputs.put("Conventional", toggleGroup10);
-						LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
-						int counter = 0;
-						for(String key : inputs.keySet()) {
-							RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
-							double index = item.getBoundsInParent().getMinX();
-							int score;
-							if(index < 106) {
-								score = 1;
-							}
-							else if(index < 214) {
-								score = 2;
-							}
-							else if(index < 322) {
-								score = 3;
-							}
-							else if(index < 430) {
-								score = 4;
-							}
-							else if(index < 538) {
-								score = 5;
-							}
-							else if(index < 646) {
-								score = 6;
-							}
-							else {
-								score = 7;
-							}
-							finalScores.put(key,score);
-							System.out.println(key + ": " + finalScores.get(key));
-							counter++;
-						}
+						LinkedHashMap<String,Integer> initialScores = new LinkedHashMap<String, Integer>();
+						
+						initialScores = getInputLinkedHashMap(inputs);
+						
+						
 						System.out.println();
-						//IntroScreen introStage = new IntroScreen();
-						//ResultsViewer resultsPage = new ResultsViewer(user);
-						//introStage.getStage().setScene(resultsPage.createStage());
+						IntroScreen introStage = new IntroScreen();
+						ResultsViewerRunner resultsPage = new ResultsViewerRunner();
+						//resultsPage.start(introStage.getStage());
+						//introStage.getStage().setScene(resultsPage.start(introStage.getStage()));
 
 
 					}
@@ -467,7 +263,6 @@ public class SurveyPage{
 						errorBox.getChildren().add(error);
 						surveyBorderPane.getChildren().add(errorBox);
 					}
-					
 				});
 				
 				Rectangle rect = new Rectangle(850,90);
@@ -555,12 +350,122 @@ public class SurveyPage{
 				
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
-						optionBox,row1,row2,row3,row4,row5, row6,row7,row8,row9, row10,
-						resultsButton,rectangle,rectangle1,rectangle2,rectangle3,
+						optionBox,resultsButton,row1,row2,row3,row4,row5, row6,row7,row8,row9, row10,
+						rectangle,rectangle1,rectangle2,rectangle3,
 						rectangle4,rectangle5,rectangle6);
-
-		
 				return(surveyScene);
 	}
+	/**
+	 * Creates a linked hashmap with initial scores inputted by user.
+	 * @param inputs A linked hashmap with the name of each trait and the 
+	 * toggle group it gets input from.
+	 * @return Returns a 10-item linked hashmap with the traints as keys and 
+	 * scores as values.
+	 */
+	public LinkedHashMap<String,Integer> getInputLinkedHashMap(LinkedHashMap<String,ToggleGroup> inputs){
+		LinkedHashMap<String,Integer> finalScores = new LinkedHashMap<String,Integer>();
+		int counter = 0;
+		for(String key : inputs.keySet()) {
+			RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
+			double index = item.getBoundsInParent().getMinX();
+			int score;
+			if(index < 106) {
+				score = 1;
+			}
+			else if(index < 214) {
+				score = 2;
+			}
+			else if(index < 322) {
+				score = 3;
+			}
+			else if(index < 430) {
+				score = 4;
+			}
+			else if(index < 538) {
+				score = 5;
+			}
+			else if(index < 646) {
+				score = 6;
+			}
+			else {
+				score = 7;
+			}
+			finalScores.put(key,score);
+			System.out.println(key + ": " + finalScores.get(key));
+			counter++;
+		}
+		return finalScores;	
+	}
+	
+
+	/**
+	 * Creates HBox elements and toggle groups for rows of radio buttons.
+	 * @param letter The row letter we want to assign (a-j)
+	 * @param rowIndex The row index (1-10)
+	 * @param yVal The y-coordinate layout starting point
+	 * @return Returns a linked HashMap with the necessary HBox and ToggleGroup items
+	 */
+	public LinkedHashMap<HBox,ToggleGroup> createButtonBox(char letter, int rowIndex,int yVal) {
+		
+		LinkedHashMap<HBox,ToggleGroup> box = new LinkedHashMap<HBox,ToggleGroup>();
+		
+		//Create buttons for row a
+		RadioButton letter1 = new RadioButton();
+		RadioButton letter2 = new RadioButton();
+		RadioButton letter3 = new RadioButton();
+		RadioButton letter4 = new RadioButton();
+		RadioButton letter5 = new RadioButton();
+		RadioButton letter6 = new RadioButton();
+		RadioButton letter7 = new RadioButton();
+		
+		ToggleGroup toggleGroup_rowIndex = new ToggleGroup();
+		letter1.setToggleGroup(toggleGroup_rowIndex);
+		letter2.setToggleGroup(toggleGroup_rowIndex);
+		letter3.setToggleGroup(toggleGroup_rowIndex);
+		letter4.setToggleGroup(toggleGroup_rowIndex);
+		letter5.setToggleGroup(toggleGroup_rowIndex);
+		letter6.setToggleGroup(toggleGroup_rowIndex);
+		letter7.setToggleGroup(toggleGroup_rowIndex);
+		
+		HBox row_rowIndex = new HBox(90);
+		row_rowIndex.getChildren().addAll(letter1,letter2,letter3,
+				letter4,letter5,letter6,letter7);
+		row_rowIndex.setLayoutX(230);
+		row_rowIndex.setLayoutY(yVal);
+		
+		box.put(row_rowIndex, toggleGroup_rowIndex);
+		
+		return box;
+	}
+	
+	/**
+	 * Returns a formatted HBox from the linked HashMap 
+	 * @param boxAndToggle A Linked HashMap with an HBox and Toggle
+	 * @return Returns an HBox element.
+	 */
+	public HBox getHBox(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
+		HBox row = new HBox();
+		for(Object key : boxAndToggle.keySet()) {
+			row = (HBox) key;
+		}
+		
+		return row;
+	}
+	
+	/**
+	 * Returns toggleGroup from the linked HashMap 
+	 * @param boxAndToggle A Linked HashMap with an HBox and Toggle
+	 * @return Returns an toggleGroup element.
+	 */
+	public ToggleGroup getToggleGroup(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
+		
+		ToggleGroup toggleGroup = new ToggleGroup();
+		for(Object key : boxAndToggle.keySet()) {
+			toggleGroup = (ToggleGroup) boxAndToggle.get(key);
+		}
+		
+		return toggleGroup;	
+	}
+	
 	
 }
