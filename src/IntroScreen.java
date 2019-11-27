@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -105,15 +106,15 @@ public class IntroScreen{
 	    		+ "By learning how your personality might be affecting your behavior, you can "
 	    		+ "start to behave more consciously when it comes to certain decision-making "
 	    		+ "points in your life. You then may not fall victim to subconscious "
-	    		+ "tendencies that you didn't now you had. For example, maybe you'll "
+	    		+ "tendencies that you didn't know you had. For example, maybe you'll "
 	    		+ "think twice about a particular financial decision if you find out that "
-	    		+ "people like you tend to take risky decisions when it comes to investing."
+	    		+ "people like you tend to take risky chances when it comes to investing."
 	    		+ "\n"
 	    		+ "\n"
 	    		+ "\n"
 	    		+ "On the next page, we'll ask you to answer ten questions where "
 		        + "you will need to describe different aspects of your personality "
-		        + "on a 7-point scales. Please answer honestly. When you are ready, "
+		        + "on a 7-point scale. Please answer honestly. When you are ready, "
 		        + "please fill out the fields below and click \"Continue to Survey\" \n"
 		        + " \n"
 	    		);
@@ -234,7 +235,66 @@ public class IntroScreen{
 		rectangle.setLayoutY(90);
 		rectangle.setViewOrder(5.0);
 		
-	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,labels,buttonHolder,rectangle);
+		//Gender Image
+		Image image = null;
+		try {
+			image = new Image(new FileInputStream("src/gender.png"), 60, 68.55, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        ImageView imageView = new ImageView(image);
+        
+        imageView.setLayoutX(210);
+        imageView.setLayoutY(540);
+        imageView.setFitHeight(45);
+        imageView.setFitWidth(45);
+        imageView.setPreserveRatio(true);
+        
+        Group img = new Group(imageView);
+        
+        //Name Image
+      	Image image2 = null;
+      	try {
+      		image2 = new Image(new FileInputStream("src/name.png"), 60, 68.55, true, true);
+      	} catch (FileNotFoundException e2) {
+      		// TODO Auto-generated catch block
+      		e2.printStackTrace();
+      	}
+              
+        ImageView imageView2 = new ImageView(image2);
+              
+        imageView2.setLayoutX(175);
+        imageView2.setLayoutY(490);
+        imageView2.setFitHeight(40);
+        imageView2.setFitWidth(40);
+        imageView2.setPreserveRatio(true);
+              
+        Group img2 = new Group(imageView2);
+        
+        //Age Image
+      	Image image3 = null;
+      	try {
+      		image3 = new Image(new FileInputStream("src/age.png"), 50, 50, true, true);
+      	} catch (FileNotFoundException e3) {
+      		// TODO Auto-generated catch block
+      		e3.printStackTrace();
+      	}
+              
+        ImageView imageView3 = new ImageView(image3);
+              
+        imageView3.setLayoutX(210);
+        imageView3.setLayoutY(590);
+        imageView3.setFitHeight(40);
+        imageView3.setFitWidth(40);
+        imageView3.setPreserveRatio(true);
+              
+        Group img3 = new Group(imageView3);
+        
+        
+	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,
+	    		labels,buttonHolder,rectangle,img,img2,img3);
 		
 		introStage.setScene(scene);
 		
@@ -242,9 +302,18 @@ public class IntroScreen{
 		introStage.show();
 	}
 
+	/**
+	 * Returns the intro stage for use in the survey page.
+	 * @return
+	 */
+	public Stage getStage() {
+		return introStage;
+	}
 
-
-	
+	/**
+	 * Used for getting the user variable that is created in the IntroScreen
+	 * @return
+	 */
 	public User getUser() {
 		return user;
 	}

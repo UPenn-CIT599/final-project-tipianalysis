@@ -81,7 +81,7 @@ public class SurveyPage{
 						+"  \n"
 						+ "Please indicae the extent to which you agree or disagree "
 						+ "that each one describes you. You should rate the extent "
-						+ "to which the pair of traits applies to you, even if one"
+						+ "to which the pair of traits applies to you, even if one "
 						+ "characteristic applies more generally than the other.");
 				
 				description.setWrappingWidth(800);
@@ -408,7 +408,7 @@ public class SurveyPage{
 					try {
 						//Loops through each personality trait and captures scores from user
 						LinkedHashMap<String,ToggleGroup> inputs = new LinkedHashMap<String, ToggleGroup>();
-						inputs.put("Extraverted", toggleGroup1);
+						inputs.put("Extroverted", toggleGroup1);
 						inputs.put("Critical", toggleGroup2);
 						inputs.put("Dependable", toggleGroup3);
 						inputs.put("Anxious", toggleGroup4);
@@ -449,6 +449,12 @@ public class SurveyPage{
 							System.out.println(key + ": " + finalScores.get(key));
 							counter++;
 						}
+						System.out.println();
+						//IntroScreen introStage = new IntroScreen();
+						//ResultsViewer resultsPage = new ResultsViewer(user);
+						//introStage.getStage().setScene(resultsPage.createStage());
+
+
 					}
 					catch(RuntimeException e11) {
 						Text error = new Text("Please fill all fields to continue.");
