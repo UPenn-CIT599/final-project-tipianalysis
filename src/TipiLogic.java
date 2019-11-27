@@ -37,7 +37,7 @@ public class TipiLogic {
 	 */
 	public Trait[] runLogic() {
 		// Create arrays to model the trait names
-		String[] traitNames = {"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness to Experiences"};
+		String[] traitNames = {"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness"};
 		Object[] questionnaireTraits = userResponses.keySet().toArray();
 		
 		// Recode the necessary reverse-scored items from user responses
@@ -100,7 +100,7 @@ public class TipiLogic {
 	 * @return - The String describing where the user's score falls compared
 	 * to their peers
 	 */
-	public String findPeerComparison(double score, double mean, double stdDeviation) {
+	private String findPeerComparison(double score, double mean, double stdDeviation) {
 		if(score > mean + stdDeviation) {
 			return "High";
 		}
