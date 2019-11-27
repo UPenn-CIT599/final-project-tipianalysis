@@ -264,89 +264,15 @@ public class SurveyPage{
 						surveyBorderPane.getChildren().add(errorBox);
 					}
 				});
-				
-				Rectangle rect = new Rectangle(850,90);
-				rect.setFill(Color.ALICEBLUE);
-				rect.setStroke(Color.BLUE);
-				rect.setStrokeWidth(1);
-				rect.setArcHeight(30.0);
-				rect.setArcWidth(20.0);
-				    
-				Group rectangle = new Group();
-				rectangle.getChildren().add(rect);
-				rectangle.setLayoutX(80);
-				rectangle.setLayoutY(60);
-				rectangle.setViewOrder(5.0);
-				
-				
-				Rectangle rect1 = new Rectangle(915,40);
-				rect1.setFill(Color.ALICEBLUE);
-				rect1.setArcHeight(30.0);
-				rect1.setArcWidth(20.0);
-				    
-				Group rectangle1 = new Group();
-				rectangle1.getChildren().add(rect1);
-				rectangle1.setLayoutX(10);
-				rectangle1.setLayoutY(215);
-				rectangle1.setViewOrder(5.0);
-				
-				Rectangle rect2 = new Rectangle(915,40);
-				rect2.setFill(Color.ALICEBLUE);
-				rect2.setArcHeight(30.0);
-				rect2.setArcWidth(20.0);
-				    
-				Group rectangle2 = new Group();
-				rectangle2.getChildren().add(rect2);
-				rectangle2.setLayoutX(10);
-				rectangle2.setLayoutY(310);
-				rectangle2.setViewOrder(5.0);
-				
-				Rectangle rect3 = new Rectangle(915,40);
-				rect3.setFill(Color.ALICEBLUE);
-				rect3.setArcHeight(30.0);
-				rect3.setArcWidth(20.0);
-				    
-				Group rectangle3 = new Group();
-				rectangle3.getChildren().add(rect3);
-				rectangle3.setLayoutX(10);
-				rectangle3.setLayoutY(410);
-				rectangle3.setViewOrder(5.0);
-				
-				Rectangle rect4 = new Rectangle(915,40);
-				rect4.setFill(Color.ALICEBLUE);
-				rect4.setArcHeight(30.0);
-				rect4.setArcWidth(20.0);
-				    
-				Group rectangle4 = new Group();
-				rectangle4.getChildren().add(rect4);
-				rectangle4.setLayoutX(10);
-				rectangle4.setLayoutY(510);
-				rectangle4.setViewOrder(5.0);
-				
-				Rectangle rect5 = new Rectangle(915,40);
-				rect5.setFill(Color.ALICEBLUE);
-				rect5.setArcHeight(30.0);
-				rect5.setArcWidth(20.0);
-				    
-				Group rectangle5 = new Group();
-				rectangle5.getChildren().add(rect5);
-				rectangle5.setLayoutX(10);
-				rectangle5.setLayoutY(610);
-				rectangle5.setViewOrder(5.0);
-				
-				Rectangle rect6 = new Rectangle(920,490);
-				rect6.setFill(Color.TRANSPARENT);
-				rect6.setStroke(Color.BLUE);
-				rect6.setStrokeWidth(1);
-				rect6.setArcHeight(30.0);
-				rect6.setArcWidth(20.0);
-				    
-				Group rectangle6 = new Group();
-				rectangle6.getChildren().add(rect6);
-				rectangle6.setLayoutX(8);
-				rectangle6.setLayoutY(213);
-				rectangle6.setViewOrder(5.0);
-				
+			
+				//Create blue rectangle objects
+				Group rectangle = createRectangle(850,90,80,60,true,true);
+				Group rectangle1 = createRectangle(915,40,10,215,false,true);
+				Group rectangle2 = createRectangle(915,40,10,310,false,true);
+				Group rectangle3 = createRectangle(915,40,10,410,false,true);
+				Group rectangle4 = createRectangle(915,40,10,510,false,true);
+				Group rectangle5 = createRectangle(915,40,10,610,false,true);
+				Group rectangle6 = createRectangle(920,490,8,213,true,false);
 				
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
@@ -465,6 +391,40 @@ public class SurveyPage{
 		}
 		
 		return toggleGroup;	
+	}
+	
+	/**
+	 * Creates rectangle boxes with blue fill.
+	 * @param dimY Int The width in pixels
+	 * @param dimX Int The height in pixels
+	 * @param layoutX Int The starting x-coordinate (pixel value)
+	 * @param layoutY Int The starting y-coordiante (pixel value)
+	 * @param border Boolean value for whether or not to apply a border.
+	 * @param fill Boolean indicating if rectangle should have a blue fill color
+	 * @return Returns a Group object that holds a rectangle.
+	 */
+	public Group createRectangle(int dimY, int dimX, int layoutX, int layoutY, boolean border, boolean fill) {
+		
+		Rectangle rect = new Rectangle(dimY,dimX);
+		if(fill == true) {
+			rect.setFill(Color.ALICEBLUE);
+			}
+		else {
+			rect.setFill(Color.TRANSPARENT);
+		}
+		if(border == true) {
+			rect.setStroke(Color.BLUE);
+			rect.setStrokeWidth(1);	
+		}	
+		rect.setArcHeight(30.0);
+		rect.setArcWidth(20.0);   
+		Group rectangle = new Group();
+		rectangle.getChildren().add(rect);
+		rectangle.setLayoutX(layoutX);
+		rectangle.setLayoutY(layoutY);
+		rectangle.setViewOrder(5.0);
+		
+		return rectangle;
 	}
 	
 	
