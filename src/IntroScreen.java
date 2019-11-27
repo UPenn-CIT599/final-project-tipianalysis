@@ -194,6 +194,9 @@ public class IntroScreen{
 			    String genderInput = genderSelection.getText();
 			    user.setName(nameInput);
 			    user.setAge(ageInput);
+			    if(user.getAge() <= 0) {
+			    	throw new RuntimeException("Negative Age");
+			    }
 			    user.setSex(genderInput);
 				SurveyPage surveyPage = new SurveyPage();
 				introStage.setScene(surveyPage.showSurveyPage(user,introStage));
