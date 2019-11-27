@@ -39,7 +39,7 @@ public class ResultsViewerRunner extends Application {
         user.setUserScoresAndMetrics(traitArray);
 
         ResultsViewer resultsViewer = new ResultsViewer(user);
-        click.setOnAction(e -> resultsViewer.createStage());
+        //click.setOnAction(e -> resultsViewer.createStage());
         hbox.getChildren().addAll(click);
         primaryStage.setScene(scene);
         primaryStage.show();

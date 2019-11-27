@@ -39,10 +39,10 @@ public class ResultsViewer {
     /**
      * Method, creates window/stage to show Users TIPI Profile
      */
-    public void createStage() {
+    public Scene createStage(Stage introPrimaryStage) {
 
         // Create Stage
-        Stage primaryStage = new Stage();
+        Stage primaryStage = introPrimaryStage;
 
         primaryStage.setMinHeight(550);
         primaryStage.setMaxHeight(550);
@@ -141,7 +141,8 @@ public class ResultsViewer {
 
         // Make Scene visible
         primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.show();
+		return scene;
     }
 
     /**
@@ -385,7 +386,7 @@ public class ResultsViewer {
         gpUser.addColumn(0, lblName, lblSex, lblAge);
 
         // Add Text to second column
-        gpUser.addColumn(1, txtName, txtAge, txtSex);
+        gpUser.addColumn(1, txtName, txtSex, txtAge);
 
         //    // Add additional margin
         //

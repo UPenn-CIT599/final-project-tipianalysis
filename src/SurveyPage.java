@@ -59,14 +59,14 @@ public class SurveyPage{
 	User surveyUser;
 	private int stageX = 1000;
 	private int stageY = 900;
-	private Stage survey = new Stage();
+	//private Stage survey = new Stage();
 	private BorderPane surveyBorderPane = new BorderPane();
     private Scene surveyScene = new Scene(surveyBorderPane, stageX, stageY);
 	
 	/**
 	 * This method manages the structure of the UI for the survey page.
 	 */
-	public Scene showSurveyPage(User user){
+	public Scene showSurveyPage(User user, Stage primaryStage){
 
 				//Create Stage and border
 				Text pageTitle = new Text("Personality Survey");
@@ -242,13 +242,22 @@ public class SurveyPage{
 						LinkedHashMap<String,Integer> initialScores = new LinkedHashMap<String, Integer>();
 						
 						initialScores = getInputLinkedHashMap(inputs);
+						TipiLogic tipiLog = new TipiLogic(user, initialScores);
 						
-						
+						user.setUserScoresAndMetrics(tipiLog.runLogic());
 						System.out.println();
-						IntroScreen introStage = new IntroScreen();
-						ResultsViewerRunner resultsPage = new ResultsViewerRunner();
-						//resultsPage.start(introStage.getStage());
-						//introStage.getStage().setScene(resultsPage.start(introStage.getStage()));
+						System.out.println(user.getUserScoresAndMetrics()[0].getName());
+						System.out.println(user.getUserScoresAndMetrics()[0].getUserScore());
+						System.out.println(user.getUserScoresAndMetrics()[1].getName());
+						System.out.println(user.getUserScoresAndMetrics()[1].getUserScore());
+						System.out.println(user.getUserScoresAndMetrics()[2].getName());
+						System.out.println(user.getUserScoresAndMetrics()[2].getUserScore());
+						System.out.println(user.getUserScoresAndMetrics()[3].getName());
+						System.out.println(user.getUserScoresAndMetrics()[3].getUserScore());
+						System.out.println(user.getUserScoresAndMetrics()[4].getName());
+						System.out.println(user.getUserScoresAndMetrics()[4].getUserScore());
+						ResultsViewer resultsPage = new ResultsViewer(user);
+						primaryStage.setScene(resultsPage.createStage(primaryStage));
 
 
 					}

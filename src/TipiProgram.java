@@ -42,7 +42,8 @@ public class TipiProgram extends Application {
         IntroScreen introPage = new IntroScreen();
         introPage.start();
         
-        
+        //ResultsViewerRunner results = new ResultsViewerRunner();
+        //results.start(introPage.getStage());
         //User user = new User("Tester", 30, "male");
         //ResultsViewer resultsViewer = new ResultsViewer();
         //click.setOnAction(e -> resultsViewer.createStage(user));

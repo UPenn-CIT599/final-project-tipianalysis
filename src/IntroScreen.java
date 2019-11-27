@@ -64,7 +64,6 @@ public class IntroScreen{
 	 * class. It provides a brief introduction to the user on what he/she can
 	 * expect, and then it allows them to continue on to the survey page with 
 	 * a quick button click.
-	 * @return 
 	 */
 	public Scene start() {
 		
@@ -197,7 +196,7 @@ public class IntroScreen{
 			    user.setAge(ageInput);
 			    user.setSex(genderInput);
 				SurveyPage surveyPage = new SurveyPage();
-				introStage.setScene(surveyPage.showSurveyPage(user));
+				introStage.setScene(surveyPage.showSurveyPage(user,introStage));
 				
 			}
 			catch(RuntimeException e1) {
