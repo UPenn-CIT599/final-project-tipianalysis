@@ -27,7 +27,7 @@ public class ResultsViewerRunner extends Application {
         User user = new User("Tester", 30, "male");
 
         // Traits Data for Testing
-        String[] traitNames = new String[]{"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness to Experiences"};
+        String[] traitNames = new String[]{"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness"};
         String[] peerComparison = new String[]{"Low", "High", "Average", "Low", "Average"};
         Trait[] traitArray = new Trait[5];
 

@@ -106,10 +106,10 @@ public class ResultsViewer {
         ExitBtn.setText("Exit Application");
         ExitBtn.setOnAction(e -> Platform.exit());
 
-        // Create Return Questionnaire button
-        Button ReturnBtn = new Button();
-        ReturnBtn.setText("Return to Questionnaire");
-        ReturnBtn.setOnAction(e -> primaryStage.close());
+//        // Create Return Questionnaire button
+//        Button ReturnBtn = new Button();
+//        ReturnBtn.setText("Return to Questionnaire");
+//        ReturnBtn.setOnAction(e -> primaryStage.close());
 
         // Centrally align buttons
         bottomHBox.setAlignment(Pos.CENTER);
@@ -118,11 +118,11 @@ public class ResultsViewer {
 
         // Set Preferred Width for Buttons and Min. Width
         ExportBtn.setPrefWidth(150);
-        ReturnBtn.setPrefWidth(150);
+//        ReturnBtn.setPrefWidth(150);
         ExitBtn.setPrefWidth(150);
 
         // Add Buttons to hbox node
-        bottomHBox.getChildren().addAll(ExportBtn, ReturnBtn, ExitBtn);
+        bottomHBox.getChildren().addAll(ExportBtn, ExitBtn);
 
         // Visual Separator
         Separator linetop = new Separator();
@@ -335,7 +335,7 @@ public class ResultsViewer {
         //    box.setBackground(new Background(myBF));
 
         Scene scene = new Scene(gp);
-        stage.setTitle("TIPI Traits Definition and Implications");
+        stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
         stage.setScene(scene);
 
         stage.show();

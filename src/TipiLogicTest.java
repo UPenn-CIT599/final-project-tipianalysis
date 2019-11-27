@@ -4,8 +4,6 @@ import java.util.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.sun.tools.javac.util.Assert;
-
 class TipiLogicTest {
 
 	@Test
