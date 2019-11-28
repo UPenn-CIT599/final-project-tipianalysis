@@ -339,6 +339,9 @@ public class ResultsViewer {
         Scene scene = new Scene(gp);
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
         stage.setScene(scene);
+        //set window icon for stage
+        Image brain = new Image(getClass().getResourceAsStream("brain.png"));
+        stage.getIcons().add(brain);
 
         stage.show();
     }
