@@ -54,8 +54,6 @@ public class ResultsViewer {
         // Add CSS Style Class for borderpane
         rootNode.getStyleClass().add("vbox");
 
-        // Add Padding to BorderPane - distance to Window Edge
-        //  pane.setPadding(new Insets(15, 20, 10, 20));
 
         // Add Title to PrimaryStage
         primaryStage.setTitle("TIPI Analysis Results");
@@ -105,11 +103,6 @@ public class ResultsViewer {
         Button ExitBtn = new Button();
         ExitBtn.setText("Exit Application");
         ExitBtn.setOnAction(e -> Platform.exit());
-
-//        // Create Return Questionnaire button
-//        Button ReturnBtn = new Button();
-//        ReturnBtn.setText("Return to Questionnaire");
-//        ReturnBtn.setOnAction(e -> primaryStage.close());
 
         // Centrally align buttons
         bottomHBox.setAlignment(Pos.CENTER);
@@ -216,7 +209,7 @@ public class ResultsViewer {
         stage.setMinWidth(700);
         stage.setMinHeight(200);
 
-        // Trait One
+        // Trait Extraversion
         Label lblExtraVersion = new Label("Extraversion");
         Text txtExtraVersion =
                 new Text(
@@ -237,7 +230,7 @@ public class ResultsViewer {
                                 "situations.");
         txtExtraVersion.setWrappingWidth(600);
 
-        // Trait One
+        // Trait Emotion
         Label lblEmotion = new Label("Emotional stability");
         Text txtEmotion =
                 new Text(
@@ -250,7 +243,7 @@ public class ResultsViewer {
                                 + "dispositional anxiety or sadness.");
         txtEmotion.setWrappingWidth(600);
 
-        // Trait One
+        // Trait Openness
         Label lblOpenness = new Label("Openness");
         Text txtOpenness =
                 new Text(
@@ -266,7 +259,7 @@ public class ResultsViewer {
 
         txtOpenness.setWrappingWidth(600);
 
-        // Trait One
+        // Trait Agreeableness
         Label lblAgree = new Label("Agreeableness");
         Text txtAgree =
                 new Text(
@@ -285,7 +278,7 @@ public class ResultsViewer {
                                 "which can be seen as argumentative or untrustworthy");
         txtAgree.setWrappingWidth(600);
 
-        // Trait One
+        // Trait Conscientiousness
         Label lblConscious = new Label("Conscientiousness");
         Text txtConscious =
                 new Text("The tendency to be meticulous and organized in all aspects of one’s life, display self-discipline, " +
@@ -323,18 +316,10 @@ public class ResultsViewer {
 
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setMinWidth(100);
-        //    ColumnConstraints col2 = new ColumnConstraints();
-        //    col2.setMinWidth(400);
         gp.getColumnConstraints().addAll(col1);
 
         // Add Padding to box - distance to Window Edge
         gp.setPadding(new Insets(20, 20, 20, 20));
-
-        //    // Set Background of scene
-        //    BackgroundFill myBF =
-        //        new BackgroundFill(Color.WHITE, new CornerRadii(1), new Insets(0.0));
-        //
-        //    box.setBackground(new Background(myBF));
 
         Scene scene = new Scene(gp);
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
@@ -346,6 +331,10 @@ public class ResultsViewer {
         stage.show();
     }
 
+    /**
+     * Helper Method. Generates GridPane Module that holds User Information
+     * @return GridPane
+     */
     private GridPane getUserInfo() {
 
         // Part On of User Summary - Static Info
@@ -360,18 +349,8 @@ public class ResultsViewer {
         // Add styleclass for header
         userHeader.getStyleClass().add("sectionHeader");
 
-        // Change Font of title
-        //    userHeader.setFont(Font.font(null, FontWeight.BOLD, 15));
-
         // Header spans over two columns
         gpUser.setColumnSpan(userHeader, 2);
-
-        // Add Padding
-        // gpUser.setPadding(new Insets(10));
-
-        // Add Padding between Rows and Columns
-        //    gpUser.setHgap(10);
-        //    gpUser.setVgap(10);
 
         // Create Labels for Pane
         Label lblName = new Label("Name:");
@@ -392,13 +371,14 @@ public class ResultsViewer {
         // Add Text to second column
         gpUser.addColumn(1, txtName, txtSex, txtAge);
 
-        //    // Add additional margin
-        //
-        //    gpUser.setPadding(new Insets(10, 0, 0, 0));
-
         return gpUser;
     }
 
+
+    /**
+     * Helper Method. Produces GridPane that holds Tipi Profile vs. Peers of user
+     * @return GridPane
+     */
     private GridPane getUserTipiProfile() {
 
         // Part On of User Profile - Static Info
@@ -437,17 +417,6 @@ public class ResultsViewer {
         // Align Header
         headerBox.setAlignment(Pos.CENTER_LEFT);
 
-        // headerBox to span over two columns
-        gpUserTipi.setColumnSpan(headerBox, 2);
-
-        //    // Add Padding
-        //    gpUserTipi.setPadding(new Insets(10));
-
-        //    // Add Padding between Rows and Columns
-        //    gpUserTipi.setHgap(10);
-        //    gpUserTipi.setVgap(10);
-
-
         // counter to position labels, start at one as first row (index 0) is the header
         int i = 1;
 
@@ -468,6 +437,11 @@ public class ResultsViewer {
         return gpUserTipi;
     }
 
+
+    /**
+     * Helper Method. Returns HBox that holds Chart visualizing users TIPI Results vs. Peers
+     * @return HBox with barChart
+     */
     private HBox createChartModule() {
 
         // Create TipiChart object
