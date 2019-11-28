@@ -30,6 +30,9 @@
     -fx-padding: 20 0 0 0;
 }
 
+.gridpane2 {
+    -fx-padding: 50;
+}
 
 .chart {
     /*-fx-background-color: #dafdff;*/

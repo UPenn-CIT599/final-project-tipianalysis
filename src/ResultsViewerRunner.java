@@ -36,13 +36,23 @@ public class ResultsViewerRunner extends Application {
             traitArray[i]=trait;
         }
 
+
         user.setUserScoresAndMetrics(traitArray);
 
-        ResultsViewer resultsViewer = new ResultsViewer(user);
-        //click.setOnAction(e -> resultsViewer.createStage());
         hbox.getChildren().addAll(click);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
+        ResultsViewer resultsViewer = new ResultsViewer(user);
+        click.setOnAction(e -> {
+
+            Scene resultsScene = resultsViewer.createResultsScene(primaryStage);
+            primaryStage.setScene(resultsScene);
+            primaryStage.show();
+
+        });
+
 
 
     }

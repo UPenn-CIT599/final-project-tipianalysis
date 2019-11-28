@@ -309,17 +309,21 @@ public class ResultsViewer {
             gp.getRowConstraints().add(rConstraint);
         }
 
+
         // Add StyleSheet. Get current styles and overwrite/ with ones specified
         // toExternalForm() call. Scene expects stylesheet contents as a string, not the file, so we
         // need to provide the contents of our stylesheet instead.
         gp.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
+        // Add styleclass for gridpane
+        gp.getStyleClass().add("gridpane2");
 
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setMinWidth(100);
         gp.getColumnConstraints().addAll(col1);
 
         // Add Padding to box - distance to Window Edge
-        gp.setPadding(new Insets(20, 20, 20, 20));
+        gp.setPadding(new Insets(50));
+
 
         Scene scene = new Scene(gp);
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
