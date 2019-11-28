@@ -71,15 +71,28 @@ public class SurveyPage{
 				//Create Stage and border
 				Text pageTitle = new Text("Personality Survey");
 				pageTitle.setFont(Font.font("Veranda",30));
+				pageTitle.setFill(Color.rgb(255,255,255));
 				HBox title = new HBox();
 				title.getChildren().add(pageTitle);
-				title.setLayoutX(380);
-				title.setLayoutY(10);
+				title.setLayoutX(375);
+				title.setLayoutY(20);
+				
+				primaryStage.setMaxWidth(1000);
+				primaryStage.setMinWidth(1000);
+				
+				//Header Gray Box
+				Rectangle header = new Rectangle(1000,72);
+				header.setFill(Color.rgb(59,58,58));
+				    
+				Group headerGroup = new Group();
+				headerGroup.getChildren().add(header);
+				headerGroup.setLayoutX(0);
+				headerGroup.setLayoutY(0);
+				headerGroup.setViewOrder(5.0);
 				
 				Text description = new Text("Here is a number of personality traits "
-						+ "that may or may not apply to you. \n"
-						+"  \n"
-						+ "Please indicae the extent to which you agree or disagree "
+						+ "that may or may not apply to you. Please indicae the extent "
+						+ "to which you agree or disagree "
 						+ "that each one describes you. You should rate the extent "
 						+ "to which the pair of traits applies to you, even if one "
 						+ "characteristic applies more generally than the other.");
@@ -92,7 +105,7 @@ public class SurveyPage{
 				
 				instructions.getChildren().add(description);
 				instructions.setLayoutX(100);
-				instructions.setLayoutY(70);
+				instructions.setLayoutY(92);
 	
 				//Create Options labels:
 				Text option1 = new Text("Disagree Strongly");
@@ -130,66 +143,66 @@ public class SurveyPage{
 				HBox optionBox = new HBox(28);
 				optionBox.getChildren().addAll(option1,option2,option3,option4,
 											   option5,option6,option7);
-				optionBox.setLayoutX(200);
-				optionBox.setLayoutY(165);
+				optionBox.setLayoutX(220);
+				optionBox.setLayoutY(175);
 				optionBox.setStyle("-fx-background-color: #D3F4FF");
 				
 				//HBox and ToggleGroup A
-				LinkedHashMap<HBox, ToggleGroup> indexForRowA = createButtonBox('a',1,225);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowA = createButtonBox('a',1,245);
 				HBox row1 = getHBox(indexForRowA);
 				ToggleGroup toggleGroupA = getToggleGroup(indexForRowA);
 				ToggleGroup toggleGroup1 = toggleGroupA;
 
 				//HBox and ToggleGroup B
-				LinkedHashMap<HBox, ToggleGroup> indexForRowB = createButtonBox('b',2,275);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowB = createButtonBox('b',2,295);
 				HBox row2 = getHBox(indexForRowB);
 				ToggleGroup toggleGroupB = getToggleGroup(indexForRowB);
 				ToggleGroup toggleGroup2 = toggleGroupB;
 				
 				//HBox and ToggleGroup C
-				LinkedHashMap<HBox, ToggleGroup> indexForRowC = createButtonBox('c',3,325);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowC = createButtonBox('c',3,345);
 				HBox row3 = getHBox(indexForRowC);
 				ToggleGroup toggleGroupC = getToggleGroup(indexForRowC);
 				ToggleGroup toggleGroup3 = toggleGroupC;
 				
 				//HBox and ToggleGroup D
-				LinkedHashMap<HBox, ToggleGroup> indexForRowD = createButtonBox('d',4,375);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowD = createButtonBox('d',4,395);
 				HBox row4 = getHBox(indexForRowD);
 				ToggleGroup toggleGroupD = getToggleGroup(indexForRowD);
 				ToggleGroup toggleGroup4 = toggleGroupD;
 			
 				//HBox and ToggleGroup E
-				LinkedHashMap<HBox, ToggleGroup> indexForRowE = createButtonBox('e',5,425);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowE = createButtonBox('e',5,445);
 				HBox row5 = getHBox(indexForRowE);
 				ToggleGroup toggleGroupE = getToggleGroup(indexForRowE);
 				ToggleGroup toggleGroup5 = toggleGroupE;
 				
 				//HBox and ToggleGroup F
-				LinkedHashMap<HBox, ToggleGroup> indexForRowF = createButtonBox('f',6,475);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowF = createButtonBox('f',6,495);
 				HBox row6 = getHBox(indexForRowF);
 				ToggleGroup toggleGroupF = getToggleGroup(indexForRowF);
 				ToggleGroup toggleGroup6 = toggleGroupF;
 			
 				//HBox and ToggleGroup G
-				LinkedHashMap<HBox, ToggleGroup> indexForRowG = createButtonBox('g',7,525);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowG = createButtonBox('g',7,545);
 				HBox row7 = getHBox(indexForRowG);
 				ToggleGroup toggleGroupG = getToggleGroup(indexForRowG);
 				ToggleGroup toggleGroup7 = toggleGroupG;
 	
 				//HBox and ToggleGroup H
-				LinkedHashMap<HBox, ToggleGroup> indexForRowH = createButtonBox('h',8,575);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowH = createButtonBox('h',8,595);
 				HBox row8 = getHBox(indexForRowH);
 				ToggleGroup toggleGroupH = getToggleGroup(indexForRowH);
 				ToggleGroup toggleGroup8 = toggleGroupH;
 				
 				//HBox and ToggleGroup I
-				LinkedHashMap<HBox, ToggleGroup> indexForRowI = createButtonBox('i',9,625);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowI = createButtonBox('i',9,645);
 				HBox row9 = getHBox(indexForRowI);
 				ToggleGroup toggleGroupI = getToggleGroup(indexForRowI);
 				ToggleGroup toggleGroup9 = toggleGroupI;
 			
 				//HBox and ToggleGroup J
-				LinkedHashMap<HBox, ToggleGroup> indexForRowJ = createButtonBox('j',10,675);
+				LinkedHashMap<HBox, ToggleGroup> indexForRowJ = createButtonBox('j',10,695);
 				HBox row10 = getHBox(indexForRowJ);
 				ToggleGroup toggleGroupJ = getToggleGroup(indexForRowJ);
 				ToggleGroup toggleGroup10 = toggleGroupJ;
@@ -210,8 +223,8 @@ public class SurveyPage{
 				personalities.getChildren().addAll(extroverted,critical,
 						dependable, anxious,open,reserved,sympathetic,disorganized,
 						calm,conventional);
-				personalities.setLayoutX(30);
-				personalities.setLayoutY(225);
+				personalities.setLayoutX(48);
+				personalities.setLayoutY(245);
 				
 				
 				//Create continue button with functionality and styling
@@ -221,7 +234,7 @@ public class SurveyPage{
 				HBox resultsButton = new HBox();
 				resultsButton.getChildren().add(results);
 				resultsButton.setLayoutX(420);
-				resultsButton.setLayoutY(730);
+				resultsButton.setLayoutY(750);
 				
 				//Set button action
 				results.setOnAction(e -> {
@@ -245,17 +258,6 @@ public class SurveyPage{
 						TipiLogic tipiLog = new TipiLogic(user, initialScores);
 						
 						user.setUserScoresAndMetrics(tipiLog.runLogic());
-						System.out.println();
-						System.out.println(user.getUserScoresAndMetrics()[0].getName());
-						System.out.println(user.getUserScoresAndMetrics()[0].getUserScore());
-						System.out.println(user.getUserScoresAndMetrics()[1].getName());
-						System.out.println(user.getUserScoresAndMetrics()[1].getUserScore());
-						System.out.println(user.getUserScoresAndMetrics()[2].getName());
-						System.out.println(user.getUserScoresAndMetrics()[2].getUserScore());
-						System.out.println(user.getUserScoresAndMetrics()[3].getName());
-						System.out.println(user.getUserScoresAndMetrics()[3].getUserScore());
-						System.out.println(user.getUserScoresAndMetrics()[4].getName());
-						System.out.println(user.getUserScoresAndMetrics()[4].getUserScore());
 						ResultsViewer resultsPage = new ResultsViewer(user);
 						primaryStage.setScene(resultsPage.createStage(primaryStage));
 
@@ -275,19 +277,22 @@ public class SurveyPage{
 				});
 			
 				//Create blue rectangle objects
-				Group rectangle = createRectangle(850,90,80,60,true,true);
-				Group rectangle1 = createRectangle(915,40,10,215,false,true);
-				Group rectangle2 = createRectangle(915,40,10,310,false,true);
-				Group rectangle3 = createRectangle(915,40,10,410,false,true);
-				Group rectangle4 = createRectangle(915,40,10,510,false,true);
-				Group rectangle5 = createRectangle(915,40,10,610,false,true);
-				Group rectangle6 = createRectangle(920,490,8,213,true,false);
+				Group textRectangle = createRectangle(850,80,70,80,true,true);
+				Group rectangle1 = createRectangle(915,50,40,235,false,true);
+				Group rectangle2 = createRectangle(915,50,40,330,false,true);
+				Group rectangle3 = createRectangle(915,50,40,430,false,true);
+				Group rectangle4 = createRectangle(915,50,40,530,false,true);
+				Group rectangle5 = createRectangle(915,50,40,630,false,true);
+				Group outerBlueRim = createRectangle(915,500,40,233,true,false);
 				
 				//Add all boxes to page
 				surveyBorderPane.getChildren().addAll(title,instructions,personalities,
 						optionBox,resultsButton,row1,row2,row3,row4,row5, row6,row7,row8,row9, row10,
-						rectangle,rectangle1,rectangle2,rectangle3,
-						rectangle4,rectangle5,rectangle6);
+						textRectangle,rectangle1,rectangle2,rectangle3,
+						rectangle4,rectangle5,outerBlueRim,headerGroup);
+				
+			    surveyBorderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
 				return(surveyScene);
 	}
 	/**
@@ -304,22 +309,22 @@ public class SurveyPage{
 			RadioButton item = (RadioButton) inputs.get(key).getSelectedToggle();
 			double index = item.getBoundsInParent().getMinX();
 			int score;
-			if(index < 106) {
+			if(index < 108) {
 				score = 1;
 			}
-			else if(index < 214) {
+			else if(index < 216) {
 				score = 2;
 			}
-			else if(index < 322) {
+			else if(index < 324) {
 				score = 3;
 			}
-			else if(index < 430) {
+			else if(index < 432) {
 				score = 4;
 			}
-			else if(index < 538) {
+			else if(index < 540) {
 				score = 5;
 			}
-			else if(index < 646) {
+			else if(index < 648) {
 				score = 6;
 			}
 			else {
@@ -365,7 +370,7 @@ public class SurveyPage{
 		HBox row_rowIndex = new HBox(90);
 		row_rowIndex.getChildren().addAll(letter1,letter2,letter3,
 				letter4,letter5,letter6,letter7);
-		row_rowIndex.setLayoutX(230);
+		row_rowIndex.setLayoutX(250);
 		row_rowIndex.setLayoutY(yVal);
 		
 		box.put(row_rowIndex, toggleGroup_rowIndex);
@@ -416,7 +421,7 @@ public class SurveyPage{
 		
 		Rectangle rect = new Rectangle(dimY,dimX);
 		if(fill == true) {
-			rect.setFill(Color.ALICEBLUE);
+			rect.setFill(Color.rgb(221,255,255));
 			}
 		else {
 			rect.setFill(Color.TRANSPARENT);

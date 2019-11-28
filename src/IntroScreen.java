@@ -53,7 +53,7 @@ public class IntroScreen{
 	//Stage width
 	private int stageX = 800;
 	//Stage height
-	private int stageY = 900;
+	private int stageY = 800;
 	//Instantiate Intro Stage
 	private Stage introStage = new Stage();
 	//Instantiate User Class
@@ -76,7 +76,8 @@ public class IntroScreen{
 		introStage.setScene(scene);
 		//set title of stage
 		introStage.setTitle("TIPI Analysis Survey");
-		
+		introStage.setMaxWidth(800);
+		introStage.setMinWidth(800);
 		
 		/**
 		 * Page Title Text
@@ -85,8 +86,8 @@ public class IntroScreen{
 		GridPane introGrid = new GridPane();
 	    Text title = new Text("TIPI Analyzer");
 	    // Change Font of title
-	    title.setFont(Font.font(null, FontWeight.BOLD, 30));
-	    title.setFill(Color.BLUE);
+	    title.setFont(Font.font("Arial Rounded MT", FontWeight.BOLD, 30));
+	    title.setFill(Color.WHITE);
 	    introGrid.add(title,0,0);
 	    HBox titleBox = new HBox(title);
 	    titleBox.setLayoutX(315);
@@ -128,7 +129,7 @@ public class IntroScreen{
 	    bodyBox1.getChildren().add(bodyText1);
 	    bodyBox1.setAlignment(Pos.CENTER);
 	    bodyBox1.setLayoutX(400);
-	    bodyBox1.setLayoutY(300);
+	    bodyBox1.setLayoutY(320);
 	    bodyBox1.setBackground(new Background(new BackgroundFill(Color.DEEPPINK,null,null)));
 	    
 	    
@@ -140,7 +141,7 @@ public class IntroScreen{
 	    HBox textBox = new HBox();
 	    textBox.getChildren().addAll(nameField);
 	    textBox.setLayoutX(320);
-	    textBox.setLayoutY(500);
+	    textBox.setLayoutY(520);
 	    textBox.setMinWidth(800);
 	    
 	    RadioButton male = new RadioButton("Male ");
@@ -154,7 +155,7 @@ public class IntroScreen{
 	    
 	    HBox genderBox = new HBox(10);
 	    genderBox.setLayoutX(320);
-	    genderBox.setLayoutY(550);
+	    genderBox.setLayoutY(580);
 	    genderBox.getChildren().addAll(male,female);
 	    
 	    TextField ageField = new TextField();
@@ -163,7 +164,7 @@ public class IntroScreen{
 	    HBox ageBox = new HBox(10);
 	    ageBox.getChildren().addAll(ageField);
 	    ageBox.setLayoutX(320);
-	    ageBox.setLayoutY(600);
+	    ageBox.setLayoutY(640);
 	    ageBox.setMinWidth(800);
 	    
 	    Text nameLabel = new Text("First Name");
@@ -173,11 +174,11 @@ public class IntroScreen{
 	    age.setFont(Font.font("Veranda",14));
 	    nameLabel.setFont(Font.font("Veranda",14));
 
-	    VBox labels = new VBox(32);
+	    VBox labels = new VBox(42);
 	    labels.getChildren().addAll(nameLabel,gender,age);
-	    labels.setLayoutX(290);
-	    labels.setLayoutY(500);
-	    labels.setAlignment(Pos.BASELINE_RIGHT);
+	    labels.setLayoutX(390);
+	    labels.setLayoutY(565);
+	    labels.setAlignment(Pos.CENTER);
 	    
 		/**
 		 * Button functionality and placement
@@ -220,23 +221,48 @@ public class IntroScreen{
 		btn.setMinWidth(160);
 		HBox buttonHolder = new HBox();
 		buttonHolder.setLayoutX(315);
-		buttonHolder.setLayoutY(680);
+		buttonHolder.setLayoutY(700);
 		//Sets padding from bottom
 		buttonHolder.getChildren().add(btn);
 		
-		
-		Rectangle rect = new Rectangle(650,380);
-		rect.setFill(Color.ALICEBLUE);
-		rect.setStroke(Color.BLUE);
+		//Text Rectangle
+		Rectangle rect = new Rectangle(640,650);
+		rect.setFill(Color.rgb(221,255,255));
+		rect.setStroke(Color.rgb(151,255,255));;
 		rect.setStrokeWidth(1);
-		rect.setArcHeight(30.0);
-		rect.setArcWidth(20.0);
+		rect.setArcHeight(35.0);
+		rect.setArcWidth(25.0);
 		    
 		Group rectangle = new Group();
 		rectangle.getChildren().add(rect);
 		rectangle.setLayoutX(80);
-		rectangle.setLayoutY(90);
+		rectangle.setLayoutY(110);
 		rectangle.setViewOrder(5.0);
+		
+		//Input Rectangle
+		Rectangle inputRect = new Rectangle(490,190);
+		inputRect.setFill(Color.rgb(255,255,255));
+		inputRect.setStroke(Color.rgb(151,255,255));;
+		inputRect.setStrokeWidth(1);
+		inputRect.setArcHeight(35.0);
+		inputRect.setArcWidth(25.0);
+		    
+		Group inputRectangle = new Group();
+		inputRectangle.getChildren().add(inputRect);
+		inputRectangle.setLayoutX(150);
+		inputRectangle.setLayoutY(490);
+		inputRectangle.setViewOrder(5.0);
+		
+		
+		//Header Gray Box
+		Rectangle header = new Rectangle(900,75);
+		header.setFill(Color.rgb(59,58,58));
+		    
+		Group headerGroup = new Group();
+		headerGroup.getChildren().add(header);
+		headerGroup.setLayoutX(0);
+		headerGroup.setLayoutY(0);
+		headerGroup.setViewOrder(5.0);
 		
 		//Gender Image
 		Image image = null;
@@ -249,8 +275,8 @@ public class IntroScreen{
         
         ImageView imageView = new ImageView(image);
         
-        imageView.setLayoutX(210);
-        imageView.setLayoutY(540);
+        imageView.setLayoutX(265);
+        imageView.setLayoutY(570);
         imageView.setFitHeight(45);
         imageView.setFitWidth(45);
         imageView.setPreserveRatio(true);
@@ -268,8 +294,8 @@ public class IntroScreen{
               
         ImageView imageView2 = new ImageView(image2);
               
-        imageView2.setLayoutX(175);
-        imageView2.setLayoutY(490);
+        imageView2.setLayoutX(265);
+        imageView2.setLayoutY(515);
         imageView2.setFitHeight(40);
         imageView2.setFitWidth(40);
         imageView2.setPreserveRatio(true);
@@ -287,8 +313,8 @@ public class IntroScreen{
               
         ImageView imageView3 = new ImageView(image3);
               
-        imageView3.setLayoutX(210);
-        imageView3.setLayoutY(590);
+        imageView3.setLayoutX(263);
+        imageView3.setLayoutY(630);
         imageView3.setFitHeight(40);
         imageView3.setFitWidth(40);
         imageView3.setPreserveRatio(true);
@@ -297,8 +323,11 @@ public class IntroScreen{
         
         
 	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,
-	    		labels,buttonHolder,rectangle,img,img2,img3);
+	    		labels,buttonHolder,rectangle,img,img2,img3,headerGroup,inputRectangle);
 		
+	  
+	    introBorderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+	    
 		introStage.setScene(scene);
 		
 		//Show the window
