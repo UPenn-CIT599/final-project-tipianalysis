@@ -39,7 +39,7 @@ public class ResultsViewer {
     /**
      * Method, creates window/stage to show Users TIPI Profile
      */
-    public Scene createStage(Stage introPrimaryStage) {
+    public Scene createResultsScene(Stage introPrimaryStage) {
 
         // Create Stage
         Stage primaryStage = introPrimaryStage;
