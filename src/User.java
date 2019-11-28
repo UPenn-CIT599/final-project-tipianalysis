@@ -52,15 +52,27 @@ public class User {
 	public String getSex() {
 		return sex;
 	}
-	
+
+    /**
+     * Sets the name of the user
+     * @param uname
+     */
 	public void setName(String uname) {
 		this.name = uname;
 	}
-	
+
+    /**
+     * sets the age of the user
+     * @param uage
+     */
 	public void setAge(int uage) {
 		this.age = uage;
 	}
-	
+
+    /**
+     * Sets the gender of the user
+     * @param usex
+     */
 	public void setSex(String usex) {
 		this.sex = usex;
 	}
@@ -76,6 +88,12 @@ public class User {
 		return userScoresAndMetrics;
 	}
 
+    /**
+     * Sets the calculated scores from the TIPI survey and the comparison
+     * metrics from others in the user's peer group who have taken a TIPI
+     * analysis.
+     * @param userScoresAndMetrics
+     */
 	public void setUserScoresAndMetrics(Trait[] userScoresAndMetrics) {
 		this.userScoresAndMetrics = userScoresAndMetrics;
 	}

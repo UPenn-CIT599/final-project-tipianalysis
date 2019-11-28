@@ -297,10 +297,11 @@ public class ResultsViewer {
 
         GridPane gp = new GridPane();
         gp.addRow(0, lblExtraVersion, txtExtraVersion);
-        gp.addRow(1, lblEmotion, txtEmotion);
-        gp.addRow(2, lblOpenness, txtOpenness);
-        gp.addRow(3, lblAgree, txtAgree);
-        gp.addRow(4, lblConscious, txtConscious);
+        gp.addRow(1, lblAgree, txtAgree);
+        gp.addRow(2, lblConscious, txtConscious);
+        gp.addRow(3, lblEmotion, txtEmotion);
+        gp.addRow(4, lblOpenness, txtOpenness);
+
 
         // Add space between gp nodes
         gp.setHgap(20);
