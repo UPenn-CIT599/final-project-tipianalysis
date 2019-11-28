@@ -29,27 +29,10 @@ public class TipiProgram extends Application {
    * It handles the process flow of the application.
    */
   public void start(Stage primaryStage) {
-        //Mock-up: How to transition to results page
-        HBox hbox = new HBox();
-        Scene scene = new Scene(hbox);
-        //button to open results
-        Button click = new Button("Open Results");
-      
-		
 
-        
         //create user and resultsViewer object
         IntroScreen introPage = new IntroScreen();
         introPage.start();
-        
-        //ResultsViewerRunner results = new ResultsViewerRunner();
-        //results.start(introPage.getStage());
-        //User user = new User("Tester", 30, "male");
-        //ResultsViewer resultsViewer = new ResultsViewer();
-        //click.setOnAction(e -> resultsViewer.createStage(user));
-        //hbox.getChildren().addAll(click);
-        //primaryStage.setScene(scene);
-        //primaryStage.show();
 
 
     }
