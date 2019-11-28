@@ -229,6 +229,7 @@ public class SurveyPage{
 				
 				//Create continue button with functionality and styling
 				Button results = new Button("Save and Continue to Results");
+				results.setPrefWidth(150);
 				results.setWrapText(true);
 				results.setMinWidth(200);
 				HBox resultsButton = new HBox();

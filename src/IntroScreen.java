@@ -42,6 +42,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 
+
 /**
  * Provides the functionality and presentation for the Introduction screen that
  * the user will see.
@@ -185,6 +186,7 @@ public class IntroScreen{
 		 */
 		//Add a "Continue to Survey" button
 		Button btn = new Button("Continue to Survey");
+		btn.setPrefWidth(150);
 		//Make button actionable - send user to survey upon clicking and save their data
 		btn.setOnAction(e -> {
 		
@@ -332,6 +334,7 @@ public class IntroScreen{
 		
 		//Show the window
 		introStage.show();
+		
 		return(scene);
 	}
 
