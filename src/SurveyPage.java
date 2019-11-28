@@ -271,7 +271,7 @@ public class SurveyPage{
 						HBox errorBox = new HBox();
 						errorBox.setMinWidth(300);
 						errorBox.setLayoutX(410);
-						errorBox.setLayoutY(710);
+						errorBox.setLayoutY(780);
 						errorBox.getChildren().add(error);
 						surveyBorderPane.getChildren().add(errorBox);
 					}

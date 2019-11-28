@@ -212,7 +212,7 @@ public class IntroScreen{
 				HBox errorBox = new HBox();
 				errorBox.setMinWidth(300);
 				errorBox.setLayoutX(290);
-				errorBox.setLayoutY(650);
+				errorBox.setLayoutY(735);
 				errorBox.getChildren().add(error);
 				introBorderPane.getChildren().add(errorBox);
 			}
