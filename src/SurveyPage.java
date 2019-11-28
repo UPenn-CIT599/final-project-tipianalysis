@@ -303,7 +303,7 @@ public class SurveyPage{
 				score = 7;
 			}
 			finalScores.put(key,score);
-			System.out.println(key + ": " + finalScores.get(key));
+			//System.out.println(key + ": " + finalScores.get(key));
 			counter++;
 		}
 		return finalScores;	

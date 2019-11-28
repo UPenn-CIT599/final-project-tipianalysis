@@ -79,6 +79,9 @@ public class IntroScreen{
 		introStage.setTitle("TIPI Analysis Survey");
 		introStage.setMaxWidth(800);
 		introStage.setMinWidth(800);
+		//set window icon for stage
+        Image brain = new Image(getClass().getResourceAsStream("brain.png"));
+        introStage.getIcons().add(brain);
 		
 		/**
 		 * Page Title Text

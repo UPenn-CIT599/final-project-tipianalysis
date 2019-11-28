@@ -220,12 +220,12 @@ public class ResultsViewer {
         Label lblExtraVersion = new Label("Extraversion");
         Text txtExtraVersion =
                 new Text(
-                        "The tendency to be outgoing and high in social energy. haracterized by breadth of activities (as opposed to depth), " +
+                        "The tendency to be outgoing and high in social energy. Characterized by breadth of activities (as opposed to depth), " +
                                 "surgency from external activity/situations, and energy creation from external means. " +
                                 "The trait is marked by pronounced engagement with the external world. " +
                                 "Extraverts enjoy interacting with people, and are often perceived as full of energy. " +
                                 "They tend to be enthusiastic, action-oriented individuals. They possess high group visibility, " +
-                                "like to talk, and assert themselves.[40] Extraverted people may appear more dominant in social settings, " +
+                                "like to talk, and assert themselves. Extraverted people may appear more dominant in social settings, " +
                                 "as opposed to introverted people in this setting.\n"
                                 + "\n"
                                 + "Introverts have lower social engagement and energy levels than extraverts. " +
