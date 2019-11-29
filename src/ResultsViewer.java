@@ -210,22 +210,22 @@ public class ResultsViewer {
         stage.setMinHeight(200);
 
         // Trait Extraversion
-        Label lblExtraVersion = new Label("Extraversion");
+        Label lblExtraVersion = new Label("Extroversion");
         Text txtExtraVersion =
                 new Text(
                         "The tendency to be outgoing and high in social energy. Characterized by breadth of activities (as opposed to depth), " +
                                 "surgency from external activity/situations, and energy creation from external means. " +
                                 "The trait is marked by pronounced engagement with the external world. " +
-                                "Extraverts enjoy interacting with people, and are often perceived as full of energy. " +
+                                "Extroverts enjoy interacting with people, and are often perceived as full of energy. " +
                                 "They tend to be enthusiastic, action-oriented individuals. They possess high group visibility, " +
-                                "like to talk, and assert themselves. Extraverted people may appear more dominant in social settings, " +
+                                "like to talk, and assert themselves. Extroverted people may appear more dominant in social settings, " +
                                 "as opposed to introverted people in this setting.\n"
                                 + "\n"
-                                + "Introverts have lower social engagement and energy levels than extraverts. " +
+                                + "Introverts have lower social engagement and energy levels than extroverts. " +
                                 "They tend to seem quiet, low-key, deliberate, and less involved in the social world. " +
                                 "Their lack of social involvement should not be interpreted as shyness or depression; " +
-                                "instead they are more independent of their social world than extraverts. " +
-                                "Introverts need less stimulation, and more time alone than extraverts. " +
+                                "instead they are more independent of their social world than extroverts. " +
+                                "Introverts need less stimulation, and more time alone than extroverts. " +
                                 "This does not mean that they are unfriendly or antisocial; rather, they are reserved in social " +
                                 "situations.");
         txtExtraVersion.setWrappingWidth(600);
@@ -239,8 +239,8 @@ public class ResultsViewer {
                                 "They may be temperamental or easily angered, and they tend to be self-conscious and unsure of themselves.\n"
                                 + "\n"
                                 + "Individuals who score on the high end are more likely to feel confident, sure of " +
-                                "themselves, and adventurous. They may also be brave and unencumbered by worry or self-doubt. "
-                                + "dispositional anxiety or sadness.");
+                                "themselves, and adventurous. They may also be brave and unencumbered by worry or self-doubt, "
+                                + "anxiety or sadness.");
         txtEmotion.setWrappingWidth(600);
 
         // Trait Openness
@@ -255,7 +255,7 @@ public class ResultsViewer {
                                 "and more likely to engage in risky behaviour or drug taking. Moreover, " +
                                 "individuals with high openness are said to pursue self-actualization specifically by seeking out intense, " +
                                 "euphoric experiences. Conversely, those with low openness seek to gain fulfillment through perseverance and " +
-                                "are characterized as pragmatic and data-driven—sometimes even perceived to be dogmatic and closed-minded");
+                                "are characterized as pragmatic and data-driven - sometimes even perceived to be dogmatic and closed-minded");
 
         txtOpenness.setWrappingWidth(600);
 
@@ -274,7 +274,7 @@ public class ResultsViewer {
                                 "and are less likely to extend themselves for other people. " +
                                 "Sometimes their skepticism about others' motives causes them to be suspicious, " +
                                 "unfriendly, and uncooperative. " +
-                                "Low agreeableness personalities are often competitive or challenging people, " +
+                                "Low agreeableness often makes for competitive or challenging people, " +
                                 "which can be seen as argumentative or untrustworthy");
         txtAgree.setWrappingWidth(600);
 
