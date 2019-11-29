@@ -206,7 +206,7 @@ public class SurveyPage{
 				HBox resultsButton = new HBox();
 				resultsButton.getChildren().add(results);
 				resultsButton.setLayoutX(420);
-				resultsButton.setLayoutY(750);
+				resultsButton.setLayoutY(740);
 				
 				//Set button action
 				results.setOnAction(e -> {
@@ -241,8 +241,8 @@ public class SurveyPage{
 						error.setFill(Color.web("#FF1000"));
 						HBox errorBox = new HBox();
 						errorBox.setMinWidth(300);
-						errorBox.setLayoutX(410);
-						errorBox.setLayoutY(780);
+						errorBox.setLayoutX(412);
+						errorBox.setLayoutY(772);
 						errorBox.getChildren().add(error);
 						surveyBorderPane.getChildren().add(errorBox);
 					}

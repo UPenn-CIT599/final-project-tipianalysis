@@ -54,7 +54,7 @@ public class IntroScreen{
 	//Stage width
 	private int stageX = 800;
 	//Stage height
-	private int stageY = 800;
+	private int stageY = 900;
 	//Instantiate Intro Stage
 	private Stage introStage = new Stage();
 	//Instantiate User Class
@@ -136,6 +136,14 @@ public class IntroScreen{
 	    bodyBox1.setLayoutY(320);
 	    bodyBox1.setBackground(new Background(new BackgroundFill(Color.DEEPPINK,null,null)));
 	    
+	    //Set disclaimer
+	    Text disclaimer = new Text("*Note: Must be at least 16 years old to use this program.");
+	    disclaimer.setFont(Font.font("Veranda",10));
+	    HBox disclaimerBox = new HBox();
+	    disclaimerBox.getChildren().add(disclaimer);
+	    disclaimerBox.setLayoutX(260);
+	    disclaimerBox.setLayoutY(770);
+	    disclaimerBox.setViewOrder(0.0);
 	    
 	    introBorderPane.getChildren().add(bodyBox1);
 	    
@@ -159,8 +167,9 @@ public class IntroScreen{
 	    
 	    HBox genderBox = new HBox(10);
 	    genderBox.setLayoutX(320);
-	    genderBox.setLayoutY(580);
+	    genderBox.setLayoutY(585);
 	    genderBox.getChildren().addAll(male,female);
+	    genderBox.setViewOrder(0.0);
 	    
 	    TextField ageField = new TextField();
 	    ageField.setMinWidth(150);
@@ -172,7 +181,7 @@ public class IntroScreen{
 	    ageBox.setMinWidth(800);
 	    
 	    Text nameLabel = new Text("First Name");
-	    Text age = new Text("Age");
+	    Text age = new Text("*Age");
 	    Text gender = new Text("Sex");
 	    gender.setFont(Font.font("Veranda",14));
 	    age.setFont(Font.font("Veranda",14));
@@ -183,7 +192,7 @@ public class IntroScreen{
 	    labels.setLayoutX(390);
 	    labels.setLayoutY(565);
 	    labels.setAlignment(Pos.CENTER);
-	    
+	    labels.setViewOrder(3.0);
 		/**
 		 * Button functionality and placement
 		 */
@@ -200,7 +209,7 @@ public class IntroScreen{
 			    String genderInput = genderSelection.getText();
 			    user.setName(nameInput);
 			    user.setAge(ageInput);
-			    if(user.getAge() <= 0) {
+			    if(user.getAge() <= 15) {
 			    	throw new RuntimeException("Negative Age");
 			    }
 			    user.setSex(genderInput);
@@ -328,7 +337,8 @@ public class IntroScreen{
         
         
 	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,
-	    		labels,buttonHolder,rectangle,img,img2,img3,headerGroup,inputRectangle);
+	    		labels,buttonHolder,rectangle,img,img2,img3,headerGroup,inputRectangle,
+	    		disclaimerBox);
 		
 	  
 	    introBorderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
