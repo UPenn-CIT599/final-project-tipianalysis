@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * The class which performs all of the logic behind the Tipi analysis.
  * This includes producing the user's scores for the "Big 5 Personality Traits"
- * and showing the comparison of those scores to the user's peer group.
+ * and recording the comparison of those scores to the user's peer group.
  * @author michaelnarcisi
  */
 public class TipiLogic {
