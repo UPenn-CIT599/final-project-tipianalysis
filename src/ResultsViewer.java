@@ -103,7 +103,6 @@ public class ResultsViewer {
 
     // Set Preferred Width for Buttons and Min. Width
     ExportBtn.setPrefWidth(150);
-    //        ReturnBtn.setPrefWidth(150);
     ExitBtn.setPrefWidth(150);
 
     // Add Buttons to hbox node
@@ -125,7 +124,7 @@ public class ResultsViewer {
     scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
 
     // Make Scene visible
-    introPrimaryStage.setScene(scene);
+    //introPrimaryStage.setScene(scene);
     // primaryStage.show();
     return scene;
   }
@@ -133,15 +132,15 @@ public class ResultsViewer {
   /**
    * Helper Method, Allows user to export/print current view of stage
    *
-   * @param primarystage from which stage printerdialog shall be triggered
+   * @param primaryStage from which stage printerdialog shall be triggered
    * @param node node which shall be printed
    */
-  private void print(Stage primarystage, Node node) {
+  private void print(Stage primaryStage, Node node) {
 
     //    System.out.println("I am exporting");
     PrinterJob printNode = PrinterJob.createPrinterJob();
     if (printNode != null) {
-      printNode.showPrintDialog(primarystage);
+      printNode.showPrintDialog(primaryStage);
 
       // get picked printer
       Printer printer = printNode.getPrinter();
@@ -154,23 +153,23 @@ public class ResultsViewer {
       jobSettings.setPageLayout(pageLayout);
 
       // store primary stage width values to restore them
-      double width = primarystage.getWidth();
-      double height = primarystage.getHeight();
+      double width = primaryStage.getWidth();
+      double height = primaryStage.getHeight();
 
       // resize stage to printing size
       double pw = pageLayout.getPrintableWidth();
       double ph = pageLayout.getPrintableHeight();
-      primarystage.setWidth(pw);
-      primarystage.setHeight(ph);
+      primaryStage.setWidth(pw);
+      primaryStage.setHeight(ph);
 
       // check if printing was successful
       boolean success = printNode.printPage(node);
 
       // If printing was successful inform user accordingly
       if (success) {
-        // set primarystage to previous size
-        primarystage.setWidth(width);
-        primarystage.setHeight(height);
+        // set primaryStage to previous size
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
 
         // Create Info Box: confirming printing
         Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -196,7 +195,7 @@ public class ResultsViewer {
     stage.setMinHeight(200);
 
     // Trait Extraversion
-    Label lblExtraVersion = new Label("Extroversion");
+    Label lblExtraVersion = new Label("Extraversion");
     Text txtExtraVersion =
         new Text(
             "The tendency to be outgoing and high in social energy. Characterized by breadth of activities (as opposed to depth), "
@@ -403,6 +402,13 @@ public class ResultsViewer {
     // Hbox to hold Header and Info Icon
     HBox headerBox = new HBox(tipiHeader, info);
 
+
+    // Add User Profile HeaderBox to row 0
+    gpUserTipi.addRow(0, headerBox);
+
+    //Header Spans over 2 rows
+    GridPane.setColumnSpan(headerBox,2);
+
     // Align Header
     headerBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -420,8 +426,6 @@ public class ResultsViewer {
       i++;
     }
 
-    // Add User Profile HeaderBox to row 0
-    gpUserTipi.addRow(0, headerBox);
 
     return gpUserTipi;
   }
