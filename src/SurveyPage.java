@@ -183,7 +183,7 @@ public class SurveyPage{
 				Text critical = new Text("Critical, quarrelsome"); 
 				Text dependable = new Text("Dependable, self-disciplined"); 
 				Text anxious = new Text("Anxious, easily upset"); 
-				Text open = new Text("Open to expeiences, complex"); 
+				Text open = new Text("Open to experiences, complex");
 				Text reserved = new Text("Reserved, quiet"); 
 				Text sympathetic = new Text("Sympathetic, warm"); 
 				Text disorganized = new Text("Disorganized, careless"); 
