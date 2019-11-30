@@ -231,9 +231,7 @@ public class SurveyPage{
 						
 						user.setUserScoresAndMetrics(tipiLog.runLogic());
 						ResultsViewer resultsPage = new ResultsViewer(user);
-
-                        resultsPage.createResultsScene();
-
+						primaryStage.setScene(resultsPage.createResultsScene(primaryStage));
 
 
 					}
