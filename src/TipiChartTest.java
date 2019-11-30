@@ -1,8 +1,10 @@
+
 import javafx.scene.chart.XYChart;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 class TipiChartTest {
 
@@ -35,7 +37,12 @@ class TipiChartTest {
 
     //Required i.o. to be able to test private method
     TipiChart chart = new TipiChart();
-    XYChart.Series[] series = chart.mapToDataSeries(traitArray);
+    Class tipiClass = chart.getClass();
+    Method privateMapToDataSeriesMethod = tipiClass.getDeclaredMethod("mapToDataSeries", Trait[].class);
+    privateMapToDataSeriesMethod.setAccessible(true);
+    //Cast traitArray to Object so that is seen as one argument instead of an array with all arguments
+    XYChart.Series[] series = (XYChart.Series[]) privateMapToDataSeriesMethod.invoke(chart,(Object)traitArray);
+   // XYChart.Series[] series = chart.mapToDataSeries(traitArray);
 
     //extract two series
     XYChart.Series<String, Number> userData = series[0];
