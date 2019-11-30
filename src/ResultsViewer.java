@@ -35,11 +35,13 @@ public class ResultsViewer {
   }
 
   /** Method, creates window/stage to show Users TIPI Profile */
-  public Scene createResultsScene(Stage introPrimaryStage) {
+  public void createResultsScene() {
 
-    introPrimaryStage.setMinHeight(550);
-    introPrimaryStage.setMaxHeight(550);
-    introPrimaryStage.setWidth(1000);
+    Stage primaryStage = new Stage();
+
+    primaryStage.setMinHeight(550);
+    primaryStage.setMaxHeight(550);
+    primaryStage.setWidth(1000);
 
     // Create Root Pane / BorderPane
     VBox rootNode = new VBox();
@@ -48,7 +50,7 @@ public class ResultsViewer {
     rootNode.getStyleClass().add("vbox");
 
     // Add Title to PrimaryStage
-    introPrimaryStage.setTitle("TIPI Analysis Results");
+    primaryStage.setTitle("TIPI Analysis Results");
 
     // HEADER
     Text header = new Text("TIPI Results");
@@ -90,7 +92,7 @@ public class ResultsViewer {
     // Create Export button
     Button ExportBtn = new Button();
     ExportBtn.setText("Export Results");
-    ExportBtn.setOnAction(e -> print(introPrimaryStage, rootNode));
+    ExportBtn.setOnAction(e -> print(primaryStage, rootNode));
     // Create Exit Application button
     Button ExitBtn = new Button();
     ExitBtn.setText("Exit Application");
@@ -124,9 +126,9 @@ public class ResultsViewer {
     scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
 
     // Make Scene visible
-    //introPrimaryStage.setScene(scene);
-    // primaryStage.show();
-    return scene;
+    primaryStage.setScene(scene);
+    primaryStage.show();
+
   }
 
   /**

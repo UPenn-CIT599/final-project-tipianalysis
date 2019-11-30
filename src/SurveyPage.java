@@ -232,10 +232,7 @@ public class SurveyPage{
 						user.setUserScoresAndMetrics(tipiLog.runLogic());
 						ResultsViewer resultsPage = new ResultsViewer(user);
 
-						Stage stage = new Stage();
-						Scene scene = resultsPage.createResultsScene(stage);
-						stage.setScene(scene);
-						stage.show();
+                        resultsPage.createResultsScene();
 
 
 
