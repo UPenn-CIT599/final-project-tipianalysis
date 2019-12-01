@@ -142,45 +142,51 @@ public class ResultsViewer {
         //    System.out.println("I am exporting");
         PrinterJob printNode = PrinterJob.createPrinterJob();
         if (printNode != null) {
-            printNode.showPrintDialog(primaryStage);
+           // printNode.showPrintDialog(primaryStage);
 
-            // get picked printer
-            Printer printer = printNode.getPrinter();
+            //If user hits ok for printing
+            if (printNode.showPrintDialog(primaryStage) == true) {
 
-            // Customize print settings
-            JobSettings jobSettings = printNode.getJobSettings();
-            PageLayout pageLayout =
-                    printer.createPageLayout(
-                            Paper.A4, PageOrientation.REVERSE_LANDSCAPE, Printer.MarginType.EQUAL);
-            jobSettings.setPageLayout(pageLayout);
+                // get picked printer
+                Printer printer = printNode.getPrinter();
 
-            // store primary stage width values to restore them
-            double width = primaryStage.getWidth();
-            double height = primaryStage.getHeight();
+                // Customize print settings
+                JobSettings jobSettings = printNode.getJobSettings();
+                PageLayout pageLayout =
+                        printer.createPageLayout(
+                                Paper.A4, PageOrientation.REVERSE_LANDSCAPE, Printer.MarginType.EQUAL);
+                jobSettings.setPageLayout(pageLayout);
 
-            // resize stage to printing size
-            double pw = pageLayout.getPrintableWidth();
-            double ph = pageLayout.getPrintableHeight();
-            primaryStage.setWidth(pw);
-            primaryStage.setHeight(ph);
+                // store primary stage width values to restore them
+                double width = primaryStage.getWidth();
+                double height = primaryStage.getHeight();
 
-            // check if printing was successful
-            boolean success = printNode.printPage(node);
+                // resize stage to printing size
+                double pw = pageLayout.getPrintableWidth();
+                double ph = pageLayout.getPrintableHeight();
+                primaryStage.setWidth(pw);
+                primaryStage.setHeight(ph);
 
-            // If printing was successful inform user accordingly
-            if (success) {
-                // set primaryStage to previous size
-                primaryStage.setWidth(width);
-                primaryStage.setHeight(height);
+                // check if printing was successful
+                boolean success = printNode.printPage(node);
 
-                // Create Info Box: confirming printing
-                Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
-                printAlert.setTitle("Print Status");
-                // now header inside infobox
-                printAlert.setHeaderText(null);
-                printAlert.setContentText("Your Results have been exported successfully.");
-                printAlert.showAndWait();
+                // If printing was successful inform user accordingly
+                if (success) {
+                    // set primaryStage to previous size
+                    primaryStage.setWidth(width);
+                    primaryStage.setHeight(height);
 
+                    // Create Info Box: confirming printing
+                    Alert printAlert = new Alert(Alert.AlertType.INFORMATION);
+                    printAlert.setTitle("Print Status");
+                    // now header inside infobox
+                    printAlert.setHeaderText(null);
+                    printAlert.setContentText("Your Results have been exported successfully.");
+                    printAlert.showAndWait();
+
+                    printNode.endJob();
+                }
+            } else {
                 printNode.endJob();
             }
         }

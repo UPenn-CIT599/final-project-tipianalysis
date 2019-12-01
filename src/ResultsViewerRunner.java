@@ -17,41 +17,41 @@ public class ResultsViewerRunner extends Application {
     public void start(Stage primaryStage) {
 
 
-//        //Mock-up: How to transition to results page
-//        HBox hbox = new HBox();
-//        Scene scene = new Scene(hbox);
-//        //button to open results
-//        Button click = new Button("Open Results");
-//
-//
-//        User user = new User("Tester", 30, "male");
-//
-//        // Traits Data for Testing
-//        String[] traitNames = new String[]{"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness"};
-//        String[] peerComparison = new String[]{"Low", "High", "Average", "Low", "Average"};
-//        Trait[] traitArray = new Trait[5];
-//
-//        for(int i = 0;i<5;i++) {
-//            Trait trait = new Trait(traitNames[i], i, Math.random() * (i + 1), 0, 0, peerComparison[i]);
-//            traitArray[i]=trait;
-//        }
-//
-//
-//        user.setUserScoresAndMetrics(traitArray);
-//
-//        hbox.getChildren().addAll(click);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//
-//
-//        ResultsViewer resultsViewer = new ResultsViewer(user);
-//        click.setOnAction(e -> {
-//
-//            Scene resultsScene = resultsViewer.createResultsScene(primaryStage);
-//            primaryStage.setScene(resultsScene);
-//            primaryStage.show();
-//
-//        });
+        //Mock-up: How to transition to results page
+        HBox hbox = new HBox();
+        Scene scene = new Scene(hbox);
+        //button to open results
+        Button click = new Button("Open Results");
+
+
+        User user = new User("Tester", 30, "male");
+
+        // Traits Data for Testing
+        String[] traitNames = new String[]{"Extraversion", "Agreeableness", "Conscientiousness", "Emotional Stability", "Openness"};
+        String[] peerComparison = new String[]{"Low", "High", "Average", "Low", "Average"};
+        Trait[] traitArray = new Trait[5];
+
+        for(int i = 0;i<5;i++) {
+            Trait trait = new Trait(traitNames[i], i, Math.random() * (i + 1), 0, 0, peerComparison[i]);
+            traitArray[i]=trait;
+        }
+
+
+        user.setUserScoresAndMetrics(traitArray);
+
+        hbox.getChildren().addAll(click);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+
+        ResultsViewer resultsViewer = new ResultsViewer(user);
+        click.setOnAction(e -> {
+
+            Scene resultsScene = resultsViewer.createResultsScene(primaryStage);
+            primaryStage.setScene(resultsScene);
+            primaryStage.show();
+
+        });
 
 
 
