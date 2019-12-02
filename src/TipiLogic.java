@@ -90,9 +90,10 @@ public class TipiLogic {
 	/**
 	 * A helper method which calculates if the user's scores is average,
 	 * above average, or below average relative to the user's peer group.
-	 * This is done by calculating if the user's score is larger than one
-	 * standard deviation above their peer group's mean, smaller than one
-	 * standard deviation below the mean, or within that range.
+	 * This is done by calculating if the user's score is larger than 
+	 * three-fourths of one standard deviation above their peer group's mean,
+	 * smaller than three-fourths of one standard deviation below the mean,
+	 * or within that range.
 	 * @param score - The current user's score
 	 * @param mean - The mean score of other's in the user's peer group
 	 * @param stdDeviation - The standard deviation of scores in the user's
@@ -101,10 +102,10 @@ public class TipiLogic {
 	 * to their peers
 	 */
 	private String findPeerComparison(double score, double mean, double stdDeviation) {
-		if(score > mean + stdDeviation) {
+		if(score > mean + (0.75 * stdDeviation)) {
 			return "High";
 		}
-		else if(score < mean - stdDeviation) {
+		else if(score < mean - (0.75 * stdDeviation)) {
 			return "Low";
 		}
 		else {
