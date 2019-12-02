@@ -36,8 +36,8 @@ public class ResultsViewer {
      */
     public Scene createResultsScene(Stage introPrimaryStage) {
 
-        introPrimaryStage.setMinHeight(500);
-        introPrimaryStage.setMaxHeight(800);
+        introPrimaryStage.setMinHeight(550);
+        introPrimaryStage.setMaxHeight(550);
         introPrimaryStage.setWidth(1000);
 
         // Create Root Pane / BorderPane
