@@ -199,8 +199,10 @@ public class ResultsViewer {
         // Stage
         Stage stage = new Stage();
 
-        stage.setMinWidth(700);
-        stage.setMinHeight(200);
+        stage.setMinWidth(1000);
+        stage.setMaxWidth(1000);
+        stage.setMinHeight(300);
+
 
         // Trait Extraversion
         Label lblExtraVersion = new Label("Extraversion");
@@ -221,7 +223,7 @@ public class ResultsViewer {
                                 + "Introverts need less stimulation, and more time alone than extroverts. "
                                 + "This does not mean that they are unfriendly or antisocial; rather, they are reserved in social "
                                 + "situations.");
-        txtExtraVersion.setWrappingWidth(600);
+        txtExtraVersion.setWrappingWidth(700);
 
         // Trait Emotion
         Label lblEmotion = new Label("Emotional stability");
@@ -234,7 +236,7 @@ public class ResultsViewer {
                                 + "Individuals who score on the high end are more likely to feel confident, sure of "
                                 + "themselves, and adventurous. They may also be brave and unencumbered by worry or self-doubt, "
                                 + "anxiety or sadness.");
-        txtEmotion.setWrappingWidth(600);
+        txtEmotion.setWrappingWidth(700);
 
         // Trait Openness
         Label lblOpenness = new Label("Openness");
@@ -250,7 +252,7 @@ public class ResultsViewer {
                                 + "euphoric experiences. Conversely, those with low openness seek to gain fulfillment through perseverance and "
                                 + "are characterized as pragmatic and data-driven - sometimes even perceived to be dogmatic and closed-minded");
 
-        txtOpenness.setWrappingWidth(600);
+        txtOpenness.setWrappingWidth(700);
 
         // Trait Agreeableness
         Label lblAgree = new Label("Agreeableness");
@@ -269,10 +271,11 @@ public class ResultsViewer {
                                 + "unfriendly, and uncooperative. "
                                 + "Low agreeableness often makes for competitive or challenging people, "
                                 + "which can be seen as argumentative or untrustworthy");
-        txtAgree.setWrappingWidth(600);
+        txtAgree.setWrappingWidth(700);
 
         // Trait Conscientiousness
         Label lblConscious = new Label("Conscientiousness");
+        lblConscious.setWrapText(true);
         Text txtConscious =
                 new Text(
                         "The tendency to be meticulous and organized in all aspects of one’s life, display self-discipline, "
@@ -280,7 +283,7 @@ public class ResultsViewer {
                                 + "regulate, and direct their impulses. High conscientiousness is often perceived as being stubborn and focused. "
                                 + "Low conscientiousness is associated with flexibility and spontaneity, but can also appear as sloppiness and lack of reliability."
                                 + " High scores on conscientiousness indicate a preference for planned rather than spontaneous behavior.");
-        txtConscious.setWrappingWidth(600);
+       txtConscious.setWrappingWidth(700);
 
         GridPane gp = new GridPane();
         gp.addRow(0, lblExtraVersion, txtExtraVersion);
@@ -310,18 +313,22 @@ public class ResultsViewer {
         gp.getStyleClass().add("gridpane2");
 
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setMinWidth(100);
+        col1.setMinWidth(150);
         gp.getColumnConstraints().addAll(col1);
 
         // Add Padding to box - distance to Window Edge
         gp.setPadding(new Insets(50));
 
         Scene scene = new Scene(gp);
+
+
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
         stage.setScene(scene);
         // set window icon for stage
         Image brain = new Image(getClass().getResourceAsStream("brain.png"));
         stage.getIcons().add(brain);
+
+        ColumnConstraints col2 = new ColumnConstraints();
 
         stage.show();
     }
