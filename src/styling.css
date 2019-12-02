@@ -10,9 +10,17 @@
 
 }
 
+
+#text {
+    -fx-wrap-text: true;
+    -fx-font-weight: NORMAL;
+    -fx-pref-width: 600;
+}
+
 .label {
     -fx-font-weight: bold;
 }
+
 
 
 .button {

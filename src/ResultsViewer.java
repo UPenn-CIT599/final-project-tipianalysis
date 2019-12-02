@@ -6,10 +6,7 @@ import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,8 +36,8 @@ public class ResultsViewer {
      */
     public Scene createResultsScene(Stage introPrimaryStage) {
 
-        introPrimaryStage.setMinHeight(550);
-        introPrimaryStage.setMaxHeight(550);
+        introPrimaryStage.setMinHeight(500);
+        introPrimaryStage.setMaxHeight(800);
         introPrimaryStage.setWidth(1000);
 
         // Create Root Pane / BorderPane
@@ -199,15 +196,14 @@ public class ResultsViewer {
         // Stage
         Stage stage = new Stage();
 
-        stage.setMinWidth(1000);
-        stage.setMaxWidth(1000);
+        stage.setMinWidth(500);
+      stage.setMaxWidth(850);
         stage.setMinHeight(300);
-
 
         // Trait Extraversion
         Label lblExtraVersion = new Label("Extraversion");
-        Text txtExtraVersion =
-                new Text(
+        Label txtExtraVersion =
+                new Label(
                         "The tendency to be outgoing and high in social energy. Characterized by breadth of activities (as opposed to depth), "
                                 + "surgency from external activity/situations, and energy creation from external means. "
                                 + "The trait is marked by pronounced engagement with the external world. "
@@ -223,12 +219,12 @@ public class ResultsViewer {
                                 + "Introverts need less stimulation, and more time alone than extroverts. "
                                 + "This does not mean that they are unfriendly or antisocial; rather, they are reserved in social "
                                 + "situations.");
-        txtExtraVersion.setWrappingWidth(700);
+
 
         // Trait Emotion
         Label lblEmotion = new Label("Emotional stability");
-        Text txtEmotion =
-                new Text(
+        Label txtEmotion =
+                new Label(
                         "The tendency to be even in terms of emotions and to not experience much. Those low in emotional "
                                 + "stability are generally prone to anxiety, sadness, worry, and low self-esteem. "
                                 + "They may be temperamental or easily angered, and they tend to be self-conscious and unsure of themselves.\n"
@@ -236,12 +232,12 @@ public class ResultsViewer {
                                 + "Individuals who score on the high end are more likely to feel confident, sure of "
                                 + "themselves, and adventurous. They may also be brave and unencumbered by worry or self-doubt, "
                                 + "anxiety or sadness.");
-        txtEmotion.setWrappingWidth(700);
+
 
         // Trait Openness
         Label lblOpenness = new Label("Openness");
-        Text txtOpenness =
-                new Text(
+        Label txtOpenness =
+                new Label(
                         "The tendency to be interested in new ideas, people, art, and pretty much anything. "
                                 + "People who are open to experience are intellectually curious, open to emotion, "
                                 + "sensitive to beauty and willing to try new things. They tend to be, when compared to closed people, "
@@ -252,12 +248,11 @@ public class ResultsViewer {
                                 + "euphoric experiences. Conversely, those with low openness seek to gain fulfillment through perseverance and "
                                 + "are characterized as pragmatic and data-driven - sometimes even perceived to be dogmatic and closed-minded");
 
-        txtOpenness.setWrappingWidth(700);
 
         // Trait Agreeableness
         Label lblAgree = new Label("Agreeableness");
-        Text txtAgree =
-                new Text(
+        Label txtAgree =
+                new Label(
                         "The tendency to agree with people and to be generally kind in dealing with others. "
                                 + "Agreeable individuals value getting along with others. "
                                 + "They are generally considerate, kind, generous, trusting and trustworthy, helpful, "
@@ -271,19 +266,17 @@ public class ResultsViewer {
                                 + "unfriendly, and uncooperative. "
                                 + "Low agreeableness often makes for competitive or challenging people, "
                                 + "which can be seen as argumentative or untrustworthy");
-        txtAgree.setWrappingWidth(700);
 
         // Trait Conscientiousness
         Label lblConscious = new Label("Conscientiousness");
-        lblConscious.setWrapText(true);
-        Text txtConscious =
-                new Text(
+        Label txtConscious =
+                new Label(
                         "The tendency to be meticulous and organized in all aspects of one’s life, display self-discipline, "
                                 + "act dutifully, and strive for achievement against measures or outside expectations. It is related to the way in which people control, "
                                 + "regulate, and direct their impulses. High conscientiousness is often perceived as being stubborn and focused. "
                                 + "Low conscientiousness is associated with flexibility and spontaneity, but can also appear as sloppiness and lack of reliability."
                                 + " High scores on conscientiousness indicate a preference for planned rather than spontaneous behavior.");
-       txtConscious.setWrappingWidth(700);
+
 
         GridPane gp = new GridPane();
         gp.addRow(0, lblExtraVersion, txtExtraVersion);
@@ -301,7 +294,6 @@ public class ResultsViewer {
 
             RowConstraints rConstraint = new RowConstraints();
             rConstraint.setValignment(VPos.TOP);
-
             gp.getRowConstraints().add(rConstraint);
         }
 
@@ -312,14 +304,32 @@ public class ResultsViewer {
         // Add styleclass for gridpane
         gp.getStyleClass().add("gridpane2");
 
+        txtConscious.setId("text");
+        txtAgree.setId("text");
+        txtOpenness.setId("text");
+        txtExtraVersion.setId("text");
+        txtEmotion.setId("text");
+
+//                txtConscious.setWrapText(true);
+//        txtAgree.setWrapText(true);
+//        txtOpenness.setWrapText(true);
+//        txtExtraVersion.setWrapText(true);
+//        txtEmotion.setWrapText(true);
+
+
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setMinWidth(150);
+        col1.setMinWidth(120);
         gp.getColumnConstraints().addAll(col1);
 
         // Add Padding to box - distance to Window Edge
         gp.setPadding(new Insets(50));
 
-        Scene scene = new Scene(gp);
+        ScrollPane scroll = new ScrollPane(gp);
+
+        Scene scene = new Scene(scroll);
+        scroll.setFitToWidth(true);
+        //scroll.setFitToHeight(true);
+        scroll.setPrefSize(820, 850);
 
 
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
@@ -327,8 +337,6 @@ public class ResultsViewer {
         // set window icon for stage
         Image brain = new Image(getClass().getResourceAsStream("brain.png"));
         stage.getIcons().add(brain);
-
-        ColumnConstraints col2 = new ColumnConstraints();
 
         stage.show();
     }
