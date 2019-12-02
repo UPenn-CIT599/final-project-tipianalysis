@@ -90,6 +90,7 @@ public class ResultsViewer {
         Button ExportBtn = new Button();
         ExportBtn.setText("Export Results");
         ExportBtn.setOnAction(e -> print(introPrimaryStage, rootNode));
+
         // Create Exit Application button
         Button ExitBtn = new Button();
         ExitBtn.setText("Exit Application");
@@ -122,9 +123,7 @@ public class ResultsViewer {
         // Add StyleSheet. Get current styles and overwrite/ with ones specified
         scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
 
-        // Make Scene visible
-        //introPrimaryStage.setScene(scene);
-        // primaryStage.show();
+        //return scene
         return scene;
     }
 
@@ -136,12 +135,12 @@ public class ResultsViewer {
      */
     private void print(Stage primaryStage, Node node) {
 
-        //    System.out.println("I am exporting");
+        //create printjob
         PrinterJob printNode = PrinterJob.createPrinterJob();
         if (printNode != null) {
-           // printNode.showPrintDialog(primaryStage);
 
-            //If user hits ok for printing
+
+            //Open printing dialog and check if user hits ok for printing
             if (printNode.showPrintDialog(primaryStage) == true) {
 
                 // get picked printer
@@ -184,6 +183,7 @@ public class ResultsViewer {
                     printNode.endJob();
                 }
             } else {
+                //end job if user hits cancel in print window
                 printNode.endJob();
             }
         }
@@ -196,8 +196,9 @@ public class ResultsViewer {
         // Stage
         Stage stage = new Stage();
 
+        //set stage boundaries
         stage.setMinWidth(500);
-      stage.setMaxWidth(850);
+        stage.setMaxWidth(850);
         stage.setMinHeight(300);
 
         // Trait Extraversion
@@ -301,22 +302,19 @@ public class ResultsViewer {
         // toExternalForm() call. Scene expects stylesheet contents as a string, not the file, so we
         // need to provide the contents of our stylesheet instead.
         gp.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
+
         // Add styleclass for gridpane
         gp.getStyleClass().add("gridpane2");
 
+        //Apply style type "text" to Tipi Definitions. Id and not ".add" because otherwise style would be
+        //cumulative with already defined label style
         txtConscious.setId("text");
         txtAgree.setId("text");
         txtOpenness.setId("text");
         txtExtraVersion.setId("text");
         txtEmotion.setId("text");
 
-//                txtConscious.setWrapText(true);
-//        txtAgree.setWrapText(true);
-//        txtOpenness.setWrapText(true);
-//        txtExtraVersion.setWrapText(true);
-//        txtEmotion.setWrapText(true);
-
-
+        //Add constraint for First column such that first column has always enough width that it can be read
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setMinWidth(120);
         gp.getColumnConstraints().addAll(col1);
@@ -324,20 +322,28 @@ public class ResultsViewer {
         // Add Padding to box - distance to Window Edge
         gp.setPadding(new Insets(50));
 
+        //generate scrollpane such that definition window can also be read on smaller screens
         ScrollPane scroll = new ScrollPane(gp);
 
+        //add scrollpane to scene
         Scene scene = new Scene(scroll);
+
+        //make content in scrollpane resize to width of scrollPane. If true and if the contained node is a Resizable,
+        // then the node will be kept resized to match the width of the ScrollPane's viewport.
+        // If the contained node is not a Resizable, this value is ignored.
+        //resizes given that text for definitions was set as resizable
         scroll.setFitToWidth(true);
-        //scroll.setFitToHeight(true);
+        //Set preferred size for scrollpane
         scroll.setPrefSize(820, 850);
 
-
+        //Set Stage Title
         stage.setTitle("TIPI Traits Definition and Implications - Source: Wikipedia");
+        //add scene to stage
         stage.setScene(scene);
         // set window icon for stage
         Image brain = new Image(getClass().getResourceAsStream("brain.png"));
         stage.getIcons().add(brain);
-
+        //show stage
         stage.show();
     }
 
