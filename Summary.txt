@@ -1,0 +1,12 @@
+TIPI Analysis Program
+
+Description: 
+The Ten Item Personality Inventory (TIPI) is a tool used by psychologists to identify different personality types that can affect behavior. It scores people on 5 key traits that have been found to be successful predictors of behavior in a number of situations (i.e. social media use, managing relationships, financial decision-making, etc).  Our final project is a program that provides the user with a GUI that presents a series of questions using TIPI. These questions will be used to evaluate the user’s personality, and the results will be presented on the screen with the option given to export them.  The results will include the user’s scores for the big 5 personality traits and descriptions of each, as well as a comparison to cohort norm values as per the TIPI webpage.
+
+Work Breakdown:
+Andrew - Introduction and Survey GUI
+Mike - Program Logic and External File Reading
+Claudia - Results GUI and export functionality
+
+Link to GitHub Repository:
+https://github.com/UPenn-CIT599/final-project-tipianalysis
