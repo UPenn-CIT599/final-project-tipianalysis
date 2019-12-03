@@ -209,7 +209,7 @@ public class IntroScreen{
 			    String genderInput = genderSelection.getText();
 			    user.setName(nameInput);
 			    user.setAge(ageInput);
-			    if(user.getAge() <= 15) {
+			    if(ageValidator(user.getAge()) == false) {
 			    	throw new RuntimeException("Negative Age");
 			    }
 			    user.setSex(genderInput);
@@ -359,6 +359,15 @@ public class IntroScreen{
 		return introStage;
 	}
 
+	public static boolean ageValidator(int age) {
+		
+		if(age > 15) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	/**
 	 * Used for getting the user variable that is created in the IntroScreen
 	 * @return

@@ -1,8 +1,11 @@
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -109,7 +112,7 @@ public class SurveyPage{
 				option7.setFont(Font.font("Veranda",FontWeight.BOLD, 13));
 
 				
-				
+
 				//options.setFont(Font.font("Veranda",FontWeight.BOLD,10));
 				HBox optionBox = new HBox(28);
 				optionBox.getChildren().addAll(option1,option2,option3,option4,
@@ -355,12 +358,11 @@ public class SurveyPage{
 	 * @param boxAndToggle A Linked HashMap with an HBox and Toggle
 	 * @return Returns an HBox element.
 	 */
-	public HBox getHBox(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
+	public static HBox getHBox(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
 		HBox row = new HBox();
 		for(Object key : boxAndToggle.keySet()) {
 			row = (HBox) key;
 		}
-		
 		return row;
 	}
 	
