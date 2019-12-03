@@ -7,6 +7,10 @@ import java.util.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * A test class used to unit test the methods of the TipiLogic class.
+ * @author michaelnarcisi
+ */
 class TipiLogicTest {
 
 	// Initialize test instances of the parameters for the TipiLogic class.
@@ -142,5 +146,43 @@ class TipiLogicTest {
 		
 		// Ensure String is assigned correctly
 		assertEquals(testResult, "Low");
+	}
+	
+	@Test
+	
+	/**
+	 * The test case for the TipiLogic.getCurrentUser() method.
+	 */
+	void testGetCurrentUser() {
+		TipiLogic logicTestFive = new TipiLogic(testUser, testHashMap);
+		assertEquals("The user " + logicTestFive.getCurrentUser().getName() + " is a " + 
+		logicTestFive.getCurrentUser().getAge() + " year old " + logicTestFive.getCurrentUser().getSex(), 
+		"The user " + "Bob" + " is a " + "35" + " year old " + "Male");
+	}
+	
+	@Test
+	
+	/**
+	 * The test case for the TipiLogic.getUserResponses() method.
+	 */
+	void testGetUserResponses() {
+		TipiLogic logicTestSix = new TipiLogic(testUser, testHashMap);
+		// Initialize comparative HashMap
+		LinkedHashMap<String, Integer> anotherTestMap = new LinkedHashMap<String, Integer>();
+		anotherTestMap.put("Extraverted", 6);
+		anotherTestMap.put("Critical", 5);
+		anotherTestMap.put("Dependable", 4);
+		anotherTestMap.put("Anxious", 6);
+		anotherTestMap.put("Open", 7);
+		anotherTestMap.put("Reserved", 3);
+		anotherTestMap.put("Sympathetic", 2);
+		anotherTestMap.put("Disorganized", 5);
+		anotherTestMap.put("Calm", 2);
+		anotherTestMap.put("Conventional", 5);
+		
+		// Ensure all values of HashMap are correct
+		for(String traitName : anotherTestMap.keySet()) {
+			assertEquals(testHashMap.get(traitName), anotherTestMap.get(traitName));
+		}
 	}
 }
