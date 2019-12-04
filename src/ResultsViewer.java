@@ -324,6 +324,11 @@ public class ResultsViewer {
 
         //generate scrollpane such that definition window can also be read on smaller screens
         ScrollPane scroll = new ScrollPane(gp);
+        //show always vertical bar
+        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        //set background to white
+        scroll.setStyle("-fx-background: white");
+
 
         //add scrollpane to scene
         Scene scene = new Scene(scroll);

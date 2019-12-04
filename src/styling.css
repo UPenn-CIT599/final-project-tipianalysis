@@ -4,6 +4,12 @@
     -fx-padding: 10 20 10 20; /* !*spacing to window borders*!*/
 }
 
+
+.scroll-pane{
+    -fx-background-color: white;
+    -fx-padding: 10 20 10 20; /* !*spacing to window borders*!*/
+}
+
 .vbox {
     /*-fx-padding: 10 0 0 0;*/
     -fx-spacing: 10; /* spacing between nodes*/
