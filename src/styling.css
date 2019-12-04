@@ -5,8 +5,8 @@
 }
 
 
-.scroll-pane{
-    -fx-background-color: white;
+#scroll-pane{
+    -fx-background: white;
     -fx-padding: 10 20 10 20; /* !*spacing to window borders*!*/
 }
 

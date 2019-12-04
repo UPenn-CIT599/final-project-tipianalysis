@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -17,8 +18,12 @@ public class ResultsViewerRunner extends Application {
     public void start(Stage primaryStage) {
 
 
+
         //Mock-up: How to transition to results page
         HBox hbox = new HBox();
+
+
+
         Scene scene = new Scene(hbox);
         //button to open results
         Button click = new Button("Open Results");
