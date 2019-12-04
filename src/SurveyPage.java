@@ -34,8 +34,9 @@ public class SurveyPage{
 	private int stageX = 1000;
 	private int stageY = 900;
 	//private Stage survey = new Stage();
-	private BorderPane surveyBorderPane = new BorderPane();
-    private Scene surveyScene = new Scene(surveyBorderPane, stageX, stageY);
+	private Group surveyBorderPane = new Group();
+    ScrollPane scroll = new ScrollPane(surveyBorderPane);
+    private Scene surveyScene = new Scene(scroll, stageX, stageY);
 	
 	/**
 	 * This method manages the structure of the UI for the survey page.
@@ -50,7 +51,10 @@ public class SurveyPage{
 				title.getChildren().add(pageTitle);
 				title.setLayoutX(375);
 				title.setLayoutY(20);
-				
+			    scroll.setHmax(0);
+			    scroll.setStyle("-fx-background: rgb(255,255,255)");
+
+			    
 				primaryStage.setMaxWidth(1000);
 				primaryStage.setMinWidth(1000);
 				
@@ -119,7 +123,6 @@ public class SurveyPage{
 											   option5,option6,option7);
 				optionBox.setLayoutX(220);
 				optionBox.setLayoutY(175);
-				optionBox.setStyle("-fx-background-color: #D3F4FF");
 				
 				//HBox and ToggleGroup A
 				LinkedHashMap<HBox, ToggleGroup> indexForRowA = createButtonBox('a',1,245);
@@ -266,7 +269,6 @@ public class SurveyPage{
 						textRectangle,rectangle1,rectangle2,rectangle3,
 						rectangle4,rectangle5,outerBlueRim,headerGroup);
 				
-			    surveyBorderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
 				return(surveyScene);
 	}
@@ -299,7 +301,7 @@ public class SurveyPage{
 			else if(index < 540) {
 				score = 5;
 			}
-			else if(index < 648) {
+			else if(index < 640) {
 				score = 6;
 			}
 			else {

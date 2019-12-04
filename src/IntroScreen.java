@@ -11,11 +11,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ScrollEvent;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -72,8 +74,11 @@ public class IntroScreen{
 	     * Create Scene and Border
 	     */
 		//Create Stage and border
-		BorderPane introBorderPane = new BorderPane();
-	    Scene scene = new Scene(introBorderPane, stageX, stageY);
+		Group introBorderPane = new Group();
+	    ScrollPane scroll = new ScrollPane(introBorderPane);
+	    scroll.setHmax(0);
+	    scroll.setStyle("-fx-background: rgb(255,255,255)");
+	    Scene scene = new Scene(scroll, stageX, stageY);
 		introStage.setScene(scene);
 		//set title of stage
 		introStage.setTitle("TIPI Analysis Survey");
@@ -132,9 +137,8 @@ public class IntroScreen{
 	    HBox bodyBox1 = new HBox();
 	    bodyBox1.getChildren().add(bodyText1);
 	    bodyBox1.setAlignment(Pos.CENTER);
-	    bodyBox1.setLayoutX(400);
-	    bodyBox1.setLayoutY(320);
-	    bodyBox1.setBackground(new Background(new BackgroundFill(Color.DEEPPINK,null,null)));
+	    bodyBox1.setLayoutX(130);
+	    bodyBox1.setLayoutY(140);
 	    
 	    //Set disclaimer
 	    Text disclaimer = new Text("*Note: Must be at least 16 years old to use this program.");
@@ -189,8 +193,8 @@ public class IntroScreen{
 
 	    VBox labels = new VBox(42);
 	    labels.getChildren().addAll(nameLabel,gender,age);
-	    labels.setLayoutX(390);
-	    labels.setLayoutY(565);
+	    labels.setLayoutX(360);
+	    labels.setLayoutY(500);
 	    labels.setAlignment(Pos.CENTER);
 	    labels.setViewOrder(3.0);
 		/**
@@ -340,9 +344,7 @@ public class IntroScreen{
 	    		labels,buttonHolder,rectangle,img,img2,img3,headerGroup,inputRectangle,
 	    		disclaimerBox);
 		
-	  
-	    introBorderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-	    
+	  	    
 		introStage.setScene(scene);
 		
 		//Show the window
