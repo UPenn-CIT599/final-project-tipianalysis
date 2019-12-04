@@ -130,14 +130,14 @@ public class IntroScreen{
 	    		);
 	    
 	    
-	    bodyText1.setWrappingWidth(550);
+	    bodyText1.setWrappingWidth(570);
 	    bodyText1.setFont(Font.font("Veranda",15));
 	    bodyText1.setTextAlignment(TextAlignment.CENTER);
 	    
 	    HBox bodyBox1 = new HBox();
 	    bodyBox1.getChildren().add(bodyText1);
 	    bodyBox1.setAlignment(Pos.CENTER);
-	    bodyBox1.setLayoutX(130);
+	    bodyBox1.setLayoutX(110);
 	    bodyBox1.setLayoutY(140);
 	    
 	    //Set disclaimer

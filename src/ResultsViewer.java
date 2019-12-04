@@ -116,7 +116,7 @@ public class ResultsViewer {
     ScrollPane scroll = new ScrollPane(rootNode);
     // make that node fill entire width
     scroll.setFitToWidth(true);
-    //scroll.setFitToHeight(true);
+    // scroll.setFitToHeight(true);
     // set background white
     scroll.setStyle("-fx-background: white");
 
@@ -134,7 +134,7 @@ public class ResultsViewer {
     introPrimaryStage.setMaxHeight(580);
     introPrimaryStage.setWidth(1000);
     introPrimaryStage.setMinWidth(850);
-      introPrimaryStage.setMaxWidth(1500);
+    introPrimaryStage.setMaxWidth(1500);
 
     // adjust position of window on screen
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
