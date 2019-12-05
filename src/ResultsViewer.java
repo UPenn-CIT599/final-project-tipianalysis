@@ -4,7 +4,6 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.print.*;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -20,13 +19,13 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
- * Class responsible to visualize and export results of TIPI questionnaire, includes UserProfile,
- * User Tipi Scores relative to Peer Group as well as a visualization of his results in the form of
+ * Class responsible to visualize and print Results of TIPI questionnaire, includes UserProfile,
+ * User Tipi Scores relative to Peer Group as well as a visualization of this results in the form of
  * a Bar Chart
  */
 public class ResultsViewer {
 
-  // Instance Variables
+  // Instance Variable
   private User user;
 
   // Constructor
@@ -34,25 +33,31 @@ public class ResultsViewer {
     this.user = user;
   }
 
-  /** Method, creates window/stage to show Users TIPI Profile */
+  /**
+   * Method creates scene with the results from the questionnaire. Includes Users Name, age and
+   * gender, qualitative interpretation of Users TIPI Profile vs Peers, as well as a visual
+   * representation of the Useres TIPI scores vs. Peers in form of a bar chart. Scene includes,
+   * definition and interpretation help for the results via info icon, as well as option to print
+   * results an close the application.
+   */
   public Scene createResultsScene(Stage introPrimaryStage) {
 
     // Create Root Pane / BorderPane
     VBox rootNode = new VBox();
 
-    // Add CSS Style Class for borderpane
+    // Add CSS Style Class for vbox
     rootNode.getStyleClass().add("vbox");
 
     // Add Title to PrimaryStage
     introPrimaryStage.setTitle("TIPI Analysis Results");
 
-    // HEADER
+    // TOP SECTION - HEADER
     Text header = new Text("TIPI Results");
 
     // Change Font of title
     header.setFont(new Font(20));
 
-    // Add title to HBox to change padding
+    // Add Header to HBox
     HBox topHBox = new HBox(header);
 
     // Centrally align header
@@ -62,20 +67,24 @@ public class ResultsViewer {
     GridPane gpUserStatic = getUserInfo();
     GridPane gpUserTipi = getUserTipiProfile();
 
-    // Module Holding User Info
+    // Module/vBox Wrapping UserInfo and TipiProfile
     VBox userDataWrapper = new VBox(gpUserStatic, gpUserTipi);
 
+    // Set spacing between two nodes in vBox
     userDataWrapper.setSpacing(10);
 
     // Module Holding Chart
     HBox chartHBox = createChartModule();
 
-    // Main Container to hold User Profile and chart
+    // Main Container to hold User/TIPI Profile and chart
     BorderPane pane = new BorderPane();
 
+    // Add User/TIPI Profile to left side of BorderPane
     pane.setLeft(userDataWrapper);
+    // Add Chart to Center of BorderPane
     pane.setCenter(chartHBox);
 
+    // Instruct that HBox holding Chart should "growth" fill out empty space if window is enlarged
     HBox.setHgrow(chartHBox, Priority.ALWAYS);
 
     // BOTTOMMODULE
@@ -86,11 +95,13 @@ public class ResultsViewer {
     // Create Export button
     Button ExportBtn = new Button();
     ExportBtn.setText("Export Results");
+    // Define Action for Export Button
     ExportBtn.setOnAction(e -> print(introPrimaryStage, rootNode));
 
     // Create Exit Application button
     Button ExitBtn = new Button();
     ExitBtn.setText("Exit Application");
+    // Define Action for Button
     ExitBtn.setOnAction(e -> Platform.exit());
 
     // Centrally align buttons
@@ -105,27 +116,26 @@ public class ResultsViewer {
     // Add Buttons to hbox node
     bottomHBox.getChildren().addAll(ExportBtn, ExitBtn);
 
-    // Visual Separator
+    // Visual Separator - Create Horizontal Line
     Separator linetop = new Separator();
     Separator linebottom = new Separator();
 
-    // Add all children to root note
+    // Add all children to rootnode
     rootNode.getChildren().addAll(topHBox, linetop, pane, linebottom, bottomHBox);
 
-    // Add ScrollPane
+    // Add ScrollPane, wrap rootNode into a ScrollPane
     ScrollPane scroll = new ScrollPane(rootNode);
     // make that node fill entire width
     scroll.setFitToWidth(true);
-    // scroll.setFitToHeight(true);
     // set background white
     scroll.setStyle("-fx-background: white");
 
-    // Create Scene and link it with Root scene can have only one root node
+    // Create Scene and link it with ScrollPane can have only one node
     // If you omit the width and height, the scene will be sized automatically based on the size of
     // the elements contained
     Scene scene = new Scene(scroll);
 
-    // Add StyleSheet. Get current styles and overwrite/ with ones specified
+    // Add StyleSheet. Get current styles and overwrite/ with ones specified in file
     scene.getStylesheets().add(getClass().getResource("styling.css").toExternalForm());
 
     // adjust stage size
@@ -146,7 +156,7 @@ public class ResultsViewer {
   }
 
   /**
-   * Helper Method, Allows user to export/print current view of stage
+   * Helper Method, Allows user to export/print current view of stage for given node
    *
    * @param primaryStage from which stage printerdialog shall be triggered
    * @param node node which shall be printed
@@ -164,17 +174,20 @@ public class ResultsViewer {
         Printer printer = printNode.getPrinter();
 
         // Customize print settings
+        // get current settings
         JobSettings jobSettings = printNode.getJobSettings();
+        // define new settings
         PageLayout pageLayout =
             printer.createPageLayout(
                 Paper.A4, PageOrientation.REVERSE_LANDSCAPE, Printer.MarginType.EQUAL);
+        // add new settings
         jobSettings.setPageLayout(pageLayout);
 
         // store primary stage width values to restore them
         double width = primaryStage.getWidth();
         double height = primaryStage.getHeight();
 
-        // resize stage to printing size
+        // get available print space and resize stage to printing size
         double pw = pageLayout.getPrintableWidth();
         double ph = pageLayout.getPrintableHeight();
         primaryStage.setWidth(pw);
@@ -183,7 +196,7 @@ public class ResultsViewer {
         // check if printing was successful
         boolean success = printNode.printPage(node);
 
-        // If printing was successful inform user accordingly
+        // If printing was successful inform user accordingly and resize stage
         if (success) {
           // set primaryStage to previous size
           primaryStage.setWidth(width);
@@ -194,10 +207,18 @@ public class ResultsViewer {
           printAlert.setTitle("Print Status");
           // now header inside infobox
           printAlert.setHeaderText(null);
-          printAlert.setContentText("Your Results have been exported successfully.");
+          printAlert.setContentText("Your Results have been printed successfully.");
+          // show and wait till user closes alertbox
           printAlert.showAndWait();
-
+          // close print job
           printNode.endJob();
+        } else {
+          // end job
+          printNode.endJob();
+
+          // set primaryStage to previous size
+          primaryStage.setWidth(width);
+          primaryStage.setHeight(height);
         }
       } else {
         // end job if user hits cancel in print window
@@ -207,7 +228,8 @@ public class ResultsViewer {
   }
 
   /**
-   * Private method: Creates additional stage for pop up window to contain definitions of TipiTraits
+   * Private method: Creates additional stage for pop up window containing definitions of TIPI
+   * Traits and their interpretation
    */
   private void tipiDefinitions() {
     // Stage
@@ -373,7 +395,7 @@ public class ResultsViewer {
   }
 
   /**
-   * Helper Method. Generates GridPane Module that holds User Information
+   * Helper Method. Generates GridPane Module that holds User Information: Age, Name and Gender
    *
    * @return GridPane
    */
@@ -417,7 +439,7 @@ public class ResultsViewer {
   }
 
   /**
-   * Helper Method. Produces GridPane that holds Tipi Profile vs. Peers of user
+   * Helper Method. Produces GridPane that holds Tipi Profile vs. Peers of User
    *
    * @return GridPane
    */
@@ -435,14 +457,12 @@ public class ResultsViewer {
     // Add styleclass for header
     tipiHeader.getStyleClass().add("sectionHeader");
 
-    //    // Change Font of title
-    //    tipiHeader.setFont(Font.font(null, FontWeight.BOLD, 15));
-
     // Info Icon - Image has to be in src folder
     Image infoImg = new Image(getClass().getResourceAsStream("info.png"), 20, 20, true, true);
 
     // Make infoIcon a Button
     Button info = new Button("", new ImageView(infoImg));
+    // Set action to button, open new stage with TIPI Definitions
     info.setOnAction(e -> tipiDefinitions());
 
     // make background of button transparent
@@ -465,20 +485,21 @@ public class ResultsViewer {
     // Align Header
     headerBox.setAlignment(Pos.CENTER_LEFT);
 
-    // counter to position labels, start at one as first row (index 0) is the header
+    // counter to position labels in gridpane, start at 1 as first row (index 0) is the header
     int i = 1;
 
     // Create Labels and Text for Pane and add them the gridpane
     for (Trait trait : user.getUserScoresAndMetrics()) {
       // Label for Trait
       Label lblTrait = new Label(trait.getName() + ":");
-      // lblTrait.setTooltip(new Tooltip("Hello World"));
       // Text - Performance relative to peers
       Text txtTrait = new Text(trait.getComparisonToPeers());
+      // Add to gridpane
       gpUserTipi.addRow(i, lblTrait, txtTrait);
+      // increment counter
       i++;
     }
-
+    // return gridpane
     return gpUserTipi;
   }
 
