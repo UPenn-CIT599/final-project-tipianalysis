@@ -11,25 +11,25 @@ import java.util.LinkedHashMap;
 public class TipiChart {
 
   /**
-   * Creates a BarChart of User Tipi Resutls vs. Peer values
+   * Creates a BarChart of User Tipi Results vs. Peer mean values
    *
-   * @param traits Array of Traits containing user score and respective peer score
+   * @param traits Array of Traits containing amongst others user score and respective peer score
    * @return BarChart
    */
   public BarChart createBarChart(Trait[] traits) {
 
     // Define axis types of chart
     CategoryAxis traitsAxis = new CategoryAxis();
-    NumberAxis traitsValues = new NumberAxis();
+    NumberAxis valuesAxis = new NumberAxis();
 
     // Add labels to Axis
     traitsAxis.setLabel("Traits");
-    traitsValues.setLabel("TIPI Score");
+    valuesAxis.setLabel("TIPI Score");
 
     // Construct Chart Object
-    BarChart<String, Number> barChart = new BarChart<>(traitsAxis, traitsValues);
+    BarChart<String, Number> barChart = new BarChart<>(traitsAxis, valuesAxis);
 
-    // Generate Data Series
+    // Generate Data Series Array
     XYChart.Series[] seriesArray = mapToDataSeries(traits);
 
     // Get individual data series and name them
@@ -38,7 +38,7 @@ public class TipiChart {
     XYChart.Series<String, Number> peerData = seriesArray[1];
     peerData.setName("Peer");
 
-    // add series to chart
+    // add data series to chart
     barChart.getData().addAll(userData, peerData);
 
     // Chart Layouting
@@ -50,21 +50,18 @@ public class TipiChart {
     traitsAxis.setTickMarkVisible(false);
     // axis determines range from data automatically
     traitsAxis.setAutoRanging(true);
-    // Specifies whether the shape, if defined, is scaled to match the size of the Region. true
-    // means the shape is scaled to fit the size of the Region, false means the shape is at its
-    // source size
-    traitsAxis.setScaleShape(true);
+    valuesAxis.setAutoRanging(true);
+
 
     //return barChart
     return barChart;
   }
 
   /**
-   * Helper method converts HashMap into a DataSeries for a Chart and labels series with seriesName
-   * provided
+   * Helper method converts Array of Traits into Data series as required for a BarChart
    *
    * @param traits Array of Traits containing user score and respective peer score
-   * @return Series for XY Chart
+   * @return Array with Series for XY Chart. First Position in Array User Scores second Peer Scores
    */
   private XYChart.Series[] mapToDataSeries(Trait[] traits) {
 
