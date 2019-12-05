@@ -16,11 +16,14 @@ public class Trait {
 	 * The constructor for the Trait class.  Stores all pertinent information
 	 * regarding a trait's TIPI score and the research parameters used to 
 	 * obtain that score.
-	 * @param name - The name of the Trait.
-	 * @param mean - The average researched score of the trait.
+	 * @param name - The name of the Trait
+	 * @param userScore - The user's earned score
+	 * @param mean - The average researched score of the trait
 	 * @param standardDeviation - The standard deviation associated with
-	 * the Trait's score.
-	 * @param sampleSize - The sample size of the researched sample.
+	 * the Trait's score
+	 * @param sampleSize - The sample size of the researched sample
+	 * @param comparisonToPeers - A string denoting how the user's score compares
+	 * to others in their peer group.
 	 */
 	public Trait(String name ,double userScore ,double mean, double standardDeviation, int sampleSize, String comparisonToPeers) {
 		this.name = name;
