@@ -7,7 +7,7 @@ import javafx.scene.text.Font;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-/** Class to produce a Chart visualizing the Results from the Tipi Questionaire */
+/** Class to produce a BarChart visualizing the Results from the Tipi Questionaire */
 public class TipiChart {
 
   /**
