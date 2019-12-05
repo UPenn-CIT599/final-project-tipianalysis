@@ -9,6 +9,9 @@ import java.lang.reflect.Method;
 class TipiChartTest {
 
   @Test
+  /**
+   * Tests if Traits Array is correctly converted into DataSeries as Required for BarChart
+   */
   public void testMaptoDataSeries()
       throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
@@ -20,7 +23,7 @@ class TipiChartTest {
     String[] peerComparison = new String[] {"Low", "High", "Average", "Low", "Average"};
     Trait[] traitArray = new Trait[5];
 
-    // Create Series objects to check agains
+    // Create Series objects to check against
     XYChart.Series<String, Number> seriesUserToCheck = new XYChart.Series();
     XYChart.Series<String, Number> seriesPeerToCheck = new XYChart.Series();
 
