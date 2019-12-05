@@ -29,7 +29,6 @@ import java.util.LinkedHashMap;
  */
 public class SurveyPage{
 	
-	//Instantiate user to receive user from 
 	User surveyUser;
 	private int stageX = 1000;
 	private int stageY = 900;
@@ -356,7 +355,8 @@ public class SurveyPage{
 	}
 	
 	/**
-	 * Returns a formatted HBox from the linked HashMap 
+	 * Returns a formatted HBox from the linked HashMap. This is a static method
+	 * because it does not and should not require an instance of the class to run.
 	 * @param boxAndToggle A Linked HashMap with an HBox and Toggle
 	 * @return Returns an HBox element.
 	 */

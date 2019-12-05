@@ -130,15 +130,15 @@ public class IntroScreen{
 	    		);
 	    
 	    
-	    bodyText1.setWrappingWidth(570);
+	    bodyText1.setWrappingWidth(550);
 	    bodyText1.setFont(Font.font("Veranda",15));
 	    bodyText1.setTextAlignment(TextAlignment.CENTER);
 	    
 	    HBox bodyBox1 = new HBox();
 	    bodyBox1.getChildren().add(bodyText1);
 	    bodyBox1.setAlignment(Pos.CENTER);
-	    bodyBox1.setLayoutX(110);
-	    bodyBox1.setLayoutY(140);
+	    bodyBox1.setLayoutX(130);
+	    bodyBox1.setLayoutY(120);
 	    
 	    //Set disclaimer
 	    Text disclaimer = new Text("*Note: Must be at least 16 years old to use this program.");
@@ -219,7 +219,6 @@ public class IntroScreen{
 			    user.setSex(genderInput);
 				SurveyPage surveyPage = new SurveyPage();
 				introStage.setScene(surveyPage.showSurveyPage(user,introStage));
-				
 			}
 			catch(RuntimeException e1) {
 				Text error = new Text("Please fill all fields to continue.");
@@ -232,7 +231,6 @@ public class IntroScreen{
 				errorBox.getChildren().add(error);
 				introBorderPane.getChildren().add(errorBox);
 			}
-		    	
 		}
 			
 		); 
@@ -339,12 +337,12 @@ public class IntroScreen{
               
         Group img3 = new Group(imageView3);
         
-        
+        //Add all nodes to the page
 	    introBorderPane.getChildren().addAll(titleBox,textBox,genderBox,ageBox,
 	    		labels,buttonHolder,rectangle,img,img2,img3,headerGroup,inputRectangle,
 	    		disclaimerBox);
 		
-	  	    
+	  	 //Set the scene
 		introStage.setScene(scene);
 		
 		//Show the window
@@ -361,6 +359,13 @@ public class IntroScreen{
 		return introStage;
 	}
 
+	/**
+	 * This method returns whether or not a user is of age to take the survey.
+	 * It is left static because it does not and should not require an instance
+	 * of IntroScreen to run.
+	 * @param age The age value of the user.
+	 * @return returns a boolean value true if the user is of age.
+	 */
 	public static boolean ageValidator(int age) {
 		
 		if(age > 15) {
