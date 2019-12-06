@@ -31,6 +31,9 @@ class NormDataReaderTest {
 
 	@Test
 	
+	/**
+	 * The test case for the NormDataReader.getRelevantMetrics() method.
+	 */
 	void testGetRelevantMetrics() {
 		// Initialize and populate a test 2-D String array with all correct values populated in it.
 		String[][] testMetrics = new String[testDataReader.getNUMBER_OF_ROWS()][testDataReader.getNUMBER_OF_COLUMNS()];

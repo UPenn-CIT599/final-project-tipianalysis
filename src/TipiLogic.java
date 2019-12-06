@@ -46,6 +46,9 @@ public class TipiLogic {
 		// Create each Trait and add all relevant information to each
 		for(int i = 0; i < NUMBER_OF_TRAITS; i++) {
 			double userScore = computeFinalTraitScore(userResponses.get(questionnaireTraits[i]), userResponses.get(questionnaireTraits[i + 5]));
+			/* Error handling ins't necessary for the next three variables as these values are pulled
+			from one of two files where all values are hard coded numbers that match each variables
+			data type.*/
 			double mean = Double.parseDouble(comparisonData.getRelevantMetrics()[0][i]);
 			double standardDeviation = Double.parseDouble(comparisonData.getRelevantMetrics()[1][i]);
 			int sampleSize = Integer.parseInt(comparisonData.getRelevantMetrics()[2][i]);
