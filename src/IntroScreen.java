@@ -57,8 +57,6 @@ public class IntroScreen{
 	private int stageX = 800;
 	//Stage height
 	private int stageY = 900;
-	//Instantiate Intro Stage
-	private Stage introStage = new Stage();
 	//Instantiate User Class
 	private User user = new User(null, 0, null);
 
@@ -74,6 +72,7 @@ public class IntroScreen{
 	     * Create Scene and Border
 	     */
 		//Create Stage and border
+		Stage introStage = new Stage();
 		Group introBorderPane = new Group();
 	    ScrollPane scroll = new ScrollPane(introBorderPane);
 	    scroll.setHmax(0);
@@ -351,13 +350,6 @@ public class IntroScreen{
 		return(scene);
 	}
 
-	/**
-	 * Returns the intro stage for use in the survey page.
-	 * @return
-	 */
-	public Stage getStage() {
-		return introStage;
-	}
 
 	/**
 	 * This method returns whether or not a user is of age to take the survey.
@@ -366,7 +358,7 @@ public class IntroScreen{
 	 * @param age The age value of the user.
 	 * @return returns a boolean value true if the user is of age.
 	 */
-	public static boolean ageValidator(int age) {
+	public boolean ageValidator(int age) {
 		
 		if(age > 15) {
 			return true;

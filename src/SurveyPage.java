@@ -33,15 +33,16 @@ public class SurveyPage{
 	private int stageX = 1000;
 	private int stageY = 900;
 	//private Stage survey = new Stage();
-	private Group surveyBorderPane = new Group();
-    ScrollPane scroll = new ScrollPane(surveyBorderPane);
-    private Scene surveyScene = new Scene(scroll, stageX, stageY);
+	
 	
 	/**
 	 * This method manages the structure of the UI for the survey page.
 	 */
 	public Scene showSurveyPage(User user, Stage primaryStage){
 
+				Group surveyBorderPane = new Group();
+				ScrollPane scroll = new ScrollPane(surveyBorderPane);
+				Scene surveyScene = new Scene(scroll, stageX, stageY);
 				//Create Stage and border
 				Text pageTitle = new Text("Personality Survey");
 				pageTitle.setFont(Font.font("Veranda",30));

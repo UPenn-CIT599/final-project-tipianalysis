@@ -22,12 +22,13 @@ class SurveyPageTest {
 	void testGetHBox() {
 		
 		LinkedHashMap<HBox, ToggleGroup> testLinkedHashMap = new LinkedHashMap<HBox,ToggleGroup>();
-
+		SurveyPage surveyPage = new SurveyPage();
+		
 		ToggleGroup toggleGroup1 = new ToggleGroup();
 		HBox box = new HBox();
 		box.setLayoutX(100);
 		testLinkedHashMap.put(box, toggleGroup1);
-		HBox testBox = SurveyPage.getHBox(testLinkedHashMap);
+		HBox testBox = surveyPage.getHBox(testLinkedHashMap);
 		
 		assertEquals(testBox.getLayoutX(), box.getLayoutX());
 

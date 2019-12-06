@@ -6,6 +6,7 @@ class IntroScreenTest {
 
 	User olderUser = new User("Andrew",27,"Male");
 	User youngerUser = new User("Younger Andrew",10,"Male");
+	IntroScreen introScreen = new IntroScreen();
 
 	/**
 	 * Tests the method ageValidator that determines if someone is of age to
@@ -15,8 +16,9 @@ class IntroScreenTest {
 	@Test
 	void testAgeValidator() {
 
-		boolean olderAllowedToTakeSurvey = IntroScreen.ageValidator(olderUser.getAge());
-		boolean youngerAllowedToTakeSurvey = IntroScreen.ageValidator(youngerUser.getAge());
+		
+		boolean olderAllowedToTakeSurvey = introScreen.ageValidator(olderUser.getAge());
+		boolean youngerAllowedToTakeSurvey = introScreen.ageValidator(youngerUser.getAge());
 		assertEquals(olderAllowedToTakeSurvey,true);
 		assertEquals(youngerAllowedToTakeSurvey,false);
 		
