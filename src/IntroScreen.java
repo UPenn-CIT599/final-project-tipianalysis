@@ -353,8 +353,6 @@ public class IntroScreen{
 
 	/**
 	 * This method returns whether or not a user is of age to take the survey.
-	 * It is left static because it does not and should not require an instance
-	 * of IntroScreen to run.
 	 * @param age The age value of the user.
 	 * @return returns a boolean value true if the user is of age.
 	 */
@@ -369,7 +367,7 @@ public class IntroScreen{
 	}
 	/**
 	 * Used for getting the user variable that is created in the IntroScreen
-	 * @return
+	 * @return Returns the user object.
 	 */
 	public User getUser() {
 		return user;

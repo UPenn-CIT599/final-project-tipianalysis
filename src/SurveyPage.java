@@ -356,12 +356,11 @@ public class SurveyPage{
 	}
 	
 	/**
-	 * Returns a formatted HBox from the linked HashMap. This is a static method
-	 * because it does not and should not require an instance of the class to run.
+	 * Returns a formatted HBox from the linked HashMap. 
 	 * @param boxAndToggle A Linked HashMap with an HBox and Toggle
 	 * @return Returns an HBox element.
 	 */
-	public static HBox getHBox(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
+	public HBox getHBox(LinkedHashMap<HBox,ToggleGroup> boxAndToggle) {
 		HBox row = new HBox();
 		for(Object key : boxAndToggle.keySet()) {
 			row = (HBox) key;
