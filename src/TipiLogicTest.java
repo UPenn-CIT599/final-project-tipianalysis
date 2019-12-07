@@ -78,32 +78,43 @@ class TipiLogicTest {
 	 * The test case for the TipiLogic.recodeReverseScoredItems() method.
 	 */
 	void testRecodeReverseScoredItems() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-		TipiLogic logicTestTwo = new TipiLogic(testUser, testHashMap);
-		
-		// Prepare to test private method
-		Class testClassTwo = logicTestTwo.getClass();
-		Method privateRecodeReverseScoredItemsMethod = testClassTwo.getDeclaredMethod("recodeReverseScoredItems");
-		privateRecodeReverseScoredItemsMethod.setAccessible(true);
-		
-		// Invoke private method
-		privateRecodeReverseScoredItemsMethod.invoke(logicTestTwo);
-		
-		// Initialize remaining needed variables
-		LinkedHashMap<String, Integer> manualHashMap = new LinkedHashMap<String, Integer>();
-		manualHashMap.put("Extraverted", 6);
-		manualHashMap.put("Critical", 3);
-		manualHashMap.put("Dependable", 4);
-		manualHashMap.put("Anxious", 2);
-		manualHashMap.put("Open", 7);
-		manualHashMap.put("Reserved", 5);
-		manualHashMap.put("Sympathetic", 2);
-		manualHashMap.put("Disorganized", 3);
-		manualHashMap.put("Calm", 2);
-		manualHashMap.put("Conventional", 3);
-		
-		// Cycle through each piece of the HashMap to ensure the proper values have been reversed
-		for(String traitName : manualHashMap.keySet()) {
-			assertEquals(logicTestTwo.getUserResponses().get(traitName), manualHashMap.get(traitName));
+		try {
+			TipiLogic logicTestTwo = new TipiLogic(testUser, testHashMap);
+			
+			// Prepare to test private method
+			Class testClassTwo = logicTestTwo.getClass();
+			Method privateRecodeReverseScoredItemsMethod = testClassTwo.getDeclaredMethod("recodeReverseScoredItems");
+			privateRecodeReverseScoredItemsMethod.setAccessible(true);
+			
+			// Invoke private method
+			privateRecodeReverseScoredItemsMethod.invoke(logicTestTwo);
+			
+			// Initialize remaining needed variables
+			LinkedHashMap<String, Integer> manualHashMap = new LinkedHashMap<String, Integer>();
+			manualHashMap.put("Extraverted", 6);
+			manualHashMap.put("Critical", 3);
+			manualHashMap.put("Dependable", 4);
+			manualHashMap.put("Anxious", 2);
+			manualHashMap.put("Open", 7);
+			manualHashMap.put("Reserved", 5);
+			manualHashMap.put("Sympathetic", 2);
+			manualHashMap.put("Disorganized", 3);
+			manualHashMap.put("Calm", 2);
+			manualHashMap.put("Conventional", 3);
+			
+			// Cycle through each piece of the HashMap to ensure the proper values have been reversed
+			for(String traitName : manualHashMap.keySet()) {
+				assertEquals(logicTestTwo.getUserResponses().get(traitName), manualHashMap.get(traitName));
+			}
+		}
+		catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		catch (InvocationTargetException eTwo) {
+			eTwo.printStackTrace();
+		}
+		catch (IllegalAccessException eThree) {
+			eThree.printStackTrace();
 		}
 	}
 	
@@ -113,19 +124,30 @@ class TipiLogicTest {
 	 * The test case for the TipiLogic.computeFinalTraitScore() method.
 	 */
 	void testComputeFinalTraitScore() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-		TipiLogic logicTestThree = new TipiLogic(testUser, testHashMap);
-		
-		// Prepare to test private method
-		Class testClassThree = logicTestThree.getClass();
-		Method privateComputeFinalTraitScoreMethod = testClassThree.getDeclaredMethod("computeFinalTraitScore", int.class, int.class);
-		privateComputeFinalTraitScoreMethod.setAccessible(true);
-				
-		// Invoke private method
-		double testScore = (Double) privateComputeFinalTraitScoreMethod.invoke(logicTestThree, 
-				logicTestThree.getUserResponses().get("Extraverted"), logicTestThree.getUserResponses().get("Reserved"));
-		
-		// Ensure calculation is completed correctly
-		assertEquals(testScore, 4.5);
+		try {
+			TipiLogic logicTestThree = new TipiLogic(testUser, testHashMap);
+			
+			// Prepare to test private method
+			Class testClassThree = logicTestThree.getClass();
+			Method privateComputeFinalTraitScoreMethod = testClassThree.getDeclaredMethod("computeFinalTraitScore", int.class, int.class);
+			privateComputeFinalTraitScoreMethod.setAccessible(true);
+					
+			// Invoke private method
+			double testScore = (Double) privateComputeFinalTraitScoreMethod.invoke(logicTestThree, 
+					logicTestThree.getUserResponses().get("Extraverted"), logicTestThree.getUserResponses().get("Reserved"));
+			
+			// Ensure calculation is completed correctly
+			assertEquals(testScore, 4.5);
+		}
+		catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		catch (InvocationTargetException eTwo) {
+			eTwo.printStackTrace();
+		}
+		catch (IllegalAccessException eThree) {
+			eThree.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -133,19 +155,30 @@ class TipiLogicTest {
 	/**
 	 * The test case for the TipiLogic.findPeerComparison() method.
 	 */
-	void testFindPeerComparison() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-		TipiLogic logicTestFour = new TipiLogic(testUser, testHashMap);
-		
-		// Prepare to test private method
-		Class testClassFour = logicTestFour.getClass();
-		Method privateFindPeerComparisonMethod = testClassFour.getDeclaredMethod("findPeerComparison", double.class, double.class, double.class);
-		privateFindPeerComparisonMethod.setAccessible(true);
-		
-		//Invoke private method
-		String testResult = (String)privateFindPeerComparisonMethod.invoke(logicTestFour, 3.5, 4.77, 1.35);
-		
-		// Ensure String is assigned correctly
-		assertEquals(testResult, "Low");
+	void testFindPeerComparison() {
+		try {
+			TipiLogic logicTestFour = new TipiLogic(testUser, testHashMap);
+			
+			// Prepare to test private method
+			Class testClassFour = logicTestFour.getClass();
+			Method privateFindPeerComparisonMethod = testClassFour.getDeclaredMethod("findPeerComparison", double.class, double.class, double.class);
+			privateFindPeerComparisonMethod.setAccessible(true);
+			
+			// Invoke private method
+			String testResult = (String)privateFindPeerComparisonMethod.invoke(logicTestFour, 3.5, 4.77, 1.35);
+			
+			// Ensure String is assigned correctly
+			assertEquals(testResult, "Low");
+		}
+		catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		catch (InvocationTargetException eTwo) {
+			eTwo.printStackTrace();
+		}
+		catch (IllegalAccessException eThree) {
+			eThree.printStackTrace();
+		}
 	}
 	
 	@Test
