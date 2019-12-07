@@ -12,8 +12,7 @@ class TipiChartTest {
   /**
    * Tests if Traits Array is correctly converted into DataSeries as Required for BarChart
    */
-  public void testMaptoDataSeries()
-      throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+  public void testMaptoDataSeries() {
 
     // Traits Data for Testing
     String[] traitNames =
@@ -41,11 +40,21 @@ class TipiChartTest {
     //Required i.o. to be able to test private method
     TipiChart chart = new TipiChart();
     Class tipiClass = chart.getClass();
-    Method privateMapToDataSeriesMethod = tipiClass.getDeclaredMethod("mapToDataSeries", Trait[].class);
-    privateMapToDataSeriesMethod.setAccessible(true);
-    //Cast traitArray to Object so that is seen as one argument instead of an array with all arguments
-    XYChart.Series[] series = (XYChart.Series[]) privateMapToDataSeriesMethod.invoke(chart,(Object)traitArray);
-   // XYChart.Series[] series = chart.mapToDataSeries(traitArray);
+    Method privateMapToDataSeriesMethod = null;
+    XYChart.Series[] series = new XYChart.Series[2];
+    try {
+      privateMapToDataSeriesMethod = tipiClass.getDeclaredMethod("mapToDataSeries", Trait[].class);
+      privateMapToDataSeriesMethod.setAccessible(true);
+      //Cast traitArray to Object so that is seen as one argument instead of an array with all arguments
+      series = (XYChart.Series[]) privateMapToDataSeriesMethod.invoke(chart,(Object)traitArray);
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
+      e.printStackTrace();
+    }
+
 
     //extract two series
     XYChart.Series<String, Number> userData = series[0];
