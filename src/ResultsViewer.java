@@ -514,7 +514,7 @@ public class ResultsViewer {
     TipiChart chart = new TipiChart();
 
     // Create BarChart
-    BarChart barChart = chart.createBarChart(user.getUserScoresAndMetrics());
+    BarChart<String, Number> barChart = chart.createBarChart(user.getUserScoresAndMetrics());
 
     // Instruct to Chart to grow with window
     HBox.setHgrow(barChart, Priority.ALWAYS);

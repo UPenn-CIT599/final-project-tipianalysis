@@ -2,10 +2,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.text.Font;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 /** Class to produce a BarChart visualizing the Results from the Tipi Questionaire */
 public class TipiChart {
@@ -16,7 +13,7 @@ public class TipiChart {
    * @param traits Array of Traits containing amongst others user score and respective peer score
    * @return BarChart
    */
-  public BarChart createBarChart(Trait[] traits) {
+  public BarChart<String, Number> createBarChart(Trait[] traits) {
 
     // Define axis types of chart
     CategoryAxis traitsAxis = new CategoryAxis();
@@ -30,7 +27,7 @@ public class TipiChart {
     BarChart<String, Number> barChart = new BarChart<>(traitsAxis, valuesAxis);
 
     // Generate Data Series Array
-    XYChart.Series[] seriesArray = mapToDataSeries(traits);
+    XYChart.Series<String, Number>[] seriesArray = mapToDataSeries(traits);
 
     // Get individual data series and name them
     XYChart.Series<String, Number> userData = seriesArray[0];
@@ -63,20 +60,20 @@ public class TipiChart {
    * @param traits Array of Traits containing user score and respective peer score
    * @return Array with Series for XY Chart. First Position in Array User Scores second Peer Scores
    */
-  private XYChart.Series[] mapToDataSeries(Trait[] traits) {
+  private XYChart.Series<String, Number>[] mapToDataSeries(Trait[] traits) {
 
     // Create Series objects
-    XYChart.Series<String, Number> seriesUser = new XYChart.Series();
-    XYChart.Series<String, Number> seriesPeer = new XYChart.Series();
+    XYChart.Series<String, Number> seriesUser = new XYChart.Series<>();
+    XYChart.Series<String, Number> seriesPeer = new XYChart.Series<>();
 
     //loop through traits array and get user and peer data
     for (Trait trait : traits) {
       // trait Name
       String traitName = trait.getName();
       // get User Score
-      seriesUser.getData().add(new XYChart.Data(traitName, trait.getUserScore()));
+      seriesUser.getData().add(new XYChart.Data<>(traitName, trait.getUserScore()));
       // get Peer Score
-      seriesPeer.getData().add(new XYChart.Data(traitName, trait.getMean()));
+      seriesPeer.getData().add(new XYChart.Data<>(traitName, trait.getMean()));
     }
 
     //return data series Array
